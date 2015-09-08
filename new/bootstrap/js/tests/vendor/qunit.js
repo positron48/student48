@@ -1435,7 +1435,7 @@ QUnit.assert = Assert.prototype = {
 }());
 
 // Test for equality any JavaScript type.
-// Author: Philippe Rathé <prathe@gmail.com>
+// Author: Philippe RathГ© <prathe@gmail.com>
 QUnit.equiv = (function() {
 
 	// Call the o related callback with the given arguments.
@@ -2696,7 +2696,7 @@ QUnit.done(function( details ) {
 
 	if ( config.altertitle && defined.document && document.title ) {
 
-		// show ✖ for good, ✔ for bad suite result in title
+		// show вњ– for good, вњ” for bad suite result in title
 		// use escape sequences in case file gets loaded with non-utf-8-charset
 		document.title = [
 			( details.failed ? "\u2716" : "\u2714" ),

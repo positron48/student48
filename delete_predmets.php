@@ -9,7 +9,7 @@
 ?>
 <html>
 <head>
-<title>ЛГТУ|Удаление предмета</title>
+<title>Р›Р“РўРЈ|РЈРґР°Р»РµРЅРёРµ РїСЂРµРґРјРµС‚Р°</title>
 <? include('parts/head.php'); ?>
 </head>
 <body>
@@ -22,13 +22,13 @@
 						{
 							$result=mysql_query($query);
 							if($result)
-								echo("<p class='alert alert-success'>Предмет успешно удален");
+								echo("<p class='alert alert-success'>РџСЂРµРґРјРµС‚ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ");
 							else
-								echo("<p class='alert alert-error'>Ошибка удаления");		
+								echo("<p class='alert alert-error'>РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ");		
 						}
 						else
 						{
-							printf("<p class='alert alert-danger'>У вас недостаточно прав для удаления предмета</p>");	
+							printf("<p class='alert alert-danger'>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РїСЂРµРґРјРµС‚Р°</p>");	
 						}
 					?>
     		<? include('parts/footer.php'); ?>

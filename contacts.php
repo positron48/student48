@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Контакты</title>
+<title>Р›Р“РўРЈ|РљРѕРЅС‚Р°РєС‚С‹</title>
 <? include('parts/head.php'); ?>
 </head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -23,7 +23,7 @@
         myOptions);
 	var marker = new google.maps.Marker({
       position: latlng,
-      title:"Административный корпус ЛГТУ!"
+      title:"РђРґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅС‹Р№ РєРѕСЂРїСѓСЃ Р›Р“РўРЈ!"
   	});
 	marker.setMap(map);
   }
@@ -35,12 +35,12 @@
 	<? include("parts/top.php"); ?>
     <? include('parts/header.php'); ?>
     <div class="container">
-                 	<h1>Контакты:</h1><br />
-                    <p>По всем вопросам обращайтесь: <a href="mailto:positron48@gmail.com">positron48@gmail.com</a>
-                    <p>Пишите письма, задавайте вопросы, по возможности отвечу.</p>
-                    <p><b>Адрес университета: ул.Московская, д.30 </b></p>
+                 	<h1>РљРѕРЅС‚Р°РєС‚С‹:</h1><br />
+                    <p>РџРѕ РІСЃРµРј РІРѕРїСЂРѕСЃР°Рј РѕР±СЂР°С‰Р°Р№С‚РµСЃСЊ: <a href="mailto:positron48@gmail.com">positron48@gmail.com</a>
+                    <p>РџРёС€РёС‚Рµ РїРёСЃСЊРјР°, Р·Р°РґР°РІР°Р№С‚Рµ РІРѕРїСЂРѕСЃС‹, РїРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РѕС‚РІРµС‡Сѓ.</p>
+                    <p><b>РђРґСЂРµСЃ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°: СѓР».РњРѕСЃРєРѕРІСЃРєР°СЏ, Рґ.30 </b></p>
 					<div id="map_canvas" style="width:690px; height:300px;" align="center"></div>
-					<p>Также вы можете посмотреть <a href="/map.php">схему университета</a></p>
+					<p>РўР°РєР¶Рµ РІС‹ РјРѕР¶РµС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ <a href="/map.php">СЃС…РµРјСѓ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°</a></p>
     		<? include('parts/footer.php'); ?>    
 	</div>
     </center>

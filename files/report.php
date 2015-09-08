@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Отчет</title>
+<title>Р›Р“РўРЈ|РћС‚С‡РµС‚</title>
 <? include('../parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
  
@@ -124,7 +124,7 @@ foreach($fc as $line)
 
 if($reported == 1) {
 
-echo "Заявка была отправлена, спасибо.";
+echo "Р—Р°СЏРІРєР° Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР°, СЃРїР°СЃРёР±Рѕ.";
 
 include("./footer.php");
 
@@ -140,7 +140,7 @@ fwrite($filelist, $thisfile ."|". $_SERVER['REMOTE_ADDR'] ."\n");
 
 
 
-echo "Заявка была отправлена, спасибо.";
+echo "Р—Р°СЏРІРєР° Р±С‹Р»Р° РѕС‚РїСЂР°РІР»РµРЅР°, СЃРїР°СЃРёР±Рѕ.";
 
 echo "<br>";
 include("./header.php");

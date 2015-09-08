@@ -10,38 +10,38 @@
             <div class="nav-collapse">
                 <ul class="nav">
                     <li <? if(($_SERVER['PHP_SELF']=="/index.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="http://student48.ru/index.php">Главная</a>
+                        <a href="http://student48.ru/index.php">Р“Р»Р°РІРЅР°СЏ</a>
                     </li>
                     <li <? if(($_SERVER['PHP_SELF']=="/news.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="http://student48.ru/news.php">Новости</a>
+                        <a href="http://student48.ru/news.php">РќРѕРІРѕСЃС‚Рё</a>
                     </li>
                     <li <? if(($_SERVER['PHP_SELF']=="/materials.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="http://student48.ru/materials.php">Материалы</a>
+                        <a href="http://student48.ru/materials.php">РњР°С‚РµСЂРёР°Р»С‹</a>
                     </li>
                     <li <? if(($_SERVER['PHP_SELF']=="/questbook.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="http://student48.ru/questbook.php">Гостевая</a>
+                        <a href="http://student48.ru/questbook.php">Р“РѕСЃС‚РµРІР°СЏ</a>
                     </li>
                     <li <? if(($_SERVER['HTTP_HOST']=="files.student48.ru") || ($_SERVER['HTTP_HOST']=="www.files.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="http://files.student48.ru">Обменник</a>
+                        <a href="http://files.student48.ru">РћР±РјРµРЅРЅРёРє</a>
                     </li>
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                          Еще
+                          Р•С‰Рµ
                           <i class="caret"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="http://student48.ru/upload.php">Добавить</a></li>
-                            <li><a href="http://student48.ru/shpora">Шпоры</a></li>
-                            <li><a href="http://student48.ru/rating.php">Рейтинг</a></li>
-                            <li><a href="http://student48.ru/contacts.php">Контакты</a></li>
-                            <li><a href="http://student48.ru/map.php">Карта</a></li>
-                            <li><a href="http://student48.ru/links.php">Ссылки</a></li>
-                            <li><a href="http://vk.com/student48ru">ВКонтакте</a></li>
+                            <li><a href="http://student48.ru/upload.php">Р”РѕР±Р°РІРёС‚СЊ</a></li>
+                            <li><a href="http://student48.ru/shpora">РЁРїРѕСЂС‹</a></li>
+                            <li><a href="http://student48.ru/rating.php">Р РµР№С‚РёРЅРі</a></li>
+                            <li><a href="http://student48.ru/contacts.php">РљРѕРЅС‚Р°РєС‚С‹</a></li>
+                            <li><a href="http://student48.ru/map.php">РљР°СЂС‚Р°</a></li>
+                            <li><a href="http://student48.ru/links.php">РЎСЃС‹Р»РєРё</a></li>
+                            <li><a href="http://vk.com/student48ru">Р’РљРѕРЅС‚Р°РєС‚Рµ</a></li>
                         </ul>
                       </li>
                 </ul>
                 <form class="navbar-search pull-right" action="http://student48.ru/search.php" method="GET">
-                    <button type="submit" class="btn btn-inverse pull-right" style="margin-top: 0px;">Поиск</button><input type="text" class="search-query span2" placeholder="Поиск материалов" name="search_text"></input>
+                    <button type="submit" class="btn btn-inverse pull-right" style="margin-top: 0px;">РџРѕРёСЃРє</button><input type="text" class="search-query span2" placeholder="РџРѕРёСЃРє РјР°С‚РµСЂРёР°Р»РѕРІ" name="search_text"></input>
                     
                 </form>
             </div><!--/.nav-collapse -->

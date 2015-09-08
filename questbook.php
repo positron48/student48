@@ -34,16 +34,16 @@
 		}
 		else if($diff<=$time_add_msg && $diff>0)
 		{
-			$error.="<br>Слишком малый промежуток времени";
+			$error.="<br>РЎР»РёС€РєРѕРј РјР°Р»С‹Р№ РїСЂРѕРјРµР¶СѓС‚РѕРє РІСЂРµРјРµРЅРё";
 			$flag_add=false;
 		}
 		else
         {
-			if($user="") $error.="<br>Поле 'Имя пользователя' не заполнено";
-            if($title_message="") $error.="<br>Поле 'Тема' не заполнено";
-            if($msg="") $error.="<br>Поле 'Сообщение' не заполнено";
+			if($user="") $error.="<br>РџРѕР»Рµ 'РРјСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ' РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ";
+            if($title_message="") $error.="<br>РџРѕР»Рµ 'РўРµРјР°' РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ";
+            if($msg="") $error.="<br>РџРѕР»Рµ 'РЎРѕРѕР±С‰РµРЅРёРµ' РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ";
             if($is_robot)
-                $error.="<br>Вы робот!";
+                $error.="<br>Р’С‹ СЂРѕР±РѕС‚!";
         }
 	}
 	if(isset($_GET['page']))
@@ -61,29 +61,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Гостевая</title>
+<title>Р›Р“РўРЈ|Р“РѕСЃС‚РµРІР°СЏ</title>
 <? include('parts/head.php'); ?>
 <script>
 	function checkForm(obj)
 	{
 		var return_value=true;
-		var error_msg="Некорректный ввод данных в полях:";
-		if(obj.user.value=="" || obj.user.value.toLowerCase()=="админ" || obj.user.value.toLowerCase()=="admin" || obj.user.value.toLowerCase()=="administrator" || obj.user.value.toLowerCase()=="администратор")
+		var error_msg="РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ РґР°РЅРЅС‹С… РІ РїРѕР»СЏС…:";
+		if(obj.user.value=="" || obj.user.value.toLowerCase()=="Р°РґРјРёРЅ" || obj.user.value.toLowerCase()=="admin" || obj.user.value.toLowerCase()=="administrator" || obj.user.value.toLowerCase()=="Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ")
 		{
 			obj.user.focus();
-			error_msg+="\n'Имя'";
+			error_msg+="\n'РРјСЏ'";
 			return_value=false;
 		}
 		if(obj.title_message.value=="")
 		{
 			obj.title_message.focus();
-			error_msg+="\n'Тема'";
+			error_msg+="\n'РўРµРјР°'";
 			return_value=false;
 		}
 		if(obj.msg.value=="")
 		{
 			obj.msg.focus();
-			error_msg+="\n'Сообщение'";
+			error_msg+="\n'РЎРѕРѕР±С‰РµРЅРёРµ'";
 			return_value=false;
 		}
 		obj.error.value=true
@@ -117,7 +117,7 @@
 	<? include("parts/top.php"); ?>
     <? include('parts/header.php'); ?>
     <div class="container">
-        <h1>Гостевая</h1><br />
+        <h1>Р“РѕСЃС‚РµРІР°СЏ</h1><br />
                 <?		
 					while($pagedata=mysql_fetch_array($dbdata))
 					{
@@ -126,9 +126,9 @@
 								<tr><td>
 								');
 						if($check)
-							printf('<a href="questbook.php?admin=ololo48&del_id=%s" onclick="if(!confirm(\'Точно хочешь удалить?\')) return false;" class="pull-right"><i class="icon-remove"></i></a>',$pagedata['id']);
+							printf('<a href="questbook.php?admin=ololo48&del_id=%s" onclick="if(!confirm(\'РўРѕС‡РЅРѕ С…РѕС‡РµС€СЊ СѓРґР°Р»РёС‚СЊ?\')) return false;" class="pull-right"><i class="icon-remove"></i></a>',$pagedata['id']);
 						printf('%s
-								<div class="pull-right">Добавлено:%s, %s
+								<div class="pull-right">Р”РѕР±Р°РІР»РµРЅРѕ:%s, %s
 								</div></td></tr>
 								<tr><td>%s</td></tr></table>
 								',$pagedata['title_message'],$pagedata['user'],$pagedata['dateadd'],$pagedata['message']);
@@ -150,24 +150,24 @@
                     <td colspan="2">
                     	<? 	
 							if($error!="")
-								printf("<div class='alert alert-error'> Сообщение не добавлено: %s </div>", $error); 
+								printf("<div class='alert alert-error'> РЎРѕРѕР±С‰РµРЅРёРµ РЅРµ РґРѕР±Р°РІР»РµРЅРѕ: %s </div>", $error); 
 						?>
                     </td></tr><tr>
-                    <td colspan="2"><h2>Добавить сообщение:</h2></td></tr>
-                    <tr><td align="right">Имя:</td><td><input type="text" name="user" size="90" <? if($_POST['error_form']==true) printf("value='%s'",$user) ?>/></td></tr>
-                    <tr><td align="right">Тема:</td><td><input type="text" name="title_message" size="90" <? if($_POST['error_form']==true) printf("value='%s'",$title_message) ?>/></td></tr>
-                    <tr><td align="right">Сообщение:</td><td><textarea cols="69" rows="5" name="msg"><? if($_POST['error_form']==true) printf("%s",$msg) ?></textarea></td></tr>
+                    <td colspan="2"><h2>Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ:</h2></td></tr>
+                    <tr><td align="right">РРјСЏ:</td><td><input type="text" name="user" size="90" <? if($_POST['error_form']==true) printf("value='%s'",$user) ?>/></td></tr>
+                    <tr><td align="right">РўРµРјР°:</td><td><input type="text" name="title_message" size="90" <? if($_POST['error_form']==true) printf("value='%s'",$title_message) ?>/></td></tr>
+                    <tr><td align="right">РЎРѕРѕР±С‰РµРЅРёРµ:</td><td><textarea cols="69" rows="5" name="msg"><? if($_POST['error_form']==true) printf("%s",$msg) ?></textarea></td></tr>
                     <tr><td></td><td><input type="hidden" name="error_form" value="false"></td></tr>
 					<tr><td></td><td>
 						<table cellpadding=5 cellspacing=0>
 							<tr>
 							<div style="display: none;"><input type="radio" name="123" checked="true" value="1" /></div>
-                            <input type="radio" name="123" value="11" /> Я не робот
+                            <input type="radio" name="123" value="11" /> РЇ РЅРµ СЂРѕР±РѕС‚
 							</td>
 							</tr>
 						</table>
 					</td></tr>
-                    <tr><td></td><td><input type="submit" value="Отправить" class="btn" /></td><td></td></tr>
+                    <tr><td></td><td><input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" class="btn" /></td><td></td></tr>
                    </table>
                 </form>
                 </td>

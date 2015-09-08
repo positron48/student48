@@ -35,7 +35,7 @@ $(function () {
   QUnit.test('should fade element out on clicking .close', function (assert) {
     assert.expect(1)
     var alertHTML = '<div class="alert alert-danger fade in">'
-        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<a class="close" href="#" data-dismiss="alert">Г—</a>'
         + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
         + '</div>'
 
@@ -49,7 +49,7 @@ $(function () {
   QUnit.test('should remove element when clicking .close', function (assert) {
     assert.expect(2)
     var alertHTML = '<div class="alert alert-danger fade in">'
-        + '<a class="close" href="#" data-dismiss="alert">×</a>'
+        + '<a class="close" href="#" data-dismiss="alert">Г—</a>'
         + '<p><strong>Holy guacamole!</strong> Best check yo self, you\'re not looking too good.</p>'
         + '</div>'
     var $alert = $(alertHTML).appendTo('#qunit-fixture').bootstrapAlert()

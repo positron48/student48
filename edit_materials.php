@@ -26,14 +26,14 @@
 		$dateadd=$_POST['dateadd']; 
 		$query="UPDATE materials SET title_material='$title_material', metakey='$metakey', predmetid='$predmetid', link='$link', filesize='$filesize', downloads='$downloads', dateadd='$dateadd' WHERE id='$id'";
 		$edit=true;
-		//print('<script> alert("Материал отредактирован") </script>');
+		//print('<script> alert("РњР°С‚РµСЂРёР°Р» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ") </script>');
 		header("Location: materials.php");
 	}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Редактирование материалов</title>
+<title>Р›Р“РўРЈ|Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РјР°С‚РµСЂРёР°Р»РѕРІ</title>
 <? include('parts/head.php'); ?>
 </head>
 <body>
@@ -49,20 +49,20 @@
 			<form name="addnews" method="post" action="edit_materials.php">
 				<table class="form">
 				<tr><td>id:</td><td><input type="text" name="id" size="83" value="%s" readonly></td>
-				<tr><td>Скачиваний:</td><td><input type="text" name="downloads" size="83" value="%s"></td>
-				<tr><td>Дата добавления:</td><td><input type="text" name="dateadd" size="83" value="%s" readonly></td>
-				<tr><td>Заголовок:</td><td><input type="text" name="title_material" size="83" value="%s"></td>
-				</tr><tr><td>Ключевые слова:</td><td><input type="text" name="metakey" size="83" value="%s"></td>
-				</tr><tr><td>Ссылка на файл:</td><td><input type="text" name="link" size="83" value="%s"></td>
-				</tr><tr><td>Размер файла (Кб):</td><td><input type="text" name="filesize" size="83" value="%s"></td>
-				</tr><tr><td>id предмета:</td><td><input type="text" name="predmetid" size="83" value="%s"></td>
-				</tr><tr><td>Предмет:</td><td><select multiple disabled>',$pagedata['id'],$pagedata['downloads'],$pagedata['dateadd'],$pagedata['title_material'],$pagedata['metakey'],$pagedata['link'],$pagedata['filesize'],$pagedata['predmetid']);
+				<tr><td>РЎРєР°С‡РёРІР°РЅРёР№:</td><td><input type="text" name="downloads" size="83" value="%s"></td>
+				<tr><td>Р”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ:</td><td><input type="text" name="dateadd" size="83" value="%s" readonly></td>
+				<tr><td>Р—Р°РіРѕР»РѕРІРѕРє:</td><td><input type="text" name="title_material" size="83" value="%s"></td>
+				</tr><tr><td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td><td><input type="text" name="metakey" size="83" value="%s"></td>
+				</tr><tr><td>РЎСЃС‹Р»РєР° РЅР° С„Р°Р№Р»:</td><td><input type="text" name="link" size="83" value="%s"></td>
+				</tr><tr><td>Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° (РљР±):</td><td><input type="text" name="filesize" size="83" value="%s"></td>
+				</tr><tr><td>id РїСЂРµРґРјРµС‚Р°:</td><td><input type="text" name="predmetid" size="83" value="%s"></td>
+				</tr><tr><td>РџСЂРµРґРјРµС‚:</td><td><select multiple disabled>',$pagedata['id'],$pagedata['downloads'],$pagedata['dateadd'],$pagedata['title_material'],$pagedata['metakey'],$pagedata['link'],$pagedata['filesize'],$pagedata['predmetid']);
 				do
 				{
 					printf('<option>id#%s  semestr %s: %s</option>',$pagedata1['id'],$pagedata1['semestr'],$pagedata1['title_predmet']);
 				}while($pagedata1=mysql_fetch_array($dbdata1));
 			printf('</select></td>
-				</tr><tr><td colspan="2"><input type="submit" value="Отправить"><input type="reset" value="Очистить">
+				</tr><tr><td colspan="2"><input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ"><input type="reset" value="РћС‡РёСЃС‚РёС‚СЊ">
 				</td></tr>
 				</table>
 			</form>
@@ -74,16 +74,16 @@
 			mysql_close($dbconnect);
 			if(!$result)
 			{
-				printf("<p class='alert alert-error'>Ошибка при записи в базу данных</p>");							
+				printf("<p class='alert alert-error'>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…</p>");							
 			}
 			else
 			{
-				printf("<p class='alert alert-success'>Материал отредактирован!</p>");
+				printf("<p class='alert alert-success'>РњР°С‚РµСЂРёР°Р» РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ!</p>");
 				$edit_result=true;
 			}
 		}
 		else
-			print("<p class='alert alert-danger'>У вас недостаточно прав для редактирования данного материала</p>");
+			print("<p class='alert alert-danger'>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР°РЅРЅРѕРіРѕ РјР°С‚РµСЂРёР°Р»Р°</p>");
 	?>
     
     <? include('parts/footer.php'); ?>

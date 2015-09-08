@@ -4,9 +4,9 @@
 
 <div id="menu" align="center">
 
- <a href="index.php">Главная</a></li>
+ <a href="index.php">Р“Р»Р°РІРЅР°СЏ</a></li>
 <b>|</b>
- <a href="index.php?page=tos">Правила</a></li>
+ <a href="index.php?page=tos">РџСЂР°РІРёР»Р°</a></li>
 <b>|</b>
  <a href="index.php?page=faq">FAQ</a></li>
 

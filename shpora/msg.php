@@ -7,15 +7,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ | Сообщения</title>
+<title>Р›Р“РўРЈ | РЎРѕРѕР±С‰РµРЅРёСЏ</title>
 <? include('../parts/head.php'); ?>
 </head>
 <body>
 <? include("../parts/top.php"); ?>
 <? include('../parts/header.php'); ?>
 <div class="container">
-                	<h1>Шпора!</h1><br />
-                    <? printf('<a href="themes.php?id=%s"><h3>Вернуться к теме</a></h3>',$_GET['them_id']); ?>
+                	<h1>РЁРїРѕСЂР°!</h1><br />
+                    <? printf('<a href="themes.php?id=%s"><h3>Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє С‚РµРјРµ</a></h3>',$_GET['them_id']); ?>
                     <br>
                     <?
 						$pagedata=mysql_fetch_array($dbdata);
@@ -23,7 +23,7 @@
 						mysql_query("UPDATE shpora_messages SET shp_msg_views='$views' WHERE shp_msg_id='$id'");
 							printf('
 								<div class="shpora_msg">
-									<h3>%s <div class="pull-right">Просмотров:%s</div></h3><br />
+									<h3>%s <div class="pull-right">РџСЂРѕСЃРјРѕС‚СЂРѕРІ:%s</div></h3><br />
 										<div class="shpora_msg_content">
 											%s
 										</div>
@@ -40,7 +40,7 @@
 										printf('%s',_filter($pagedata['shp_msg_content']));
 										print("',
 										noparse: false
-									},{type: 'button', text: 'Сохранить'}));
+									},{type: 'button', text: 'РЎРѕС…СЂР°РЅРёС‚СЊ'}));
 									</script></td>");
 						print('<td>
 									<!-- Put this div tag to the place, where the Like block will be -->

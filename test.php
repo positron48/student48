@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Мы переехали</title>
+<title>Р›Р“РўРЈ|РњС‹ РїРµСЂРµРµС…Р°Р»Рё</title>
 <? include('parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
 	<? include("parts/top.php"); ?>
@@ -37,7 +37,7 @@
 						printf('<br>$_SERVER["REQUEST_TIME"]=%s',$_SERVER['REQUEST_TIME']);
                     }
                     else
-                        printf("<div class='alert alert-danger'>У вас нет прав для доступа к служебной информации</div>");
+                        printf("<div class='alert alert-danger'>РЈ РІР°СЃ РЅРµС‚ РїСЂР°РІ РґР»СЏ РґРѕСЃС‚СѓРїР° Рє СЃР»СѓР¶РµР±РЅРѕР№ РёРЅС„РѕСЂРјР°С†РёРё</div>");
 					?>
                 
     		<? include('parts/footer.php'); ?>

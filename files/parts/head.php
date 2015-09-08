@@ -1,10 +1,10 @@
 <? include('parts/head_vk_init.php'); ?>
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="SHORTCUT ICON" href="http://student48.ru/images/favicon.ico" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript" src="http://vkontakte.ru/js/api/openapi.js"></script>
 <script type="text/javascript" src="http://vkontakte.ru/js/api/share.js?10" charset="windows-1251"></script>
@@ -27,7 +27,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 
 </script>
-<!-- форма редактирования -->
+<!-- С„РѕСЂРјР° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ -->
 <script type="text/javascript" src="http://student48.ru/js/tiny_mce/tiny_mce.js"></script>
 
 <link href="http://student48.ru/css/bootstrap.css" rel="stylesheet">

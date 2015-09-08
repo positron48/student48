@@ -25,23 +25,23 @@
 				else
 				{
 					$add=false;
-					$err_msg.="Файл не может быть размещен в данной дирректории";
+					$err_msg.="Р¤Р°Р№Р» РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂР°Р·РјРµС‰РµРЅ РІ РґР°РЅРЅРѕР№ РґРёСЂСЂРµРєС‚РѕСЂРёРё";
 				}
 			}
 			else
 			{
 				$add=false;
-				$err_msg.="Ошибка загрузки файла<br>";
+				$err_msg.="РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С„Р°Р№Р»Р°<br>";
 			}
 		else
 		{
 			$add=false;
-			$err_msg.="Неправильный ввод двнных<br>";
+			$err_msg.="РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РІРІРѕРґ РґРІРЅРЅС‹С…<br>";
 		}
 		if(md5($_POST['turing']) != $_SESSION['turing_string'])
 		{
 			$add=false;
-			$err_msg.="Неверный проверочный код<br>";
+			$err_msg.="РќРµРІРµСЂРЅС‹Р№ РїСЂРѕРІРµСЂРѕС‡РЅС‹Р№ РєРѕРґ<br>";
 		}
 	}
 
@@ -50,7 +50,7 @@
 ?>
 <html>
 <head>
-<title>ЛГТУ|Добавление материала</title>
+<title>Р›Р“РўРЈ|Р”РѕР±Р°РІР»РµРЅРёРµ РјР°С‚РµСЂРёР°Р»Р°</title>
 
 <? include('parts/head.php'); ?>
 
@@ -89,7 +89,7 @@
 						}
 					</script>
              		
-                    <p><h1>Добавьте материал:</h1>
+                    <p><h1>Р”РѕР±Р°РІСЊС‚Рµ РјР°С‚РµСЂРёР°Р»:</h1>
                     <? 
 						if($err_msg!="")
 							printf("<h3><font color='#CC3300'>%s</font></h3>",$err_msg);
@@ -97,20 +97,20 @@
                     <form name="addnews" method="post" action="addmaterial.php" enctype="multipart/form-data">
                     	<table class="form">
                         <tr>
-                            <td>Заголовок:</td>
+                            <td>Р—Р°РіРѕР»РѕРІРѕРє:</td>
                             <td><input type="text" name="title" size="83"></td>
                         </tr><tr>
-                            <td>Ключевые слова:</td>
+                            <td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td>
                             <td><input type="text" name="metakey" size="83"></td>
                         
                         </tr><tr>
-                            <td>Дирректория:</td>
-                            <td><input type="text" name="link" size="83" value="Выберите предмет" readonly></td>
+                            <td>Р”РёСЂСЂРµРєС‚РѕСЂРёСЏ:</td>
+                            <td><input type="text" name="link" size="83" value="Р’С‹Р±РµСЂРёС‚Рµ РїСЂРµРґРјРµС‚" readonly></td>
                         </tr><tr>
-                        	<td>Предмет:</td>
+                        	<td>РџСЂРµРґРјРµС‚:</td>
                             <td>
                             	<select name="predmetid" onChange="changeDir(this.form)">
-                                	<option value="0" selected>Выберите предмет</option>
+                                	<option value="0" selected>Р’С‹Р±РµСЂРёС‚Рµ РїСЂРµРґРјРµС‚</option>
                                 <?
 									do
                                     {
@@ -120,7 +120,7 @@
                             	</select>
                             </td>
                         </tr><tr>
-                            <td>Файл:</td>
+                            <td>Р¤Р°Р№Р»:</td>
                             <td><input type="file" name="filename"></td>
                         </tr>
                         <tr><td></td><td>
@@ -128,16 +128,16 @@
                             <tr>
                             
                             <td style="padding: 2px;" width="10"><img src="/captcha/captchac_code.php" id="captcha"></td>
-                            <td valign="top"><font color="#000000">Введите код с картинки:</font><br>
+                            <td valign="top"><font color="#000000">Р’РІРµРґРёС‚Рµ РєРѕРґ СЃ РєР°СЂС‚РёРЅРєРё:</font><br>
                             <input type="text" name="turing" maxlength="10" size="10">
-                                <a href="#" onclick=" document.getElementById('captcha').src = document.getElementById('captcha').src + '?' + (new Date()).getMilliseconds();">Обновить</a>
+                                <a href="#" onclick=" document.getElementById('captcha').src = document.getElementById('captcha').src + '?' + (new Date()).getMilliseconds();">РћР±РЅРѕРІРёС‚СЊ</a>
                             </td>
                             </tr>
                             </table>
                         </td>
                         </tr>
                         <tr><td colspan="2"> 
-                            <input type="submit" value="Отправить"><input type="reset" value="Очистить">
+                            <input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ"><input type="reset" value="РћС‡РёСЃС‚РёС‚СЊ">
                         </td></tr>
                         </table>
                 	</form>
@@ -146,12 +146,12 @@
 							$result=mysql_query($query);
 							mysql_close($dbconnect);
 							if(!$result)
-								printf("<p>Ошибка при загрузке файла");
+								printf("<p>РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ С„Р°Р№Р»Р°");
 							else
-								printf("<p>Материал добавлен!");
+								printf("<p>РњР°С‚РµСЂРёР°Р» РґРѕР±Р°РІР»РµРЅ!");
 						?>
                     <? else: ?>
-                    	<h3>У вас недостаточно прав для добавления материала</h3>
+                    	<h3>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РјР°С‚РµСЂРёР°Р»Р°</h3>
                		<? endif ?>
                 </td>
             </tr>

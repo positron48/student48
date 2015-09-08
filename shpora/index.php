@@ -34,27 +34,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ | Шпоры!</title>
+<title>Р›Р“РўРЈ | РЁРїРѕСЂС‹!</title>
 <? include('../parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
 <? include("../parts/top.php"); ?>
 <? include('../parts/header.php'); ?>
     <div class="container">
-                	<h1>Шпоры!</h1><br />
+                	<h1>РЁРїРѕСЂС‹!</h1><br />
 					<? if(is_numeric($_GET['del_id']) && ($check || ($_COOKIE[md5($pgdata['shp_them_title'].$pgdata['shp_them_date'])]==true)))
 							if($resultdelmsg && $resultdelthem)
-								print('<h3>Шпора удалена!</h3>');
+								print('<h3>РЁРїРѕСЂР° СѓРґР°Р»РµРЅР°!</h3>');
 							else
-								print('<h3>Ошибка удаления</h3>');
+								print('<h3>РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ</h3>');
 					?>
 						<? if($check)
 						{
-							print("<a href='add_shpor_them.php' class='btn'> Добавить шпору</a><br /><br />");
+							print("<a href='add_shpor_them.php' class='btn'> Р”РѕР±Р°РІРёС‚СЊ С€РїРѕСЂСѓ</a><br /><br />");
 						}
 						?>
-						<table class="table table-striped table-bordered table-condensed"><!--<tr><td>Тема</td><td>Дата</td><td>Просмотры</td></tr> -->
+						<table class="table table-striped table-bordered table-condensed"><!--<tr><td>РўРµРјР°</td><td>Р”Р°С‚Р°</td><td>РџСЂРѕСЃРјРѕС‚СЂС‹</td></tr> -->
 						<?
 							while($pagedata=mysql_fetch_array($dbdata))
 							{
@@ -83,7 +83,7 @@
 									if(($_COOKIE[md5($pagedata['shp_them_title'].$pagedata['shp_them_date'])]==true) || $check)
 										printf('
 													<a href="index.php?edit_id=%s"><i class="icon-edit"></i></a>
-													<a href="index.php?del_id=%s" onclick="if(!confirm(\'Точно хочешь удалить?\')) return false;"><i class="icon-remove"></i></a>
+													<a href="index.php?del_id=%s" onclick="if(!confirm(\'РўРѕС‡РЅРѕ С…РѕС‡РµС€СЊ СѓРґР°Р»РёС‚СЊ?\')) return false;"><i class="icon-remove"></i></a>
 													&nbsp;
 											',$pagedata['shp_them_id'],$pagedata['shp_them_id']);
 													

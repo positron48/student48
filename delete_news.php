@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Удаление предмета</title>
+<title>Р›Р“РўРЈ|РЈРґР°Р»РµРЅРёРµ РїСЂРµРґРјРµС‚Р°</title>
 <? include('parts/head.php'); ?>
 </head>
 <body>
@@ -24,13 +24,13 @@
 		{
 			$result=mysql_query($query);
 			if($result)
-				echo("<p class='alert alert-success'>Новость успешно удалена");
+				echo("<p class='alert alert-success'>РќРѕРІРѕСЃС‚СЊ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅР°");
 			else
-				echo("<p class='alert alert-error'>Ошибка удаления");		
+				echo("<p class='alert alert-error'>РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ");		
 		}
 		else
 		{
-			printf("<p class='alert alert-danger'>У вас недостаточно прав для удаления новости</p>");
+			printf("<p class='alert alert-danger'>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РЅРѕРІРѕСЃС‚Рё</p>");
 		}
 	?>
         

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Рейтинг</title>
+<title>Р›Р“РўРЈ|Р РµР№С‚РёРЅРі</title>
 <? include('parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
 <? include("parts/top.php"); ?>
@@ -14,7 +14,7 @@
 						{
 							if(isNaN(input.value) || input.value<minimum || input.value>predel)
 							{
-								alert("значение некорректно, введите значение между " + minimum + " и " + predel);
+								alert("Р·РЅР°С‡РµРЅРёРµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ, РІРІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РјРµР¶РґСѓ " + minimum + " Рё " + predel);
 								input.focus();
 								input.select();
 							}
@@ -31,7 +31,7 @@
 						{
 							if(isNaN(input.value) || input.value<minimum || input.value>predel)
 							{
-								alert("значение некорректно, введите значение между " + minimum + " и " + predel);
+								alert("Р·РЅР°С‡РµРЅРёРµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ, РІРІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РјРµР¶РґСѓ " + minimum + " Рё " + predel);
 								input.focus();
 								input.select();
 							}
@@ -48,7 +48,7 @@
 						{
 							if(isNaN(input.value) || input.value<minimum || input.value>predel)
 							{
-								alert("значение некорректно, введите значение между " + minimum + " и " + predel);
+								alert("Р·РЅР°С‡РµРЅРёРµ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ, РІРІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РјРµР¶РґСѓ " + minimum + " Рё " + predel);
 								input.focus();
 								input.select();
 							}
@@ -77,7 +77,7 @@
 								}
 								else
 								{
-									alert('неверный ввод в строке '+i);
+									alert('РЅРµРІРµСЂРЅС‹Р№ РІРІРѕРґ РІ СЃС‚СЂРѕРєРµ '+i);
 								}
 							}
 							var numEkz=i;
@@ -102,7 +102,7 @@
 								}
 								else
 								{
-									alert('неверный ввод в строке '+i);
+									alert('РЅРµРІРµСЂРЅС‹Р№ РІРІРѕРґ РІ СЃС‚СЂРѕРєРµ '+i);
 								}
 							}
 							var numZachet=i;
@@ -125,7 +125,7 @@
 								}
 								else
 								{
-									alert('неверный ввод в строке '+i);
+									alert('РЅРµРІРµСЂРЅС‹Р№ РІРІРѕРґ РІ СЃС‚СЂРѕРєРµ '+i);
 								}
 							}
 							var numKurs=i;
@@ -155,26 +155,26 @@
 								var hours=parseInt(document.getElementById("kurshours"+j).value);
 								rating=rating+(kurs*hours)/(all_hours);
 							}
-							//alert('Ваш рейтинг: '+rating+'\nсумма часов: '+all_hours);
+							//alert('Р’Р°С€ СЂРµР№С‚РёРЅРі: '+rating+'\nСЃСѓРјРјР° С‡Р°СЃРѕРІ: '+all_hours);
 							document.getElementById('rating_res').value = rating;
 							document.getElementById('result').style.display = "inherit";
 						}
 					</script>
-					<h1>Вычисление рейтинга:</h1>
+					<h1>Р’С‹С‡РёСЃР»РµРЅРёРµ СЂРµР№С‚РёРЅРіР°:</h1>
 					<form>
 						<table>
-							<tr id="result" style="display:none" class="alert alert-info form-inline"><td>Ваш рейтинг:</td><td><input type="text"  id="rating_res"/></td></tr>
+							<tr id="result" style="display:none" class="alert alert-info form-inline"><td>Р’Р°С€ СЂРµР№С‚РёРЅРі:</td><td><input type="text"  id="rating_res"/></td></tr>
 						</table>
 					</form>
 					<form>
 						<br/>	
-						<h2>Экзамены</h2>
+						<h2>Р­РєР·Р°РјРµРЅС‹</h2>
 						<table class="table-bordered table-hover">
 							<tr style="display:inherit">
-								<td>№</td>
-								<td>Баллы за семестр</td>
-								<td>Баллы за экзамен</td>
-								<td>Количество часов</td>
+								<td>в„–</td>
+								<td>Р‘Р°Р»Р»С‹ Р·Р° СЃРµРјРµСЃС‚СЂ</td>
+								<td>Р‘Р°Р»Р»С‹ Р·Р° СЌРєР·Р°РјРµРЅ</td>
+								<td>РљРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°СЃРѕРІ</td>
 							</tr>
 							<tr id="ekzpredmet1" style="display:inherit">
 								<td>1</td>
@@ -220,13 +220,13 @@
 							</tr>
 						</table>
 						<br/>	
-						<h2>Зачеты</h2>
+						<h2>Р—Р°С‡РµС‚С‹</h2>
 						<table class="table-bordered table-hover">
 							<tr style="display:inherit">
-								<td>№</td>
-								<td>Баллы за семестр</td>
-								<td>Баллы за зачет</td>
-								<td>Количество часов</td>
+								<td>в„–</td>
+								<td>Р‘Р°Р»Р»С‹ Р·Р° СЃРµРјРµСЃС‚СЂ</td>
+								<td>Р‘Р°Р»Р»С‹ Р·Р° Р·Р°С‡РµС‚</td>
+								<td>РљРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°СЃРѕРІ</td>
 							</tr>
 							<tr id="zachetpredmet1" style="display:inherit">
 								<td>1</td>
@@ -272,12 +272,12 @@
 							</tr>
 						</table>
 						<br/>	
-						<h2>Курсовые</h2>
+						<h2>РљСѓСЂСЃРѕРІС‹Рµ</h2>
 						<table class="table-bordered table-hover">
 							<tr style="display:inherit">
-								<td>№</td>
-								<td>Баллы</td>
-								<td>Количество часов</td>
+								<td>в„–</td>
+								<td>Р‘Р°Р»Р»С‹</td>
+								<td>РљРѕР»РёС‡РµСЃС‚РІРѕ С‡Р°СЃРѕРІ</td>
 							</tr>
 							<tr id="kurspredmet1" style="display:inherit">
 								<td>1</td>
@@ -316,7 +316,7 @@
 							</tr>
 						</table>
 						<br/>	
-						<input type="button" value="Посчитать" onclick="rating()" class="btn" />
+						<input type="button" value="РџРѕСЃС‡РёС‚Р°С‚СЊ" onclick="rating()" class="btn" />
 					</form>
                 </td>
             </tr>

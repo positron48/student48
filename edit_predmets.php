@@ -32,7 +32,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Редактирование предметов</title>
+<title>Р›Р“РўРЈ|Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РїСЂРµРґРјРµС‚РѕРІ</title>
 <? include('parts/head.php'); ?>
 </head>
 <body>
@@ -50,11 +50,11 @@
 								mysql_close($dbconnect);
 								if(!$result)
 								{
-									printf("<p class='alert alert-error'>Ошибка при записи в базу данных");							
+									printf("<p class='alert alert-error'>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…");							
 								}
 								else
 								{
-									printf("<p class='alert alert-success'>Предмет отредактирован!");
+									printf("<p class='alert alert-success'>РџСЂРµРґРјРµС‚ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ!");
 								}
 							}	
 							elseif($check && isset($id))
@@ -63,10 +63,10 @@
 								<form name="addnews" method="post" action="edit_predmets.php?id=%s">
 									<table class="form">
 									<tr><td>id:</td><td><input type="text" name="id" size="83" value="%s" readonly></td>
-									<tr><td>Название:</td><td><input type="text" name="title_predmet" size="83" value="%s"></td>
-									<tr><td>Английское название:</td><td><input type="text" name="title_predmet_english" size="83" value="%s"></td>
-									<tr><td>Семестр (1-10):</td><td><input type="text" name="semestr" size="83" value="%s"></td>
-									</tr><tr><td colspan="2"><input type="submit" value="Отправить" class="btn"><input type="reset" value="Очистить" class="btn">
+									<tr><td>РќР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="title_predmet" size="83" value="%s"></td>
+									<tr><td>РђРЅРіР»РёР№СЃРєРѕРµ РЅР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="title_predmet_english" size="83" value="%s"></td>
+									<tr><td>РЎРµРјРµСЃС‚СЂ (1-10):</td><td><input type="text" name="semestr" size="83" value="%s"></td>
+									</tr><tr><td colspan="2"><input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" class="btn"><input type="reset" value="РћС‡РёСЃС‚РёС‚СЊ" class="btn">
 									</td></tr>
 									</table>
 								</form>
@@ -74,12 +74,12 @@
 							}
 							elseif($check)
 							{
-								echo("<p><h1>Предметы:</h1><br>");
+								echo("<p><h1>РџСЂРµРґРјРµС‚С‹:</h1><br>");
 								echo('<table class="table table-striped table-bordered table-condensed">
 									<thead><tr>
 									<td><i class="icon-time"></i></td>
-									<td>Предмет</td>
-									<td>Англ. название</td>
+									<td>РџСЂРµРґРјРµС‚</td>
+									<td>РђРЅРіР». РЅР°Р·РІР°РЅРёРµ</td>
 									<td><i class="icon-edit"></i></td>
                                     <td><i class="icon-remove"></i></td></tr></thead>');
 								do
@@ -96,7 +96,7 @@
 							}
 							
 							else
-							 	print("<p class='alert alert-danger'>У вас недостаточно прав для редактирования предметов</p>");
+							 	print("<p class='alert alert-danger'>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРµРґРјРµС‚РѕРІ</p>");
 						?>
 
     		<? include('parts/footer.php'); ?>

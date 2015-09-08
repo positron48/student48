@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Скачать</title>
+<title>Р›Р“РўРЈ|РЎРєР°С‡Р°С‚СЊ</title>
 <? 
 include('../parts/head.php'); 
 include("./config.php");
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <?
 	if(isset($_GET['file'])) 
 		$filecrc = $_GET['file'];
@@ -45,7 +45,7 @@ $bans=file("./bans.txt");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "Вам не доступно скачивание файлов.";
+    echo "Р’Р°Рј РЅРµ РґРѕСЃС‚СѓРїРЅРѕ СЃРєР°С‡РёРІР°РЅРёРµ С„Р°Р№Р»РѕРІ.";
     include("./footer.php");
     die();
   }
@@ -54,7 +54,7 @@ foreach($bans as $line)
 if(isset($_GET['file'])) {
   $filecrc = $_GET['file'];
 } else {
-  echo "Неправильная ссылка!<br />";
+  echo "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ СЃСЃС‹Р»РєР°!<br />";
   include("./footer.php");
   die();
 }
@@ -90,9 +90,9 @@ foreach($fc as $line)
 fclose($f);
 if($deleted==1){
 unlink("./storage/".$_GET['file']);
-echo "Ваш файл был удален.<br />";
+echo "Р’Р°С€ С„Р°Р№Р» Р±С‹Р» СѓРґР°Р»РµРЅ.<br />";
 } else {
-echo "Неправильная ссылка для удаления.<br />";
+echo "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ СЃСЃС‹Р»РєР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ.<br />";
 }
 include("./footer.php");
 die();
@@ -100,13 +100,13 @@ die();
 }
 
 if($foundfile==0) {
-  echo "Неправильная ссылка!<br />";
+  echo "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ СЃСЃС‹Р»РєР°!<br />";
   include("./footer.php");
   die();
 }
 
 if(isset($foundfile[7]) && $foundfile[7]!=md5("") && (!isset($_POST['pass']) || $foundfile[7] != md5($_POST['pass']))){
-echo "<form action=\"download.php?file=".$foundfile[0]."\" method=\"post\">Введите пароль: <input type=\"password\" name=\"pass\"><input type=\"submit\" /></form>";
+echo "<form action=\"download.php?file=".$foundfile[0]."\" method=\"post\">Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ: <input type=\"password\" name=\"pass\"><input type=\"submit\" /></form>";
 include("./footer.php");
 die();
 }
@@ -129,7 +129,7 @@ foreach ($user as $line) {
 list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($downloadtimelimit*60)) {
-echo "Вы пытались скачать файл слишком рано!";
+echo "Р’С‹ РїС‹С‚Р°Р»РёСЃСЊ СЃРєР°С‡Р°С‚СЊ С„Р°Р№Р» СЃР»РёС€РєРѕРј СЂР°РЅРѕ!";
 include("./footer.php");
 die();
 }
@@ -149,9 +149,9 @@ $randcounter = rand(100,999);
 
 <?php 
 if($downloadtimer == 0) {
-echo "<h4>Если скачивание не началось автоматически, перейдите по ссылке:</h4><a href=\"" .$scripturl. "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) . "\">Скачать</a>";
+echo "<h4>Р•СЃР»Рё СЃРєР°С‡РёРІР°РЅРёРµ РЅРµ РЅР°С‡Р°Р»РѕСЃСЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё, РїРµСЂРµР№РґРёС‚Рµ РїРѕ СЃСЃС‹Р»РєРµ:</h4><a href=\"" .$scripturl. "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) . "\">РЎРєР°С‡Р°С‚СЊ</a>";
 } else { ?>
-Если Вы видите данное сообещние, Вам необходимо включить JavaScript в браузере!
+Р•СЃР»Рё Р’С‹ РІРёРґРёС‚Рµ РґР°РЅРЅРѕРµ СЃРѕРѕР±РµС‰РЅРёРµ, Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІРєР»СЋС‡РёС‚СЊ JavaScript РІ Р±СЂР°СѓР·РµСЂРµ!
 <?php } ?>
 </div>
 <script language="Javascript">
@@ -163,11 +163,11 @@ function countdown()
   x<?php echo $randcounter; ?>--;
   if(x<?php echo $randcounter; ?> == 0)
   {
-   document.getElementById("dl").innerHTML = '<h4>Если скачивание не началось автоматически, перейдите по ссылке:</h4><a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ?>"><h2>Скачать!</h2></a>';
+   document.getElementById("dl").innerHTML = '<h4>Р•СЃР»Рё СЃРєР°С‡РёРІР°РЅРёРµ РЅРµ РЅР°С‡Р°Р»РѕСЃСЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё, РїРµСЂРµР№РґРёС‚Рµ РїРѕ СЃСЃС‹Р»РєРµ:</h4><a href="<?php echo $scripturl . "download2.php?a=" . $filecrc . "&b=" . md5($foundfile[2].$_SERVER['REMOTE_ADDR']) ?>"><h2>РЎРєР°С‡Р°С‚СЊ!</h2></a>';
   }
   if(x<?php echo $randcounter; ?> > 0)
   {
-   document.getElementById("dl").innerHTML = 'Подождите <b>'+x<?php echo $randcounter; ?>+'</b> сек..';
+   document.getElementById("dl").innerHTML = 'РџРѕРґРѕР¶РґРёС‚Рµ <b>'+x<?php echo $randcounter; ?>+'</b> СЃРµРє..';
    setTimeout('countdown()',1000);
   }
  }
@@ -175,7 +175,7 @@ function countdown()
 countdown();
 </script>
 
-<a href="report.php?file=<?php echo $foundfile[0];?>">Пожаловаться на файл</a></p>
+<a href="report.php?file=<?php echo $foundfile[0];?>">РџРѕР¶Р°Р»РѕРІР°С‚СЊСЃСЏ РЅР° С„Р°Р№Р»</a></p>
 <?php
 echo "";
 include("./header.php");

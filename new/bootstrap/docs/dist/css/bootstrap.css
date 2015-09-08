@@ -4106,7 +4106,7 @@ input[type="button"].btn-block {
   padding-right: .5rem;
   padding-left: .5rem;
   color: #818a91;
-  content: "/ ";
+  content: "/В ";
 }
 
 .breadcrumb > .active {

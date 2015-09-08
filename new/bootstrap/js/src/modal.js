@@ -41,10 +41,10 @@ const Modal = (($) => {
   }
 
   const Event = {
-    HIDE              : `hide${EVENT_KEY}`,
-    HIDDEN            : `hidden${EVENT_KEY}`,
-    SHOW              : `show${EVENT_KEY}`,
-    SHOWN             : `shown${EVENT_KEY}`,
+    HIDE   В           : `hide${EVENT_KEY}`,
+    HIDDEN В           : `hidden${EVENT_KEY}`,
+    SHOW   В           : `show${EVENT_KEY}`,
+    SHOWN  В           : `shown${EVENT_KEY}`,
     FOCUSIN           : `focusin${EVENT_KEY}`,
     RESIZE            : `resize${EVENT_KEY}`,
     CLICK_DISMISS     : `click.dismiss${EVENT_KEY}`,

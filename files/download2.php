@@ -14,7 +14,7 @@ $bans=file("./bans.txt");
 foreach($bans as $line)
 {
   if ($line==$_SERVER['REMOTE_ADDR']){
-    echo "Вам не разрешено скачивать файлы.";
+    echo "Р’Р°Рј РЅРµ СЂР°Р·СЂРµС€РµРЅРѕ СЃРєР°С‡РёРІР°С‚СЊ С„Р°Р№Р»С‹.";
     include("./footer.php");
     die();
   }
@@ -37,7 +37,7 @@ foreach($checkfiles as $line)
 }
 
 if($validdownload==0) {
-    echo "Неправильная ссылка!";
+    echo "РќРµРїСЂР°РІРёР»СЊРЅР°СЏ СЃСЃС‹Р»РєР°!";
     include("./footer.php");
     die();
 }

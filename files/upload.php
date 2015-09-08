@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Загружено</title>
+<title>Р›Р“РўРЈ|Р—Р°РіСЂСѓР¶РµРЅРѕ</title>
 <? include('../parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
  
@@ -38,7 +38,7 @@ foreach($bans as $line)
     die();
   }
   if ($line==$_SERVER['REMOTE_ADDR']."\n"){
-    echo "Вам не разрешено закачивать файлы.";
+    echo "Р’Р°Рј РЅРµ СЂР°Р·СЂРµС€РµРЅРѕ Р·Р°РєР°С‡РёРІР°С‚СЊ С„Р°Р№Р»С‹.";
     include("./footer.php");
     die();
   }
@@ -49,9 +49,9 @@ foreach($checkfiles as $line)
 {
   $thisline = explode('|', $line);
   if ($thisline[0]==$filecrc){
-    echo "Этот файл уже был закачан.<br />";
-    echo "Ссылка для скачивания: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "download.php?file=" . $filecrc . "</textarea><br /><br />";
-    echo "Т.к. этот файл загружен кем-то еще, мы не можем дать Вам ссылку на удаление.<br /><br />";
+    echo "Р­С‚РѕС‚ С„Р°Р№Р» СѓР¶Рµ Р±С‹Р» Р·Р°РєР°С‡Р°РЅ.<br />";
+    echo "РЎСЃС‹Р»РєР° РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "download.php?file=" . $filecrc . "</textarea><br /><br />";
+    echo "Рў.Рє. СЌС‚РѕС‚ С„Р°Р№Р» Р·Р°РіСЂСѓР¶РµРЅ РєРµРј-С‚Рѕ РµС‰Рµ, РјС‹ РЅРµ РјРѕР¶РµРј РґР°С‚СЊ Р’Р°Рј СЃСЃС‹Р»РєСѓ РЅР° СѓРґР°Р»РµРЅРёРµ.<br /><br />";
     include("./footer.php");
     die();
   }
@@ -84,7 +84,7 @@ $cat = $_POST['category'];
 } else { $cat = ""; }
 
 if($filesize==0) {
-echo "Вы не выбрали файл для закачивания.";
+echo "Р’С‹ РЅРµ РІС‹Р±СЂР°Р»Рё С„Р°Р№Р» РґР»СЏ Р·Р°РєР°С‡РёРІР°РЅРёСЏ.";
 include("./footer.php");
 die();
 }
@@ -92,7 +92,7 @@ die();
 $filesize = $filesize / 1048576;
 
 if($filesize > $maxfilesize) {
-echo "Размер файла слишком велик.";
+echo "Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° СЃР»РёС€РєРѕРј РІРµР»РёРє.";
 include("./footer.php");
 die();
 }
@@ -113,7 +113,7 @@ foreach ($user as $line) {
 @list($savedip,$savedtime) = explode("|",$line);
 if ($savedip == $userip) {
 if ($time < $savedtime + ($uploadtimelimit*60)) {
-echo "Вы пытаетесь закачивать файлы слишком часто!";
+echo "Р’С‹ РїС‹С‚Р°РµС‚РµСЃСЊ Р·Р°РєР°С‡РёРІР°С‚СЊ С„Р°Р№Р»С‹ СЃР»РёС€РєРѕРј С‡Р°СЃС‚Рѕ!";
 include("./footer.php");
 die();
 }
@@ -129,8 +129,8 @@ fputs($uploaders,"$userip|$time\n");
 $passkey = rand(100000, 999999);
 
 if($emailoption && isset($_POST['myemail']) && $_POST['myemail']!="") {
-$uploadmsg = "Ваш файл (".$filename.") был загружен.\n Ссылка для скачивания: ". $scripturl . "download.php?file=" . $filecrc . "\n Ссылка для удаления: ". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\n Спасибо за использование нашего сайта!";
-mail($_POST['myemail'],"Ваш загруженный файл",$uploadmsg,"От: support@student48.ru\n");
+$uploadmsg = "Р’Р°С€ С„Р°Р№Р» (".$filename.") Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ.\n РЎСЃС‹Р»РєР° РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ: ". $scripturl . "download.php?file=" . $filecrc . "\n РЎСЃС‹Р»РєР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: ". $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "\n РЎРїР°СЃРёР±Рѕ Р·Р° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РЅР°С€РµРіРѕ СЃР°Р№С‚Р°!";
+mail($_POST['myemail'],"Р’Р°С€ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Р№ С„Р°Р№Р»",$uploadmsg,"РћС‚: support@student48.ru\n");
 }
 
 if($passwordoption && isset($_POST['pprotect'])) {
@@ -147,11 +147,11 @@ fwrite($filelist, $filecrc ."|". basename($_FILES['upfile']['name']) ."|". $pass
 $movefile = "./storage/" . $filecrc;
 move_uploaded_file($_FILES['upfile']['tmp_name'], $movefile);
 
-echo "Ваш файл был загружен!<br />";
-// echo "Короткая ссылка: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "d.php?f=" . base_convert($filecrc, 16, 36) . "</textarea><br /><br />";
-echo "Ссылка для скачивания: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "download.php?file=" . $filecrc . "</textarea><br /><br />";
-echo "Ссылка для удаления: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "</textarea><br /><br />";
-echo "Спасибо за использование нашего сайта!";
+echo "Р’Р°С€ С„Р°Р№Р» Р±С‹Р» Р·Р°РіСЂСѓР¶РµРЅ!<br />";
+// echo "РљРѕСЂРѕС‚РєР°СЏ СЃСЃС‹Р»РєР°: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "d.php?f=" . base_convert($filecrc, 16, 36) . "</textarea><br /><br />";
+echo "РЎСЃС‹Р»РєР° РґР»СЏ СЃРєР°С‡РёРІР°РЅРёСЏ: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "download.php?file=" . $filecrc . "</textarea><br /><br />";
+echo "РЎСЃС‹Р»РєР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ: <textarea name='textarea' cols='74' wrap='soft' rows='1' onclick='this.select();'>" . $scripturl . "download.php?file=" . $filecrc . "&del=" . $passkey . "</textarea><br /><br />";
+echo "РЎРїР°СЃРёР±Рѕ Р·Р° РёСЃРїРѕР»СЊР·РѕРІР°РЅРёРµ РЅР°С€РµРіРѕ СЃР°Р№С‚Р°!";
 echo "<br>";
 include("./header.php");
 include("./footer.php");

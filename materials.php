@@ -50,18 +50,18 @@
 <html>
 <head>
 <?
-	$title="<title>ЛГТУ|Материалы ";
+	$title="<title>Р›Р“РўРЈ|РњР°С‚РµСЂРёР°Р»С‹ ";
 	if($_GET['predmet']!='none')
 		$title=$title.$pagedata3['title_predmet'];
 	if($_GET['semestr']!='none')
-		$title=$title." ".$_GET['semestr']." семестр";
+		$title=$title." ".$_GET['semestr']." СЃРµРјРµСЃС‚СЂ";
 	$title=$title."</title>";
 	printf("%s",$title);
 ?>
 <? include('parts/head.php'); ?>
-<meta name="description" content="Здесь вы можете скачать лабораторные, методички, графические работы, пособия, курсовые, рефераты по большому количеству дисциплин: дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия и другие">
-<meta name="Keywords" content="скачать материалы, лабораторные, методички, графические работы, пособия, курсовые, рефераты, дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta name="description" content="Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ СЃРєР°С‡Р°С‚СЊ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ, РјРµС‚РѕРґРёС‡РєРё, РіСЂР°С„РёС‡РµСЃРєРёРµ СЂР°Р±РѕС‚С‹, РїРѕСЃРѕР±РёСЏ, РєСѓСЂСЃРѕРІС‹Рµ, СЂРµС„РµСЂР°С‚С‹ РїРѕ Р±РѕР»СЊС€РѕРјСѓ РєРѕР»РёС‡РµСЃС‚РІСѓ РґРёСЃС†РёРїР»РёРЅ: РґРёСЃРєСЂРµС‚РЅР°СЏ РјР°С‚РµРјР°С‚РёРєР°, РёРЅС„РѕСЂРјР°С‚РёРєР°, РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР·, РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹Рµ С‚РµС…РЅРѕР»РѕРіРёРё, РёСЃС‚РѕСЂРёСЏ, РєРѕРјРїСЊСЋС‚РµСЂРЅР°СЏ РіСЂР°С„РёРєР°, Р»РѕРіРёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РјР°С‚РµРјР°С‚РёС‡РµСЃРєР°СЏ Р»РѕРіРёРєР° Рё С‚РµРѕСЂРёСЏ Р°Р»РіРѕСЂРёС‚РјРѕРІ, РЅР°С‡РµСЂС‚Р°С‚РµР»СЊРЅР°СЏ РіРµРѕРјРµС‚СЂРёСЏ, РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РЇР’РЈ, РїСЃРёС…РѕР»РѕРіРёСЏ, СЃРѕС†РёРѕР»РѕРіРёСЏ, СЃС‚СЂСѓРєС‚СѓСЂС‹ Рё Р°Р»РіРѕСЂРёС‚РјС‹, С‚РµС…РЅРѕР»РѕРіРёСЏ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ, С„РёР·РёРєР°, С„РёР»РѕСЃРѕС„РёСЏ Рё РґСЂСѓРіРёРµ">
+<meta name="Keywords" content="СЃРєР°С‡Р°С‚СЊ РјР°С‚РµСЂРёР°Р»С‹, Р»Р°Р±РѕСЂР°С‚РѕСЂРЅС‹Рµ, РјРµС‚РѕРґРёС‡РєРё, РіСЂР°С„РёС‡РµСЃРєРёРµ СЂР°Р±РѕС‚С‹, РїРѕСЃРѕР±РёСЏ, РєСѓСЂСЃРѕРІС‹Рµ, СЂРµС„РµСЂР°С‚С‹, РґРёСЃРєСЂРµС‚РЅР°СЏ РјР°С‚РµРјР°С‚РёРєР°, РёРЅС„РѕСЂРјР°С‚РёРєР°, РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР·, РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹Рµ С‚РµС…РЅРѕР»РѕРіРёРё, РёСЃС‚РѕСЂРёСЏ, РєРѕРјРїСЊСЋС‚РµСЂРЅР°СЏ РіСЂР°С„РёРєР°, Р»РѕРіРёС‡РµСЃРєРѕРµ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ, РјР°С‚РµРјР°С‚РёС‡РµСЃРєР°СЏ Р»РѕРіРёРєР° Рё С‚РµРѕСЂРёСЏ Р°Р»РіРѕСЂРёС‚РјРѕРІ, РЅР°С‡РµСЂС‚Р°С‚РµР»СЊРЅР°СЏ РіРµРѕРјРµС‚СЂРёСЏ, РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ РЅР° РЇР’РЈ, РїСЃРёС…РѕР»РѕРіРёСЏ, СЃРѕС†РёРѕР»РѕРіРёСЏ, СЃС‚СЂСѓРєС‚СѓСЂС‹ Рё Р°Р»РіРѕСЂРёС‚РјС‹, С‚РµС…РЅРѕР»РѕРіРёСЏ РїСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёСЏ, С„РёР·РёРєР°, С„РёР»РѕСЃРѕС„РёСЏ">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 <script>
 	var predmets = new Array(4);
@@ -128,15 +128,15 @@
     <div class="container">
     <div class="alert alert-info">
         <center>
-            <b>Внимание!</b> Если вы хотите помочь развитию сайта, можете загрузить свои материалы, нажав на кнопку: 
-            <a href = "upload.php" class="btn btn-info">Добавить</a>
+            <b>Р’РЅРёРјР°РЅРёРµ!</b> Р•СЃР»Рё РІС‹ С…РѕС‚РёС‚Рµ РїРѕРјРѕС‡СЊ СЂР°Р·РІРёС‚РёСЋ СЃР°Р№С‚Р°, РјРѕР¶РµС‚Рµ Р·Р°РіСЂСѓР·РёС‚СЊ СЃРІРѕРё РјР°С‚РµСЂРёР°Р»С‹, РЅР°Р¶Р°РІ РЅР° РєРЅРѕРїРєСѓ: 
+            <a href = "upload.php" class="btn btn-info">Р”РѕР±Р°РІРёС‚СЊ</a>
         </center>
     </div>
-   	<h1>Материалы:</h1>
+   	<h1>РњР°С‚РµСЂРёР°Р»С‹:</h1>
 		<?
 		        echo('<form action="materials.php" method="get" id="material" class="form-inline">
                    	<select name="semestr" id="semestr" onChange="changeSem(this.form)">');
-							if($_GET['semestr']=="0") echo('<option value="none" selected>Все семестры</option>'); else echo('<option value="none">Все семестры</option>');
+							if($_GET['semestr']=="0") echo('<option value="none" selected>Р’СЃРµ СЃРµРјРµСЃС‚СЂС‹</option>'); else echo('<option value="none">Р’СЃРµ СЃРµРјРµСЃС‚СЂС‹</option>');
                        		if($_GET['semestr']=="1") echo('<option value="1" selected>1</option>'); else echo('<option value="1">1</option>');
 							if($_GET['semestr']=="2") echo('<option value="2" selected>2</option>'); else echo('<option value="2">2</option>');
 							if($_GET['semestr']=="3") echo('<option value="3" selected>3</option>'); else echo('<option value="3">3</option>');
@@ -149,9 +149,9 @@
 							if($_GET['semestr']=="10") echo('<option value="10" selected>10</option>'); else echo('<option value="10">10</option>');
                         echo('</select>    
                    	<select name="predmet" onChange="submit();">');
-						if($_GET['predmet']=="none") echo('<option value="none" selected>Все предметы</option>'); else echo('<option value="none">Все предметы</option>');
+						if($_GET['predmet']=="none") echo('<option value="none" selected>Р’СЃРµ РїСЂРµРґРјРµС‚С‹</option>'); else echo('<option value="none">Р’СЃРµ РїСЂРµРґРјРµС‚С‹</option>');
 		echo('</select>
-                    <input type="submit" class="btn" value="Выбрать">
+                    <input type="submit" class="btn" value="Р’С‹Р±СЂР°С‚СЊ">
                 </form>');
 		echo("<div class='pagination'>
                     <center>
@@ -176,22 +176,22 @@
                     <thead>
 						<tr>
 						<td><i class="icon-time"></i></td>
-						<td>Предмет</td>
-						<td>Описание</td>
-						<td>Размер</td>
+						<td>РџСЂРµРґРјРµС‚</td>
+						<td>РћРїРёСЃР°РЅРёРµ</td>
+						<td>Р Р°Р·РјРµСЂ</td>
 						<td><i class="icon-download"></td>
 						<td><i class="icon-download-alt"></i></td>');
 			if($check)
 				print('<td><center><b>Edit</b></center></td>');
 			print('</tr></thead>');
-			echo("Количество материалов: $number_materials[0]");
+			echo("РљРѕР»РёС‡РµСЃС‚РІРѕ РјР°С‚РµСЂРёР°Р»РѕРІ: $number_materials[0]");
 			while($pagedata=mysql_fetch_array($dbdata))
 			{	
 				$pagedata1=mysql_fetch_array($dbdata1);
 				printf('<tr><td><a href="materials.php?semestr=%s&predmet=none">%s</a></td>
 							<td class="td_material_predmet"><a href="materials.php?semestr=none&predmet=%s">%s</a></td>
 							<td><a href="downloads.php?id=%s">%s</a></td>
-							<td class="td_material_filesize">%s Кб</td>
+							<td class="td_material_filesize">%s РљР±</td>
 							<td class="td_material_filesize">%s</td>
 							<td><a href="downloads.php?id=%s"><i class="icon-download-alt"></i></a></td>',
 							$pagedata1['semestr'],$pagedata1['semestr'],
@@ -200,7 +200,7 @@
 							$pagedata['filesize'],$pagedata['downloads'],$pagedata1['id']);
 				if($check): ?>
 					<td><a href="edit_materials.php?id=<? printf("%s",$pagedata1['id']);?>"><i class="icon-edit"></i></a>
-					<a href="delete_materials.php?id=<? printf("%s",$pagedata1['id']);?>" onClick="if(!confirm('Точно хочешь удалить?')) return false;"><i class="icon-remove"></i></a></td>
+					<a href="delete_materials.php?id=<? printf("%s",$pagedata1['id']);?>" onClick="if(!confirm('РўРѕС‡РЅРѕ С…РѕС‡РµС€СЊ СѓРґР°Р»РёС‚СЊ?')) return false;"><i class="icon-remove"></i></a></td>
 		<?		endif;
 			}
             echo('</table>');
@@ -223,7 +223,7 @@
 		}
 		else
 		{
-			echo('<p><h4>В данном разделе материалов не обнаружено</h4>');
+			echo('<p><h4>Р’ РґР°РЅРЅРѕРј СЂР°Р·РґРµР»Рµ РјР°С‚РµСЂРёР°Р»РѕРІ РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ</h4>');
 		}
 		?>
                 </td>

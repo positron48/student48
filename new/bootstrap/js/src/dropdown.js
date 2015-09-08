@@ -25,11 +25,11 @@ const Dropdown = (($) => {
   const JQUERY_NO_CONFLICT  = $.fn[NAME]
 
   const Event = {
-    HIDE             : `hide${EVENT_KEY}`,
-    HIDDEN           : `hidden${EVENT_KEY}`,
-    SHOW             : `show${EVENT_KEY}`,
-    SHOWN            : `shown${EVENT_KEY}`,
-    CLICK            : `click${EVENT_KEY}`,
+    HIDE    В         : `hide${EVENT_KEY}`,
+    HIDDEN  В         : `hidden${EVENT_KEY}`,
+    SHOW    В         : `show${EVENT_KEY}`,
+    SHOWN   В         : `shown${EVENT_KEY}`,
+    CLICK   В         : `click${EVENT_KEY}`,
     CLICK_DATA_API   : `click${EVENT_KEY}${DATA_API_KEY}`,
     KEYDOWN_DATA_API : `keydown${EVENT_KEY}${DATA_API_KEY}`
   }

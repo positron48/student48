@@ -7,9 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Обменник</title>
+<title>Р›Р“РўРЈ|РћР±РјРµРЅРЅРёРє</title>
 <? include('../parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
 <? include("../parts/top.php"); ?>

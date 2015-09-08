@@ -22,7 +22,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Админка</title>
+<title>Р›Р“РўРЈ|РђРґРјРёРЅРєР°</title>
 <? include('../parts/head.php'); ?>
 
 </head>

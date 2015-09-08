@@ -13,7 +13,7 @@
 		{	
 			if(!is_dir($pagedata1['pmfiledest']))
 			{
-				$err .= "Папки не существует";
+				$err .= "РџР°РїРєРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚";
 			}
 			$file_name=$pagedata1['pmfilename'];
 			if(is_file($pagedata1['pmfiledest'].$file_name))
@@ -41,22 +41,22 @@
 					}
 					else
 					{
-						$err .= "<br>Ошибка при работе с БД";
+						$err .= "<br>РћС€РёР±РєР° РїСЂРё СЂР°Р±РѕС‚Рµ СЃ Р‘Р”";
 					}
 				}
 				else
 				{
-					$err .= "<br>Ошибка добавления материала";
+					$err .= "<br>РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ РјР°С‚РµСЂРёР°Р»Р°";
 				}
 			}
 			else
 			{
-				$err .= "<br>Ошибка перемещения файла";
+				$err .= "<br>РћС€РёР±РєР° РїРµСЂРµРјРµС‰РµРЅРёСЏ С„Р°Р№Р»Р°";
 			}
 		}
 		else
 		{
-			$err .= "<br>Некорректные данные, сначала отредактируйте материал";
+			$err .= "<br>РќРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ, СЃРЅР°С‡Р°Р»Р° РѕС‚СЂРµРґР°РєС‚РёСЂСѓР№С‚Рµ РјР°С‚РµСЂРёР°Р»";
 		}
 	}
 	if($option==2)
@@ -73,14 +73,14 @@
 			}
 			else
 			{
-				$err.="<br>Ошибка удаления файла";
+				$err.="<br>РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ С„Р°Р№Р»Р°";
 			}
 		}
 		else
 			if(mysql_query("DELETE FROM pm_files WHERE pmfileid='$pmfileid' LIMIT 1"))
 				$del = true;
 			else
-				$err.="<br>Ошибка удаления записи из БД";	
+				$err.="<br>РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ Р·Р°РїРёСЃРё РёР· Р‘Р”";	
 			
 	}
 	$dbdata=mysql_query("SELECT * FROM pm_files", $dbconnect);
@@ -90,22 +90,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Модерация</title>
+<title>Р›Р“РўРЈ|РњРѕРґРµСЂР°С†РёСЏ</title>
 <? include('parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 	<? include("parts/top.php"); ?>
     <? include('parts/header.php'); ?>
     <div class="container">
-					<h1>Модерация</h1><br />
+					<h1>РњРѕРґРµСЂР°С†РёСЏ</h1><br />
 					<? if($check): ?>
     					<?
-    						if($del) print("<p class='alert alert-success'>Файл успешно удален</p>");
-    						if($fileadd) print("<p class='alert alert-success'>Файл успешно добавлен</p>");
+    						if($del) print("<p class='alert alert-success'>Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ</p>");
+    						if($fileadd) print("<p class='alert alert-success'>Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ</p>");
     						if($err!="") printf("<p class='alert alert-error'>%s</p>",$err);
     					?>
                         <? if($number_pmfiles[0] != 0): ?>
-                            <? printf("<br>Файлов на модерации: $number_pmfiles[0]"); ?>
+                            <? printf("<br>Р¤Р°Р№Р»РѕРІ РЅР° РјРѕРґРµСЂР°С†РёРё: $number_pmfiles[0]"); ?>
         					<table class="table table-striped table-bordered table-condensed">
         					<tr><td><i class="icon-ok"></i></td><td><i class="icon-remove"></i></td><td><i class="icon-edit"></i></td><td>title</td><td>name</td><td>Metakey</td><td>size</td><td>Predmet</td><td>Date</td></tr>
         					<?
@@ -136,10 +136,10 @@
         					?>
         					</table>
                         <? else: ?>
-                            <div class="alert alert-info">Отсутствуют файлы на модерации</div>
+                            <div class="alert alert-info">РћС‚СЃСѓС‚СЃС‚РІСѓСЋС‚ С„Р°Р№Р»С‹ РЅР° РјРѕРґРµСЂР°С†РёРё</div>
                         <? endif; ?>
 					<? else: ?>
-    					<br /><div class="alert alert-danger">У вас недостаточно прав для просмотра данного раздела</div>
+    					<br /><div class="alert alert-danger">РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ РїСЂРѕСЃРјРѕС‚СЂР° РґР°РЅРЅРѕРіРѕ СЂР°Р·РґРµР»Р°</div>
 					<? endif; ?>
                 </td>
             </tr>

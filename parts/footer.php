@@ -2,7 +2,7 @@
       
 <center>
     <footer>
-        <p>© Lipetsk 2010 - 2015</p>
+        <p>Â© Lipetsk 2010 - 2015</p>
     </footer>
 </center>
 

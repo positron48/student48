@@ -2,11 +2,11 @@
 	$number_news_on_page=10;				
 	$number_materials_on_page=20;			
 	$number_msg_on_page=10;					
-	$time_add_msg=10;						//интервал добавления сообщений в гостевую (в секундах)
+	$time_add_msg=10;						//РёРЅС‚РµСЂРІР°Р» РґРѕР±Р°РІР»РµРЅРёСЏ СЃРѕРѕР±С‰РµРЅРёР№ РІ РіРѕСЃС‚РµРІСѓСЋ (РІ СЃРµРєСѓРЅРґР°С…)
 	$pass_admin="Lgtu4Ever)";				
 	$name_admin="admin";					
 	$max_file_size=10*1024*1024;			
-	$timeedit=2; 							//время, в течении которого можно редактировать записи
+	$timeedit=2; 							//РІСЂРµРјСЏ, РІ С‚РµС‡РµРЅРёРё РєРѕС‚РѕСЂРѕРіРѕ РјРѕР¶РЅРѕ СЂРµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р·Р°РїРёСЃРё
 	//include('db_connect_server.php');
 	include('db_connect_local.php');
 	

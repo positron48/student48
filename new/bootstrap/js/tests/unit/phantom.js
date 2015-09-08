@@ -22,7 +22,7 @@
 
   // These methods connect QUnit to PhantomJS.
   QUnit.log(function (obj) {
-    // What is this I don’t even
+    // What is this I donвЂ™t even
     if (obj.message === '[object Object], undefined:undefined') { return }
 
     // Parse some stuff before sending it.

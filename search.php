@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Поиск по сайту</title>
+<title>Р›Р“РўРЈ|РџРѕРёСЃРє РїРѕ СЃР°Р№С‚Сѓ</title>
 <? include('parts/head.php'); ?>
 </head>
 <body>
@@ -26,30 +26,30 @@
 		<?
                 	if($flag==true)
 			{	
-				printf('<h1>Поиск по запросу: "%s" </h1><h2>Результаты:</h2>',$search_text);
+				printf('<h1>РџРѕРёСЃРє РїРѕ Р·Р°РїСЂРѕСЃСѓ: "%s" </h1><h2>Р РµР·СѓР»СЊС‚Р°С‚С‹:</h2>',$search_text);
 				if($size[0])
 				{
 					echo('<table class="table table-striped table-bordered table-condensed">
 						<tr class="title_materials">
-						<td class="td_material">семестр</td>
-						<td class="td_material">предмет</td>
-						<td class="td_material">описание</td>
-						<td class="td_material">размер</td>
-						<td class="td_material">ссылка</td></tr>');
-					echo("Количество материалов: $size[0]");
+						<td class="td_material">СЃРµРјРµСЃС‚СЂ</td>
+						<td class="td_material">РїСЂРµРґРјРµС‚</td>
+						<td class="td_material">РѕРїРёСЃР°РЅРёРµ</td>
+						<td class="td_material">СЂР°Р·РјРµСЂ</td>
+						<td class="td_material">СЃСЃС‹Р»РєР°</td></tr>');
+					echo("РљРѕР»РёС‡РµСЃС‚РІРѕ РјР°С‚РµСЂРёР°Р»РѕРІ: $size[0]");
 					while($pagedata=mysql_fetch_array($dbdata))
 					{	
 						$pagedata1=mysql_fetch_array($dbdata1);
-						printf('<tr><td class="td_material">%s</td><td class="td_material">%s</td><td class="td_material">%s</td><td class="td_material_filesize">%s Кб</td><td class="td_material"><a href="downloads.php?id=%s">Скачать</a></td>',$pagedata['semestr'],$pagedata['title_predmet'],$pagedata['title_material'],$pagedata['filesize'],$pagedata1['id']);
+						printf('<tr><td class="td_material">%s</td><td class="td_material">%s</td><td class="td_material">%s</td><td class="td_material_filesize">%s РљР±</td><td class="td_material"><a href="downloads.php?id=%s">РЎРєР°С‡Р°С‚СЊ</a></td>',$pagedata['semestr'],$pagedata['title_predmet'],$pagedata['title_material'],$pagedata['filesize'],$pagedata1['id']);
 		
 					}
             		echo('</table>');	
 				}
 				else
-					print('<h3 class="alert alert-info">По введенным параметрам записей не обнаружено</h3>');
+					print('<h3 class="alert alert-info">РџРѕ РІРІРµРґРµРЅРЅС‹Рј РїР°СЂР°РјРµС‚СЂР°Рј Р·Р°РїРёСЃРµР№ РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅРѕ</h3>');
 			}
 			else
-				echo('<center><h2>Ошибка запроса</h2></center>');
+				echo('<center><h2>РћС€РёР±РєР° Р·Р°РїСЂРѕСЃР°</h2></center>');
 		?>
                 </td>
             </tr>

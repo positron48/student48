@@ -27,7 +27,7 @@
 <head>
 <title>
 <?
-	$title="ЛГТУ|Новости";
+	$title="Р›Р“РўРЈ|РќРѕРІРѕСЃС‚Рё";
 	if(isset($_GET['id']) && $_GET['id']>0 )
 		if($pagedata=mysql_fetch_array($dbdata))
 		{
@@ -53,7 +53,7 @@
 									printf('
 									<div>
                                         <h2>%s</h2>
-										<h5> Добавлено:%s  Просмотров:%s</h5>
+										<h5> Р”РѕР±Р°РІР»РµРЅРѕ:%s  РџСЂРѕСЃРјРѕС‚СЂРѕРІ:%s</h5>
 										<br>%s
 									</div>
 									',$pagedata['title_news'],$pagedata['datecreate'],$pagedata['views'],$pagedata['fullcontent']);
@@ -70,7 +70,7 @@
 											printf('%s',_filter($pagedata['fullcontent']));
 											print("',
 											noparse: false
-										},{type: 'button', text: 'Сохранить'}));
+										},{type: 'button', text: 'РЎРѕС…СЂР°РЅРёС‚СЊ'}));
 										</script></td>");
 									print('<td>
 										<!-- Put this div tag to the place, where the Like block will be -->
@@ -86,14 +86,14 @@
 										</script></center>');
 								}
 								else
-									echo("<p><h2><center>Новость не обнаружена</h2></center>");
+									echo("<p><h2><center>РќРѕРІРѕСЃС‚СЊ РЅРµ РѕР±РЅР°СЂСѓР¶РµРЅР°</h2></center>");
 							}
 							else
 							{
-								echo("<p><h1>Новости:</h1>");
+								echo("<p><h1>РќРѕРІРѕСЃС‚Рё:</h1>");
 								                    
                     			if($check)
-									print('<h4><a href="addnews.php" class="btn pull-right">Добавить новость</a></h4>');
+									print('<h4><a href="addnews.php" class="btn pull-right">Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІРѕСЃС‚СЊ</a></h4>');
                                 
 								while($pagedata=mysql_fetch_array($dbdata))
 								{
@@ -102,26 +102,26 @@
                                        <div class="row-fluid">
                                             <div class="span6" align="justify">');
 									if($check)
-										printf('<a href="delete_news.php?id=%s" class="pull-right" onclick="if(!confirm(\'Точно хочешь удалить?\')) return false;"><i class="icon-remove"></i></a>
+										printf('<a href="delete_news.php?id=%s" class="pull-right" onclick="if(!confirm(\'РўРѕС‡РЅРѕ С…РѕС‡РµС€СЊ СѓРґР°Р»РёС‚СЊ?\')) return false;"><i class="icon-remove"></i></a>
                                                 <a href="edit_news.php?id=%s" class="pull-right"><i class="icon-edit"></i></a>
                                                 ',$pagedata['id'],$pagedata['id']);	
 									printf('<h2>%s</h2>
-										<h5>Добавлено:%s  Просмотров:%s</h5><br>
+										<h5>Р”РѕР±Р°РІР»РµРЅРѕ:%s  РџСЂРѕСЃРјРѕС‚СЂРѕРІ:%s</h5><br>
 										<p>%s</p>
-										<p><a class="btn" href="news.php?id=%s">Подробнее</a></p></div>
+										<p><a class="btn" href="news.php?id=%s">РџРѕРґСЂРѕР±РЅРµРµ</a></p></div>
 										',$pagedata['title_news'],$pagedata['datecreate'],$pagedata['views'],$pagedata['introtext'],$pagedata['id']);
                                     if($pagedata=mysql_fetch_array($dbdata))
                                     {
                                         printf('
                                             <div class="span6" align="justify">');
     									if($check)
-    										printf('<a href="delete_news.php?id=%s" class="pull-right" onclick="if(!confirm(\'Точно хочешь удалить?\')) return false;"><i class="icon-remove"></i></a>
+    										printf('<a href="delete_news.php?id=%s" class="pull-right" onclick="if(!confirm(\'РўРѕС‡РЅРѕ С…РѕС‡РµС€СЊ СѓРґР°Р»РёС‚СЊ?\')) return false;"><i class="icon-remove"></i></a>
                                                     <a href="edit_news.php?id=%s" class="pull-right"><i class="icon-edit"></i></a>
 													',$pagedata['id'],$pagedata['id']);	
     									printf('<h2>%s</h2>
-    										<h5>Добавлено:%s  Просмотров:%s</h5><br>
+    										<h5>Р”РѕР±Р°РІР»РµРЅРѕ:%s  РџСЂРѕСЃРјРѕС‚СЂРѕРІ:%s</h5><br>
     										<p>%s</p>
-    										<p><a class="btn" href="news.php?id=%s">Подробнее</a></p></div></div>
+    										<p><a class="btn" href="news.php?id=%s">РџРѕРґСЂРѕР±РЅРµРµ</a></p></div></div>
     										',$pagedata['title_news'],$pagedata['datecreate'],$pagedata['views'],$pagedata['introtext'],$pagedata['id']);
                                     }
 								}	

@@ -10,7 +10,7 @@ function AnchorJS(options) {
   this.options = options || {};
 
   this._applyRemainingDefaultOptions = function(opts) {
-    this.options.icon = this.options.hasOwnProperty('icon') ? opts.icon : '&#xe9cb'; // Accepts characters (and also URLs?), like  '#', '¶', '❡', or '§'.
+    this.options.icon = this.options.hasOwnProperty('icon') ? opts.icon : '&#xe9cb'; // Accepts characters (and also URLs?), like  '#', 'В¶', 'вќЎ', or 'В§'.
     this.options.visible = this.options.hasOwnProperty('visible') ? opts.visible : 'hover'; // Also accepts 'always'
     this.options.placement = this.options.hasOwnProperty('placement') ? opts.placement : 'right'; // Also accepts 'left'
     this.options.class = this.options.hasOwnProperty('class') ? opts.class : ''; // Accepts any class name.
@@ -66,7 +66,7 @@ function AnchorJS(options) {
         // Refine it so it makes a good ID. Strip out non-safe characters, replace
         // spaces with hyphens, truncate to 32 characters, and make toLowerCase.
         //
-        // Example string:                                // '⚡⚡⚡ Unicode icons are cool--but don't belong in a URL.'
+        // Example string:                                // 'вљЎвљЎвљЎ Unicode icons are cool--but don't belong in a URL.'
         tidyText = roughText.replace(/[^\w\s-]/gi, '')    // ' Unicode icons are cool--but dont belong in a URL'
                                 .replace(/\s+/g, '-')     // '-Unicode-icons-are-cool--but-dont-belong-in-a-URL'
                                 .replace(/-{2,}/g, '-')   // '-Unicode-icons-are-cool-but-dont-belong-in-a-URL'

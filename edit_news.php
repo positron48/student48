@@ -27,9 +27,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Редактирование новостей</title>
+<title>Р›Р“РўРЈ|Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕСЃС‚РµР№</title>
 <? include('parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 <script type="text/javascript">
 	tinyMCE.init({
@@ -65,15 +65,15 @@
 			<form name="addnews" method="post" action="edit_news.php?id=%s">
 				<table class="table">
 				<tr><td>id:</td><td><input type="text" name="id" size="160" value="%s" readonly /></td>
-				<tr><td>Заголовок:</td><td><input type="text" name="title_news" size="160" value="%s"></td>
-				</tr><tr><td>Краткое содержание:</td><td><textarea cols="100" rows="8" name="introtext">%s</textarea></td>
-				</tr><tr><td>Полное содержание:</td><td><textarea cols="100" rows="8" name="fullcontent">%s</textarea></td>
-				<tr><td>Ключевые слова:</td><td><input type="text" name="metakey" size="160" value="%s"></td>
-				<tr><td>Дата создания:</td><td><input type="text" name="datecreate" size="160" value="%s" readonly></td>
-				<tr><td>Дата редактирования:</td><td><input type="text" name="dateupdate" size="160" value="%s" readonly></td>
-				<tr><td>Дата просмотра:</td><td><input type="text" name="dateview" size="160" value="%s" readonly></td>
-				<tr><td>Просмотров:</td><td><input type="text" name="views" size="160" value="%s"></td>
-				</tr><tr><td colspan="2"><input type="submit" class="btn" value="Отправить"><input type="reset" class="btn" value="Очистить">
+				<tr><td>Р—Р°РіРѕР»РѕРІРѕРє:</td><td><input type="text" name="title_news" size="160" value="%s"></td>
+				</tr><tr><td>РљСЂР°С‚РєРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ:</td><td><textarea cols="100" rows="8" name="introtext">%s</textarea></td>
+				</tr><tr><td>РџРѕР»РЅРѕРµ СЃРѕРґРµСЂР¶Р°РЅРёРµ:</td><td><textarea cols="100" rows="8" name="fullcontent">%s</textarea></td>
+				<tr><td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td><td><input type="text" name="metakey" size="160" value="%s"></td>
+				<tr><td>Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ:</td><td><input type="text" name="datecreate" size="160" value="%s" readonly></td>
+				<tr><td>Р”Р°С‚Р° СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ:</td><td><input type="text" name="dateupdate" size="160" value="%s" readonly></td>
+				<tr><td>Р”Р°С‚Р° РїСЂРѕСЃРјРѕС‚СЂР°:</td><td><input type="text" name="dateview" size="160" value="%s" readonly></td>
+				<tr><td>РџСЂРѕСЃРјРѕС‚СЂРѕРІ:</td><td><input type="text" name="views" size="160" value="%s"></td>
+				</tr><tr><td colspan="2"><input type="submit" class="btn" value="РћС‚РїСЂР°РІРёС‚СЊ"><input type="reset" class="btn" value="РћС‡РёСЃС‚РёС‚СЊ">
 				</td></tr>
 				</table>
 			</form>
@@ -87,15 +87,15 @@
 			mysql_close($dbconnect);
 			if(!$result)
 			{
-				printf("<p class='alert alert-error'>Ошибка при записи в базу данных</p>");							
+				printf("<p class='alert alert-error'>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…</p>");							
 			}
 			else
 			{
-				printf("<p class='alert alert-success'>Новость отредактирована!</p>");
+				printf("<p class='alert alert-success'>РќРѕРІРѕСЃС‚СЊ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅР°!</p>");
 			}
 		}
 		else
-			print("<p class='alert alert-danger'>У вас недостаточно прав для редактирования данной новости</p>");
+			print("<p class='alert alert-danger'>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР°РЅРЅРѕР№ РЅРѕРІРѕСЃС‚Рё</p>");
 	?>
     
     <? include('parts/footer.php'); ?>

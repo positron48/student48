@@ -349,13 +349,13 @@ module.exports = function (grunt) {
     htmllint: {
       options: {
         ignore: [
-          'Element “img” is missing required attribute “src”.',
-          'Bad value “X-UA-Compatible” for attribute “http-equiv” on element “meta”.',
-          'Attribute “autocomplete” not allowed on element “input” at this point.',
-          'Attribute “autocomplete” not allowed on element “button” at this point.',
-          'Element “div” not allowed as child of element “progress” in this context. (Suppressing further errors from this subtree.)',
-          'Consider using the “h1” element as a top-level heading only (all “h1” elements are treated as top-level headings by many screen readers and other tools).',
-          'The “datetime” input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
+          'Element вЂњimgвЂќ is missing required attribute вЂњsrcвЂќ.',
+          'Bad value вЂњX-UA-CompatibleвЂќ for attribute вЂњhttp-equivвЂќ on element вЂњmetaвЂќ.',
+          'Attribute вЂњautocompleteвЂќ not allowed on element вЂњinputвЂќ at this point.',
+          'Attribute вЂњautocompleteвЂќ not allowed on element вЂњbuttonвЂќ at this point.',
+          'Element вЂњdivвЂќ not allowed as child of element вЂњprogressвЂќ in this context. (Suppressing further errors from this subtree.)',
+          'Consider using the вЂњh1вЂќ element as a top-level heading only (all вЂњh1вЂќ elements are treated as top-level headings by many screen readers and other tools).',
+          'The вЂњdatetimeвЂќ input type is not supported in all browsers. Please be sure to test, and consider using a polyfill.'
         ]
       },
       src: '_gh_pages/**/*.html'

@@ -71,7 +71,7 @@ $(function () {
           return '@fat'
         },
         content: function () {
-          return 'loves writing tests （╯°□°）╯︵ ┻━┻'
+          return 'loves writing tests пј€в•ЇВ°в–ЎВ°пј‰в•Їпёµ в”»в”Ѓв”»'
         }
       })
 
@@ -79,7 +79,7 @@ $(function () {
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
     assert.strictEqual($('.popover .popover-title').text(), '@fat', 'title correctly inserted')
-    assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests （╯°□°）╯︵ ┻━┻', 'content correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves writing tests пј€в•ЇВ°в–ЎВ°пј‰в•Їпёµ в”»в”Ѓв”»', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
 
@@ -88,7 +88,7 @@ $(function () {
 
   QUnit.test('should not duplicate HTML object', function (assert) {
     assert.expect(6)
-    var $div = $('<div/>').html('loves writing tests （╯°□°）╯︵ ┻━┻')
+    var $div = $('<div/>').html('loves writing tests пј€в•ЇВ°в–ЎВ°пј‰в•Їпёµ в”»в”Ѓв”»')
 
     var $popover = $('<a href="#">@fat</a>')
       .appendTo('#qunit-fixture')
@@ -116,14 +116,14 @@ $(function () {
 
   QUnit.test('should get title and content from attributes', function (assert) {
     assert.expect(4)
-    var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+    var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (гЃҐпЅЎв—•вЂївЂїв—•пЅЎ)гЃҐ пёµ в”»в”Ѓв”»" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover()
       .bootstrapPopover('show')
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
     assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (гЃҐпЅЎв—•вЂївЂїв—•пЅЎ)гЃҐ пёµ в”»в”Ѓв”»', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')
@@ -131,7 +131,7 @@ $(function () {
 
   QUnit.test('should get title and content from attributes ignoring options passed via js', function (assert) {
     assert.expect(4)
-    var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻" >@mdo</a>')
+    var $popover = $('<a href="#" title="@mdo" data-content="loves data attributes (гЃҐпЅЎв—•вЂївЂїв—•пЅЎ)гЃҐ пёµ в”»в”Ѓв”»" >@mdo</a>')
       .appendTo('#qunit-fixture')
       .bootstrapPopover({
         title: 'ignored title option',
@@ -141,7 +141,7 @@ $(function () {
 
     assert.notEqual($('.popover').length, 0, 'popover was inserted')
     assert.strictEqual($('.popover .popover-title').text(), '@mdo', 'title correctly inserted')
-    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (づ｡◕‿‿◕｡)づ ︵ ┻━┻', 'content correctly inserted')
+    assert.strictEqual($('.popover .popover-content').text(), 'loves data attributes (гЃҐпЅЎв—•вЂївЂїв—•пЅЎ)гЃҐ пёµ в”»в”Ѓв”»', 'content correctly inserted')
 
     $popover.bootstrapPopover('hide')
     assert.strictEqual($('.popover').length, 0, 'popover was removed')

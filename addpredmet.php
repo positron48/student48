@@ -5,12 +5,12 @@
 		$title_predmet=_filter($_POST['title_predmet']);
 		$title_predmet_english=_filter($_POST['title_predmet_english']);
         if($title_predmet=="")
-            $err="Поле предмета не заполнено";
+            $err="РџРѕР»Рµ РїСЂРµРґРјРµС‚Р° РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ";
         if($title_predmet_english=="")
         {
             if($err!="")
                 $err.="<br>";
-            $err .= "Поле английское название не заполнено";
+            $err .= "РџРѕР»Рµ Р°РЅРіР»РёР№СЃРєРѕРµ РЅР°Р·РІР°РЅРёРµ РЅРµ Р·Р°РїРѕР»РЅРµРЅРѕ";
         }
 		$semestr=_filter($_POST['semestr']);
         if(!$err)
@@ -18,12 +18,12 @@
     		if(!is_dir("materials/semestr_".$semestr))
     		{
     			if(!mkdir("materials/semestr_".$semestr))
-                    $err.="Папка для семестра не была создана";
+                    $err.="РџР°РїРєР° РґР»СЏ СЃРµРјРµСЃС‚СЂР° РЅРµ Р±С‹Р»Р° СЃРѕР·РґР°РЅР°";
     		}
     		//if(!is_dir("materials/semestr_".$semestr."/".$tiitle_predmet_english))
     		{
     			if(!mkdir("materials/semestr_".$semestr."/".$title_predmet_english))
-                    $err.="Папка для семестра не была создана";
+                    $err.="РџР°РїРєР° РґР»СЏ СЃРµРјРµСЃС‚СЂР° РЅРµ Р±С‹Р»Р° СЃРѕР·РґР°РЅР°";
     		}		
     		$query="INSERT INTO predmets VALUES(NULL,'$title_predmet','$title_predmet_english','$semestr')";
     		$add=true;
@@ -33,11 +33,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Добавление предмета</title>
+<title>Р›Р“РўРЈ|Р”РѕР±Р°РІР»РµРЅРёРµ РїСЂРµРґРјРµС‚Р°</title>
 
 <? include('parts/head.php'); ?>
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 <? include("parts/top.php"); ?>
 <? include('parts/header.php'); ?>
@@ -45,17 +45,17 @@
                 <? if($check && !$add): ?>
                     <? if($err!="")
                         printf("<div class='alert alert-warning'> %s </div>", $err)?>
-             		<p><h1>Добавьте предмет:</h1>
+             		<p><h1>Р”РѕР±Р°РІСЊС‚Рµ РїСЂРµРґРјРµС‚:</h1>
                     <form name="addnews" method="post" action="addpredmet.php">
                     	<table>
                         <tr>
-                            <td>Название:</td><td><input type="text" name="title_predmet" size="83" <?if($title_predmet!="") printf("value='%s'",$title_predmet);?>/></td>
+                            <td>РќР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="title_predmet" size="83" <?if($title_predmet!="") printf("value='%s'",$title_predmet);?>/></td>
                         </tr>
                         <tr>
-                            <td>Английское название:</td><td><input type="text" name="title_predmet_english" size="83" <?if($title_predmet!="") printf("value='%s'",$title_predmet_english);?> /></td>
+                            <td>РђРЅРіР»РёР№СЃРєРѕРµ РЅР°Р·РІР°РЅРёРµ:</td><td><input type="text" name="title_predmet_english" size="83" <?if($title_predmet!="") printf("value='%s'",$title_predmet_english);?> /></td>
                         </tr>
                         <tr>
-                            <td>Семестр:</td>
+                            <td>РЎРµРјРµСЃС‚СЂ:</td>
                             <td>
                             	<select name="semestr">
                             		<option value="1" <?if($semestr==1) printf("selected='true'");?> >1</option>
@@ -72,7 +72,7 @@
                             </td>
                        	</tr>
                         <tr><td colspan="2"> 
-                            <input type="submit" value="Отправить" class="btn" /><input type="reset" value="Очистить" class="btn" />
+                            <input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" class="btn" /><input type="reset" value="РћС‡РёСЃС‚РёС‚СЊ" class="btn" />
                         </td></tr>
                         </table>
                 	</form>
@@ -82,16 +82,16 @@
 					mysql_close($dbconnect);
 					if(!$result)
 					{
-						printf("<div class='alert alert-error'>Ошибка при записи в базу данных</div>");
+						printf("<div class='alert alert-error'>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…</div>");
 						
 					}
 					else
 					{
-							printf("<div class='alert alert-success'>Предмет добавлен!</div>");
+							printf("<div class='alert alert-success'>РџСЂРµРґРјРµС‚ РґРѕР±Р°РІР»РµРЅ!</div>");
 					}    
 				?>   
                 <? else: ?>
-                	<br><div class="alert alert-danger">У вас недостаточно прав для добавления предметов</div>   
+                	<br><div class="alert alert-danger">РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РїСЂРµРґРјРµС‚РѕРІ</div>   
                 <? endif ?>      	
                 
 <? include('parts/footer.php'); ?>

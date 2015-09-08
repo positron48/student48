@@ -14,7 +14,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Добавление новости</title>
+<title>Р›Р“РўРЈ|Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕСЃС‚Рё</title>
 
 <? include('parts/head.php'); ?>
 
@@ -45,20 +45,20 @@
 <? include('parts/header.php'); ?>
     <div class="container">
                 <? if(!$add && $check):?>
-             		<p><h1>Добавьте новость:</h1>
+             		<p><h1>Р”РѕР±Р°РІСЊС‚Рµ РЅРѕРІРѕСЃС‚СЊ:</h1>
                     <form name="addnews" method="post" action="addnews.php">
                     	<table>
                         <tr>
-                            <td>Заголовок:</td><td><input type="text" name="title" size="83"></td>
+                            <td>Р—Р°РіРѕР»РѕРІРѕРє:</td><td><input type="text" name="title" size="83"></td>
                         </tr><tr>
-                            <td>Ключевые слова:</td><td><input type="text" name="metakey" size="83"></td>
+                            <td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td><td><input type="text" name="metakey" size="83"></td>
                         </tr><tr>
-                            <td>Краткий текст:</td><td><textarea cols="64" rows="5" name="introtext"></textarea></td>
+                            <td>РљСЂР°С‚РєРёР№ С‚РµРєСЃС‚:</td><td><textarea cols="64" rows="5" name="introtext"></textarea></td>
                        	</tr><tr>
-                            <td>Полный текст:</td><td><textarea cols="64" rows="5" name="fullcontent"></textarea></td>
+                            <td>РџРѕР»РЅС‹Р№ С‚РµРєСЃС‚:</td><td><textarea cols="64" rows="5" name="fullcontent"></textarea></td>
                         </tr>
                         <tr><td colspan="2"> <br />
-                            <input type="submit" value="Отправить" class="btn"><input type="reset" class="btn" value="Очистить">
+                            <input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" class="btn"><input type="reset" class="btn" value="РћС‡РёСЃС‚РёС‚СЊ">
                         </td></tr>
                         </table>
                 	</form>
@@ -67,12 +67,12 @@
 						$result=mysql_query($query);
 						mysql_close($dbconnect);
 						if(!$result)
-							printf("<p>Ошибка при записи в базу данных");
+							printf("<p>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…");
 						else
-							printf("<p><center>Новость добавлена!</center>");
+							printf("<p><center>РќРѕРІРѕСЃС‚СЊ РґРѕР±Р°РІР»РµРЅР°!</center>");
 					?>
                 <? else: ?>
-                	<br><div class="alert alert-danger"><center>У вас недостаточно прав для добавления новости</center></div>
+                	<br><div class="alert alert-danger"><center>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕСЃС‚Рё</center></div>
                 <? endif ?>
     		<? include('parts/footer.php'); ?>
      </div>    

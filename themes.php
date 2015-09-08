@@ -38,11 +38,11 @@
 
 <html>
 <head>
-<title>ЛГТУ | Темы</title>
+<title>Р›Р“РўРЈ | РўРµРјС‹</title>
 
 <? include('../parts/head.php'); ?>
 
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 <script type="text/javascript">
 	tinyMCE.init({
@@ -78,28 +78,28 @@
                 	<? include('../parts/left.php'); ?>
                 </td>
                 <td id="main">
-                	<h1>Шпора!</h1>
+                	<h1>РЁРїРѕСЂР°!</h1>
 					<?
 						if(is_numeric($_GET['del_id']) && ($check || ($_COOKIE[md5($themdata['shp_them_title'].$themdata['shp_them_date'])]==true)))
 							if($resultdelmsg)
-								print('<h3>Шпора удалена!</h3>');
+								print('<h3>РЁРїРѕСЂР° СѓРґР°Р»РµРЅР°!</h3>');
 							else
-								print('<h3>Ошибка удаления</h3>');
+								print('<h3>РћС€РёР±РєР° СѓРґР°Р»РµРЅРёСЏ</h3>');
 						if(is_numeric($_GET['edit_id']) && ($check || ($_COOKIE[md5($themdata['shp_them_title'].$themdata['shp_them_date'])]==true)) && ($_GET['id']==$themdata['shp_them_id']))
 						{
 							if(!isset($msgtitle))
 								printf('<form name="editmsg" method="post" action="themes.php?id=%s&edit_id=%s">
 										<table class="form">
 										<tr>
-											<td>Заголовок:</td><td><input type="text" name="msgtitle" size="83" value="%s"></td>
+											<td>Р—Р°РіРѕР»РѕРІРѕРє:</td><td><input type="text" name="msgtitle" size="83" value="%s"></td>
 										</tr><tr>
-											<td>Содержание:</td>
+											<td>РЎРѕРґРµСЂР¶Р°РЅРёРµ:</td>
 											<td>
 												<textarea cols="64" rows="5" name="msgcontent">%s</textarea>
 											</td>
 										</tr>
 										<tr><td colspan="2"> 
-											<input type="submit" value="Отправить">
+											<input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ">
 										</td></tr>
 										</table>
 									</form>'
@@ -108,15 +108,15 @@
 								printf('<form name="editmsg" method="post" action="themes.php?id=%s&edit_id=%s">
 										<table class="form">
 										<tr>
-											<td>Заголовок:</td><td><input type="text" name="msgtitle" size="83" value="%s"></td>
+											<td>Р—Р°РіРѕР»РѕРІРѕРє:</td><td><input type="text" name="msgtitle" size="83" value="%s"></td>
 										</tr><tr>
-											<td>Содержание:</td>
+											<td>РЎРѕРґРµСЂР¶Р°РЅРёРµ:</td>
 											<td>
 												<textarea cols="64" rows="5" name="msgcontent">%s</textarea>
 											</td>
 										</tr>
 										<tr><td colspan="2"> 
-											<input type="submit" value="Отправить">
+											<input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ">
 										</td></tr>
 										</table>
 									</form>'
@@ -124,10 +124,10 @@
 						}
 						else
 						{
-							printf('<h2><a href="index.php">Вернуться к списку тем</a></h2>');
+							printf('<h2><a href="index.php">Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє СЃРїРёСЃРєСѓ С‚РµРј</a></h2>');
 							if($check || ($_COOKIE[md5($themdata['shp_them_title'].$themdata['shp_them_date'])]==true))
 							{
-								printf("<a href='add_shpor_msg.php?id=%s'>Добавить сообщение в тему</a>",$id);
+								printf("<a href='add_shpor_msg.php?id=%s'>Р”РѕР±Р°РІРёС‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ РІ С‚РµРјСѓ</a>",$id);
 							}
 							$views=$themdata['shp_them_views']+1;
 							mysql_query("UPDATE shpora_themes SET shp_them_views='$views' WHERE shp_them_id='$id'");
@@ -139,7 +139,7 @@
 								if(($_COOKIE[md5($themdata['shp_them_title'].$themdata['shp_them_date'])]==true) || $check)
 									printf('
 												<a href="themes.php?id=%s&edit_id=%s"><img src="../images/icon_edit.gif"></a>
-												<a href="themes.php?id=%s&del_id=%s" onclick="if(!confirm(\'Точно хочешь удалить?\')) return false;"><img src="../images/icon_delete.gif"></a>
+												<a href="themes.php?id=%s&del_id=%s" onclick="if(!confirm(\'РўРѕС‡РЅРѕ С…РѕС‡РµС€СЊ СѓРґР°Р»РёС‚СЊ?\')) return false;"><img src="../images/icon_delete.gif"></a>
 												&nbsp;
 												',$id,$pagedata['shp_msg_id']
 												,$id,$pagedata['shp_msg_id']);
@@ -157,7 +157,7 @@
 									//printf('%s',_filter($pagedata['fullcontent']));
 									print("',
 									noparse: false
-								},{type: 'button', text: 'Сохранить'}));
+								},{type: 'button', text: 'РЎРѕС…СЂР°РЅРёС‚СЊ'}));
 								</script></td>");
 							print('<td>
 							<!-- Put this div tag to the place, where the Like block will be -->

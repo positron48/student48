@@ -6,5 +6,5 @@
 	
 	$dbconnect=mysql_connect($dblocation,$dbuser,$dbpassword);
 	mysql_select_db($dbname,$dbconnect);
-	if(!$dbconnect){echo('<p>Не удалось подключиться к базе данных</p>');}
+	if(!$dbconnect){echo('<p>РќРµ СѓРґР°Р»РѕСЃСЊ РїРѕРґРєР»СЋС‡РёС‚СЊСЃСЏ Рє Р±Р°Р·Рµ РґР°РЅРЅС‹С…</p>');}
 ?>

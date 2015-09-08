@@ -8,38 +8,38 @@
             </a>
             <a class="brand" href="#">student48.ru</a>
             <div class="btn-group pull-right">
-                <button class="btn btn-inverse">Поиск</button>
+                <button class="btn btn-inverse">РџРѕРёСЃРє</button>
             </div>
             <div class="nav-collapse">
                 <ul class="nav">
                     <li <? if(($_SERVER['PHP_SELF']=="/index.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="index.php">Главная</a>
+                        <a href="index.php">Р“Р»Р°РІРЅР°СЏ</a>
                     </li>
                     <li <? if(($_SERVER['PHP_SELF']=="/news.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="news.php">Новости</a>
+                        <a href="news.php">РќРѕРІРѕСЃС‚Рё</a>
                     </li>
                     <li <? if(($_SERVER['PHP_SELF']=="/materials.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="materials.php">Материалы</a>
+                        <a href="materials.php">РњР°С‚РµСЂРёР°Р»С‹</a>
                     </li>
                     <li <? if(($_SERVER['PHP_SELF']=="/questbook.php") && ($_SERVER['HTTP_HOST']=="student48.ru") || ($_SERVER['HTTP_HOST']=="www.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="questbook.php">Гостевая</a>
+                        <a href="questbook.php">Р“РѕСЃС‚РµРІР°СЏ</a>
                     </li>
                     <li <? if(($_SERVER['HTTP_HOST']=="files.student48.ru") || ($_SERVER['HTTP_HOST']=="www.files.student48.ru"))	echo('class="active"'); ?>>
-                        <a href="http://files.student48.ru">Обменник</a>
+                        <a href="http://files.student48.ru">РћР±РјРµРЅРЅРёРє</a>
                     </li>
                     <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Еще <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Р•С‰Рµ <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="upload.php">Добавить</a></li>
-                        <li><a href="shpora.php">Шпоры</a></li>
-                        <li><a href="rating.php">Рейтинг</a></li>
-                        <li><a href="contacts.php">Контакты</a></li>
-                        <li><a href="map.php">Карта</a></li>
-                        <li><a href="links.php">Ссылки</a></li>
+                        <li><a href="upload.php">Р”РѕР±Р°РІРёС‚СЊ</a></li>
+                        <li><a href="shpora.php">РЁРїРѕСЂС‹</a></li>
+                        <li><a href="rating.php">Р РµР№С‚РёРЅРі</a></li>
+                        <li><a href="contacts.php">РљРѕРЅС‚Р°РєС‚С‹</a></li>
+                        <li><a href="map.php">РљР°СЂС‚Р°</a></li>
+                        <li><a href="links.php">РЎСЃС‹Р»РєРё</a></li>
                     </ul>
                 </ul>
                 <form class="navbar-search pull-right" action="">
-                    <input type="text" class="search-query span2" placeholder="Поиск материалов">
+                    <input type="text" class="search-query span2" placeholder="РџРѕРёСЃРє РјР°С‚РµСЂРёР°Р»РѕРІ">
                 </form>
             </div><!--/.nav-collapse -->
         </div>

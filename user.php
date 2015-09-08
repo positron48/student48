@@ -11,7 +11,7 @@
 <head>
 <title>
 <? 
-	$title="ЛГТУ| ".$pagedata['nick_name'];
+	$title="Р›Р“РўРЈ| ".$pagedata['nick_name'];
 	printf("%s",$title)
 ?>
 </title>
@@ -31,20 +31,20 @@
                 	<? include('parts/left.php'); ?>
                 </td>
                 <td id="main">
-                	<h2>Информация о пользователе:</h2>
+                	<h2>РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ:</h2>
                     <? if(isset($_GET['uid']) && isset($_GET['uid'])>0): ?>
                     <table class="info_file" cellpadding="0" cellspacing="0">
                     	
                         <tr><td rowspan="6"><? printf('<img src="%s" />',$pagedata['photo_rec']); ?></td>
-                        <td class=""><b>Ник: </b></td><td class=""> <? printf("%s",$pagedata['nick_name']) ?></td></tr>
-                        <tr><td class=""><b>Имя: </b></td><td class=""> <? printf("%s",$pagedata['first_name']) ?></td></tr>
-                        <tr><td class=""><b>Фамилия: </b></td><td class=""> <? printf("%s",$pagedata['last_name']) ?></td></tr>
-                        <tr><td class=""><b>Пол: </b></td><td class=""> <? printf("%s",$pagedata['sex']) ?></td></tr>
-                        <tr><td class=""><b>Е-mail: </b></td><td class=""> <? printf("%s",$pagedata['e_mail']) ?></td></tr>
-                        <tr><td class=""><b>Дата регистрации: </b></td><td class=""> <? printf("%s",$pagedata['date_register']) ?></td></tr>
+                        <td class=""><b>РќРёРє: </b></td><td class=""> <? printf("%s",$pagedata['nick_name']) ?></td></tr>
+                        <tr><td class=""><b>РРјСЏ: </b></td><td class=""> <? printf("%s",$pagedata['first_name']) ?></td></tr>
+                        <tr><td class=""><b>Р¤Р°РјРёР»РёСЏ: </b></td><td class=""> <? printf("%s",$pagedata['last_name']) ?></td></tr>
+                        <tr><td class=""><b>РџРѕР»: </b></td><td class=""> <? printf("%s",$pagedata['sex']) ?></td></tr>
+                        <tr><td class=""><b>Р•-mail: </b></td><td class=""> <? printf("%s",$pagedata['e_mail']) ?></td></tr>
+                        <tr><td class=""><b>Р”Р°С‚Р° СЂРµРіРёСЃС‚СЂР°С†РёРё: </b></td><td class=""> <? printf("%s",$pagedata['date_register']) ?></td></tr>
                     </table>
                     <? else: ?>
-                    	<h3> Ошибка входа: возможно, вы уже зарегистрированы </h3>
+                    	<h3> РћС€РёР±РєР° РІС…РѕРґР°: РІРѕР·РјРѕР¶РЅРѕ, РІС‹ СѓР¶Рµ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅС‹ </h3>
                     <? endif ?>
                 	
                 </td>

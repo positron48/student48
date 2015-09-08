@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Тестирование api Вконтакте</title>
+<title>Р›Р“РўРЈ|РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ api Р’РєРѕРЅС‚Р°РєС‚Рµ</title>
 
 <? include('parts/head.php'); ?>
 
 <?
 	include ("VKapi.php" );
 
-	$api_secret = "QtUffhhGku39y5LxoZNJ"; // со страницы ПЛАТЕЖИ
-	$api_id     = "2010617";              // id вашего приложения
+	$api_secret = "QtUffhhGku39y5LxoZNJ"; // СЃРѕ СЃС‚СЂР°РЅРёС†С‹ РџР›РђРўР•Р–Р
+	$api_id     = "2010617";              // id РІР°С€РµРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
 	$api        = new VKapi($api_secret, $api_id);
 ?>
 

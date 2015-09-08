@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Файлы</title>
+<title>Р›Р“РўРЈ|Р¤Р°Р№Р»С‹</title>
 <? include('../parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
  

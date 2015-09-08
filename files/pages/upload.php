@@ -1,18 +1,18 @@
-    <h1>Обменник</h1>
+    <h1>РћР±РјРµРЅРЅРёРє</h1>
     <br />
-	<h3>Рекомендуем зарегистрироваться на <a href ="http://db.tt/JdB9YeS"><img src="http://files.student48.ru/dropbox.png" width="3%"><u>Dropbox.com</u></a> и выкладывать там файлы до 2гб без опаски за их сохранность :)</h3>
+	<h3>Р РµРєРѕРјРµРЅРґСѓРµРј Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ РЅР° <a href ="http://db.tt/JdB9YeS"><img src="http://files.student48.ru/dropbox.png" width="3%"><u>Dropbox.com</u></a> Рё РІС‹РєР»Р°РґС‹РІР°С‚СЊ С‚Р°Рј С„Р°Р№Р»С‹ РґРѕ 2РіР± Р±РµР· РѕРїР°СЃРєРё Р·Р° РёС… СЃРѕС…СЂР°РЅРЅРѕСЃС‚СЊ :)</h3>
 	<br />
 
 	<form enctype="multipart/form-data" action="upload.php" id="form" method="post" onsubmit="a=document.getElementById('form').style;a.display='none';b=document.getElementById('part2').style;b.display='inline';">
 	<table><tr><td>
-	<strong>Максимальный размер:</strong> <?php echo $maxfilesize; ?> MB<br />
+	<strong>РњР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ:</strong> <?php echo $maxfilesize; ?> MB<br />
 	</td></tr><td><?php echo $filetypes; ?>
 	<input type="file" name="upfile" size="50" /><br />
 	<?php if($emailoption) { ?></td></tr><td>Email Address: <input type="text" name="myemail" size="30" /> <i>(Optional)</i><br /><?php } ?>
 	<?php if($descriptionoption) { ?></td></tr><td>File Description: <input type="text" name="descr" size="30" /> <i>(Optional)</i><br /><?php } ?>
 	<?php if($passwordoption) { ?></td></tr><td>Password Protection: <input type="text" name="pprotect" size="30" /> <i>(Optional)</i><br /><?php } ?>
 	</td></tr><td><?php if(isset($categorylist)) { echo $categorylist; } ?>
-	</td></tr><td>Загружая файл, вы соглашаетесь с <a href="?page=tos">правилами</a>. <input class="btn" type="submit" value="Закачать!" id="upload" /></form>
-	<div id="part2" style="display: none;">Идет закачка файла. Пожалуйста, подождите...</div>
-	</td></tr><td><br /><br />Количество файлов: <b><?php echo $fileshosted; ?></b> Размер: <b><?php echo $sizehosted; ?></b> MB.
+	</td></tr><td>Р—Р°РіСЂСѓР¶Р°СЏ С„Р°Р№Р», РІС‹ СЃРѕРіР»Р°С€Р°РµС‚РµСЃСЊ СЃ <a href="?page=tos">РїСЂР°РІРёР»Р°РјРё</a>. <input class="btn" type="submit" value="Р—Р°РєР°С‡Р°С‚СЊ!" id="upload" /></form>
+	<div id="part2" style="display: none;">РРґРµС‚ Р·Р°РєР°С‡РєР° С„Р°Р№Р»Р°. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРґРѕР¶РґРёС‚Рµ...</div>
+	</td></tr><td><br /><br />РљРѕР»РёС‡РµСЃС‚РІРѕ С„Р°Р№Р»РѕРІ: <b><?php echo $fileshosted; ?></b> Р Р°Р·РјРµСЂ: <b><?php echo $sizehosted; ?></b> MB.
 	</td></tr></table>

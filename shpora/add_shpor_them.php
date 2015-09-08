@@ -17,9 +17,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ | Добавить тему</title>
+<title>Р›Р“РўРЈ | Р”РѕР±Р°РІРёС‚СЊ С‚РµРјСѓ</title>
 <? include('../parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 
  
@@ -27,16 +27,16 @@
     <? include('../parts/header.php'); ?>
     <div class="container">
         <? if($check && !$add):?>
-     		<p><h1>Добавьте новость:</h1>
+     		<p><h1>Р”РѕР±Р°РІСЊС‚Рµ РЅРѕРІРѕСЃС‚СЊ:</h1>
             <form name="addnews" method="post" action="add_shpor_them.php">
             	<table class="form">
                 <tr>
-                    <td>Заголовок:</td><td><input type="text" name="title" size="83"></td>
+                    <td>Р—Р°РіРѕР»РѕРІРѕРє:</td><td><input type="text" name="title" size="83"></td>
                 </tr><tr>
-                	<td>Предмет:</td><td><input type="text" name="predmet" size="83"></td>
+                	<td>РџСЂРµРґРјРµС‚:</td><td><input type="text" name="predmet" size="83"></td>
                 </tr>
                 <tr><td colspan="2"> 
-                    <input type="submit" value="Отправить" class="btn" />
+                    <input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" class="btn" />
                 </td></tr>
                 </table>
         	</form>
@@ -45,12 +45,12 @@
     			$result=mysql_query($query);
     			mysql_close($dbconnect);
     			if(!$result)
-    				printf("<p clas='alert alert-error'>Ошибка при записи в базу данных</p>");
+    				printf("<p clas='alert alert-error'>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…</p>");
     			else
-    				printf("<p clas='alert alert-succes'>Тема добавлена!</p>");
+    				printf("<p clas='alert alert-succes'>РўРµРјР° РґРѕР±Р°РІР»РµРЅР°!</p>");
     		?>
         <? else: ?>
-        	<p clas='alert alert-danger'>У вас недостаточно прав для добавления темы</p>
+        	<p clas='alert alert-danger'>РЈ РІР°СЃ РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїСЂР°РІ РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ С‚РµРјС‹</p>
         <? endif ?>
     
         <? include('../parts/footer.php'); ?>

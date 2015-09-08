@@ -22,17 +22,17 @@
 				}
 				else
 				{
-					$err .= "<br>Ошибка при записи в базу данных";
+					$err .= "<br>РћС€РёР±РєР° РїСЂРё Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…";
 				}
 			}
 			else
 			{
-				$err.="<br>Не удалось переименовать файл";
+				$err.="<br>РќРµ СѓРґР°Р»РѕСЃСЊ РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ С„Р°Р№Р»";
 			}
 		}
 		else
 		{
-			$err .= "<br>Некорректно введенны данные";
+			$err .= "<br>РќРµРєРѕСЂСЂРµРєС‚РЅРѕ РІРІРµРґРµРЅРЅС‹ РґР°РЅРЅС‹Рµ";
 		}
 	}
 	if(isset($_GET['pmfileid']))
@@ -48,9 +48,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Редактирование</title>
+<title>Р›Р“РўРЈ|Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ</title>
 <? include('parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body> 
 <?  //printf("choosePredmet %s,%s ",$pagedata['pmfilepredmetsemestr'],$pagedata['pmfilepredmetid']); ?>
 <script>
@@ -106,7 +106,7 @@
 		if(form.semestr.options[0].value=='none')
 			form.semestr.options[0]=null;
 		form.predmetid.options.length=0;
-		form.predmetid.options[0]=new Option('Выберите предмет','lol');
+		form.predmetid.options[0]=new Option('Р’С‹Р±РµСЂРёС‚Рµ РїСЂРµРґРјРµС‚','lol');
 		for(var j=0;j<predmets[0].length;j++)
 			if(predmets[1][j]==form.semestr.options[form.semestr.selectedIndex].value)
 			{
@@ -114,7 +114,7 @@
 				if(predmets[3][j]==<? printf("'%s'",$_POST['predmetid']) ?>)
 					form.predmetid.options[form.predmetid.length-1].selected=true;
 			}
-		form.predmetid.options[form.predmetid.options.length]=new Option('Другой','0');
+		form.predmetid.options[form.predmetid.options.length]=new Option('Р”СЂСѓРіРѕР№','0');
 	}
 	function choosePredmet(semestr,predmetid)
 	{
@@ -125,12 +125,12 @@
 	<? include("parts/top.php"); ?>
     <? include('parts/header.php'); ?>
     <div class="container">
-	<h1>Редактирование</h1><br />
+	<h1>Р РµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ</h1><br />
 	<?
         if($err!="")
             printf("<p class='alert alert-error'>%s</p>",$err);
 		if($edit)
-			printf("<p class='alert alert-success'>Файл успешно отредактирован</p>");
+			printf("<p class='alert alert-success'>Р¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ РѕС‚СЂРµРґР°РєС‚РёСЂРѕРІР°РЅ</p>");
 	?>
 	<? if(!$_POST['pmfilename'] && $err==""): ?>
 		<table>
@@ -138,7 +138,7 @@
 				<input type="hidden" name="pmfileid" <? printf("value='%s'",$pagedata['pmfileid']); ?>>
 				<input type="hidden" name="oldpmfilename" <? printf("value='%s'",$pagedata['pmfilename']); ?>>
 				<tr>
-					<td>Заголовок материала</td>
+					<td>Р—Р°РіРѕР»РѕРІРѕРє РјР°С‚РµСЂРёР°Р»Р°</td>
 					<td>
 						<input type="text" name="pmfiletitle" size="50" 
 						<? 
@@ -149,7 +149,7 @@
 						?> />
 					</td>
 				</tr><tr>
-					<td>Ключевые слова</td>
+					<td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°</td>
 					<td>
 						<input type="text" name="pmfilemetakey" size="50" 
 						<? 
@@ -160,7 +160,7 @@
 						?> />
 					</td>
 				</tr><tr>
-					<td>Дирректория</td>
+					<td>Р”РёСЂСЂРµРєС‚РѕСЂРёСЏ</td>
 					<td>
 						<input type="text" name="pmfiledest" size="50" 
 						<? 
@@ -171,7 +171,7 @@
 						?>/>
 					</td>
 				</tr><tr>
-					<td>Имя файла:</td>
+					<td>РРјСЏ С„Р°Р№Р»Р°:</td>
 					<td>
 						<input type="text" name="pmfilename" 
 						<? 
@@ -182,23 +182,23 @@
 						?>/>
 					</td>
 				</tr><tr>
-					<td style="display:none" id="tdsemestr1">Семестр:</td>
+					<td style="display:none" id="tdsemestr1">РЎРµРјРµСЃС‚СЂ:</td>
 					<td style="display:none" id="tdsemestr2">
 						<input type="text" name="predmetsemestr" size="83"  value=""/>
 					</td>
 				</tr><tr>
-					<td style="display:none" id="tdname1">Название предмета:</td>
+					<td style="display:none" id="tdname1">РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°:</td>
 					<td style="display:none" id="tdname2">
 						<input type="text" name="predmetname" size="83"  value=""/>
 					</td>
 				</tr><tr>
-					<td>Предмет:</td>
+					<td>РџСЂРµРґРјРµС‚:</td>
 					<td>
 						 <select name="semestr"  onChange="changeSem(this.form)">
 						 <?
 						 	if($_POST['semestr']=="none") 
-								echo('<option value="none" selected>Все семестры</option>'); 
-							else echo('<option value="none">семестр</option>');
+								echo('<option value="none" selected>Р’СЃРµ СЃРµРјРµСЃС‚СЂС‹</option>'); 
+							else echo('<option value="none">СЃРµРјРµСЃС‚СЂ</option>');
 							if($_POST['semestr']=="1") 
 								echo('<option value="1" selected>1</option>'); 
 							else echo('<option value="1">1</option>');
@@ -233,13 +233,13 @@
 						 ?>
 						 </select>
 						 <select name="predmetid" onChange="changeDir(this.form)">
-							<option value="lol" selected>Выберите семестр</option>
-							<option value="0">Другой</option>
+							<option value="lol" selected>Р’С‹Р±РµСЂРёС‚Рµ СЃРµРјРµСЃС‚СЂ</option>
+							<option value="0">Р”СЂСѓРіРѕР№</option>
 							</select>
 					</td>
 				</tr><tr>
 					<td colspan="2">
-						<input type="submit" class="btn" value="Сохранить" />
+						<input type="submit" class="btn" value="РЎРѕС…СЂР°РЅРёС‚СЊ" />
 					</td>
 				</tr>
 			</form>

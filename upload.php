@@ -30,29 +30,29 @@
 						if(mysql_query("INSERT INTO pm_files VALUES(NULL,'$filetitle','$predmetid','$pmfilemetakey','$filename','$filesize','$predmetsemestr','$predmetname','$filedest','$date')"))
 							$file = true;
 						else
-							$err.="<br>Ошибка записи в базу данных";
+							$err.="<br>РћС€РёР±РєР° Р·Р°РїРёСЃРё РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…";
 					}
 					else
 					{
-						$err .= "<br>Ошибка добавления файла";
+						$err .= "<br>РћС€РёР±РєР° РґРѕР±Р°РІР»РµРЅРёСЏ С„Р°Р№Р»Р°";
 					}
 				}
 				else 
 				{
-					$err.="<br>Некорректные данные";
+					$err.="<br>РќРµРєРѕСЂСЂРµРєС‚РЅС‹Рµ РґР°РЅРЅС‹Рµ";
 				}
 			}
 			else
 			{
-				$err.= "<br>Размер файла превышает допустимые 10 Мб. Размер: ".$_FILES['pmfile']['size'];
+				$err.= "<br>Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РїСЂРµРІС‹С€Р°РµС‚ РґРѕРїСѓСЃС‚РёРјС‹Рµ 10 РњР±. Р Р°Р·РјРµСЂ: ".$_FILES['pmfile']['size'];
 			}
 		}
 		else
 		{
-			$err .= "<br>Недопустимое расширение";
+			$err .= "<br>РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ СЂР°СЃС€РёСЂРµРЅРёРµ";
 		}
         if($err!="")
-            $err = "Ошибка:".$err;
+            $err = "РћС€РёР±РєР°:".$err;
 	}
 	$dbdata=mysql_query("SELECT * FROM predmets ORDER BY semestr ASC, title_predmet ASC", $dbconnect);
 	$dbdata1=mysql_query("SELECT * FROM predmets ORDER BY semestr ASC, title_predmet ASC", $dbconnect);
@@ -61,9 +61,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ЛГТУ|Добавить</title>
+<title>Р›Р“РўРЈ|Р”РѕР±Р°РІРёС‚СЊ</title>
 <? include('parts/head.php'); ?>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1251"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
 <body>
 <script>
 	var predmets = new Array(4);
@@ -116,7 +116,7 @@
 		if(form.semestr.options[0].value=='none')
 			form.semestr.options[0]=null;
 		form.predmetid.options.length=0;
-		form.predmetid.options[0]=new Option('Выберите предмет','lol');
+		form.predmetid.options[0]=new Option('Р’С‹Р±РµСЂРёС‚Рµ РїСЂРµРґРјРµС‚','lol');
 		for(var j=0;j<predmets[0].length;j++)
 			if(predmets[1][j]==form.semestr.options[form.semestr.selectedIndex].value)
 			{
@@ -124,56 +124,56 @@
 				if(predmets[3][j]==<? printf("'%s'",$_POST['predmetid']) ?>)
 					form.predmetid.options[form.predmetid.length-1].selected=true;
 			}
-		form.predmetid.options[form.predmetid.options.length]=new Option('Другой','0');
+		form.predmetid.options[form.predmetid.options.length]=new Option('Р”СЂСѓРіРѕР№','0');
 	}
 </script>
 <? include("parts/top.php"); ?>
 <? include('parts/header.php'); ?>
 <div class="container">
 					<? if($file): ?>
-						<div class="alert alert-success">Материал добавлен!</div>
+						<div class="alert alert-success">РњР°С‚РµСЂРёР°Р» РґРѕР±Р°РІР»РµРЅ!</div>
 						<table class="table table-striped table-bordered table-condensed">
-						<tr><td>Заголовок материала</td><td><? printf("%s",_filter($_POST['pmfiletitle'])); ?></td></tr>
-						<tr><td>Имя файла</td><td><? printf("%s",_filter($_FILES['pmfile']['name'])); ?></td></tr>
-						<tr><td>Размер файла</td><td><? printf("%s",$_FILES['pmfile']['size']); ?></td></tr>
+						<tr><td>Р—Р°РіРѕР»РѕРІРѕРє РјР°С‚РµСЂРёР°Р»Р°</td><td><? printf("%s",_filter($_POST['pmfiletitle'])); ?></td></tr>
+						<tr><td>РРјСЏ С„Р°Р№Р»Р°</td><td><? printf("%s",_filter($_FILES['pmfile']['name'])); ?></td></tr>
+						<tr><td>Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°</td><td><? printf("%s",$_FILES['pmfile']['size']); ?></td></tr>
 						</table>
 					<? endif ?>
-                    <? if($check) printf("<a class='btn' href='http://student48.ru/moderation.php'>Модерация</a>"); ?>
-					<center><h1>Добавление файла:</h1></center>
+                    <? if($check) printf("<a class='btn' href='http://student48.ru/moderation.php'>РњРѕРґРµСЂР°С†РёСЏ</a>"); ?>
+					<center><h1>Р”РѕР±Р°РІР»РµРЅРёРµ С„Р°Р№Р»Р°:</h1></center>
 					<?
                     if($err!="")
 						printf("<div class='alert alert-error'>%s</div>",$err);
 					?>
-					<p>Внимание! При загрузке файла соблюдайте некоторые правила:
+					<p>Р’РЅРёРјР°РЅРёРµ! РџСЂРё Р·Р°РіСЂСѓР·РєРµ С„Р°Р№Р»Р° СЃРѕР±Р»СЋРґР°Р№С‚Рµ РЅРµРєРѕС‚РѕСЂС‹Рµ РїСЂР°РІРёР»Р°:
 					<ul>
-						<li>Размер загружаемого файла не должен превышать 10 Мб
-						<li>Допустимые расширения файла: "rar" и "zip"
-						<li>Все поля, за исключением поля "ключевые слова" обязательны для заполнения
-						<li>Если предмета нет в списке, выберите из списка пункт "Другой" и введите необходимые данные о предмете
+						<li>Р Р°Р·РјРµСЂ Р·Р°РіСЂСѓР¶Р°РµРјРѕРіРѕ С„Р°Р№Р»Р° РЅРµ РґРѕР»Р¶РµРЅ РїСЂРµРІС‹С€Р°С‚СЊ 10 РњР±
+						<li>Р”РѕРїСѓСЃС‚РёРјС‹Рµ СЂР°СЃС€РёСЂРµРЅРёСЏ С„Р°Р№Р»Р°: "rar" Рё "zip"
+						<li>Р’СЃРµ РїРѕР»СЏ, Р·Р° РёСЃРєР»СЋС‡РµРЅРёРµРј РїРѕР»СЏ "РєР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°" РѕР±СЏР·Р°С‚РµР»СЊРЅС‹ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ
+						<li>Р•СЃР»Рё РїСЂРµРґРјРµС‚Р° РЅРµС‚ РІ СЃРїРёСЃРєРµ, РІС‹Р±РµСЂРёС‚Рµ РёР· СЃРїРёСЃРєР° РїСѓРЅРєС‚ "Р”СЂСѓРіРѕР№" Рё РІРІРµРґРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РґР°РЅРЅС‹Рµ Рѕ РїСЂРµРґРјРµС‚Рµ
 					</ul>
 					<table>
 						<form method="post" enctype="multipart/form-data" action="upload.php" id="formgeneral"> 
 							<tr>
-								<td>Заголовок:</td>
+								<td>Р—Р°РіРѕР»РѕРІРѕРє:</td>
 								<td>
 									<input type="text" name="pmfiletitle" size="83" <? if(isset($_POST['pmfiletitle'])) printf("value='%s'",_filter($_POST['pmfiletitle'])) ?> />
 								</td>
 							</tr><tr>
-								<td>Ключевые слова:</td>
+								<td>РљР»СЋС‡РµРІС‹Рµ СЃР»РѕРІР°:</td>
 								<td>
 									<input type="text" name="pmfilemetakey" size="83" <? if(isset($_POST['pmfilemetakey'])) printf("value='%s'",_filter($_POST['pmfilemetakey'])) ?> >
 								</td>
 							</tr><tr style="display:none">
-								<td>Дирректория:</td>
+								<td>Р”РёСЂСЂРµРєС‚РѕСЂРёСЏ:</td>
 								<td>
-									<input type="text" name="pmfiledest" size="83"  value="Выберите предмет" readonly />
+									<input type="text" name="pmfiledest" size="83"  value="Р’С‹Р±РµСЂРёС‚Рµ РїСЂРµРґРјРµС‚" readonly />
 								</td>
 							</tr><tr>
-								<td>Предмет:</td>
+								<td>РџСЂРµРґРјРµС‚:</td>
 								<td>
 									 <select name="semestr"  onChange="changeSem(this.form)">
 									 <?
-									 	if($_POST['semestr']=="none") echo('<option value="none" selected>Все семестры</option>'); else echo('<option value="none">семестр</option>');
+									 	if($_POST['semestr']=="none") echo('<option value="none" selected>Р’СЃРµ СЃРµРјРµСЃС‚СЂС‹</option>'); else echo('<option value="none">СЃРµРјРµСЃС‚СЂ</option>');
 										if($_POST['semestr']=="1") echo('<option value="1" selected>1</option>'); else echo('<option value="1">1</option>');
 										if($_POST['semestr']=="2") echo('<option value="2" selected>2</option>'); else echo('<option value="2">2</option>');
 										if($_POST['semestr']=="3") echo('<option value="3" selected>3</option>'); else echo('<option value="3">3</option>');
@@ -187,28 +187,28 @@
 									 ?>
 									 </select>
 									 <select name="predmetid" onChange="changeDir(this.form)">
-										<option value="lol" selected>Выберите семестр</option>
-										<option value="0">Другой</option>
+										<option value="lol" selected>Р’С‹Р±РµСЂРёС‚Рµ СЃРµРјРµСЃС‚СЂ</option>
+										<option value="0">Р”СЂСѓРіРѕР№</option>
 										</select>
 								</td>
 							</tr><tr style="display:none" id="tdsemestr1">
-								<td>Семестр:</td>
+								<td>РЎРµРјРµСЃС‚СЂ:</td>
 								<td>
 									<input type="text" size="83" name="predmetsemestr" value=""/>
 								</td>
 							</tr><tr style="display:none" id="tdname1">
-								<td>Название предмета:</td>
+								<td>РќР°Р·РІР°РЅРёРµ РїСЂРµРґРјРµС‚Р°:</td>
 								<td>
 									<input type="text" size="83" name="predmetname"  value=""/>
 								</td>
 							</tr><tr>
-								<td>Файл:</td>
+								<td>Р¤Р°Р№Р»:</td>
 								<td>
 									<input type="file" name="pmfile" />
 								</td>
 							</tr><tr>
 								<td colspan="2">
-									<input type="submit" value="Отправить" class="btn"/>
+									<input type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" class="btn"/>
 								</td>
 							</tr>
 						</form>
