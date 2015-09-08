@@ -1,0 +1,19 @@
+User-agent: *
+Disallow: addnews.php
+Disallow: addnews_result.php
+Disallow: addmaterial.php
+Disallow: addmaterial_result.php
+Disallow: admin.php
+Disallow: addpredmet.php
+Disallow: addpredmet_result.php
+Disallow: delete_news.php
+Disallow: delete_material.php
+Disallow: delete_predmet.php
+Disallow: edit_material.php
+Disallow: edit_material_result.php
+Disallow: edit_predmet.php
+Disallow: edit_predmet.php
+Disallow: edit_news.php
+Disallow: edit_news_result.php
+Disallow: /parts
+Disallow:

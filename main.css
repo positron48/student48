@@ -1,0 +1,57 @@
+td.aktiv_button a.button{color:#45688e}
+a:link{color:#2b587a; text-decoration:none;}
+a:hover{color:#2b587a;}
+a:visited{color:#2b587a; text-decoration:none;}
+a:active{color:#2b587a;}
+a.left_link{color:#45688e; margin-bottom:50px; border-bottom:#b1bdd6 solid 1px; padding-bottom:3px;}
+a.button{color:#dae1e8}
+
+.like{padding-left:5px;}
+body{padding:0px; margin:0px; background-color:#CCC; -moz-transform:rotate(180deg); -webkit-transform:rotate(180deg); -ms-transform:rotate(180deg); filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=1.5); transform: rotate(180deg);}
+h1{color:#2b587a;}
+h1.header_text{color:#c0d0de}
+h2{color:#2b587a;}
+h3{color:#2b587a;}
+td{vertical-align:top}
+.title_header{padding-top:2px;}
+.sort{width:680px;}
+.edit{border:#999 solid 1px; background-color:#c8dae8; text-align:right; padding-right:5px; padding-left:5px; width:75px;}
+.materials{border-top:#999 solid 1px; border-left:#999 solid 1px; width:100%}
+.full{background-color:#dae2e8; border:#b1bdd6 solid 1px; width:75px; padding-right:5px; padding-left:5px;}
+.title_materials{border-bottom:#999 solid 1px; background-color:#dae2e8; color:#2b587a; text-align:center;}
+.td_material{border-right:#999 solid 1px; border-bottom:#999 solid 1px; padding-left:5px; padding-right:5px; vertical-align:middle;}
+.td_material_nopadd{border-right:#999 solid 1px; border-bottom:#999 solid 1px; padding-left:5px; padding-right:5px; vertical-align:middle;}
+.td_material_predmet{border-right:#999 solid 1px; border-bottom:#999 solid 1px; padding-left:5px; padding-right:5px; vertical-align:middle; width:217px;}
+.td_material_filesize{border-right:#999 solid 1px; border-bottom:#999 solid 1px; padding-right:5px; text-align:right; vertical-align:middle;}
+.td_material_downloads{border-right:#999 solid 1px; border-bottom:#999 solid 1px; padding-right:5px; text-align:right; vertical-align:middle;}
+.news{border:#999 solid 1px; margin-top:10px;}
+.general_news{padding:10px;}
+.title_news{font-size:14px; background-color:#dae2e8; color:#2b587a; padding-left:5px; padding-right:5px; float:left; height:17px;}
+.pre_title_news{font-size:12px; text-align:right; background-color:#dae2e8; padding-right:5px; color:#5a86d5; height:17px;}
+
+.msg{border:#999 solid 1px; margin-top:10px; width:690px; overflow:hidden;}
+.general_msg{padding:10px; overflow:hidden;}
+.title_msg{font-size:14px; background-color:#dae2e8; color:#2b587a; padding-left:5px; padding-right:5px; float:left; height:17px; overflow:hidden;}
+.pre_title_msg{font-size:12px; text-align:right; background-color:#dae2e8; padding-right:5px; color:#5a86d5; height:17px; overflow:hidden;}
+
+.vk_auth{background-color:#4e89c0}
+.aktiv_button{width:90px; height:30px; background-color:#fff; text-align:center; padding-top:5px; border:#000 solid 1px; border-bottom-color:#fff;}
+.button{width:90px; height:30px;}
+.bottom{border-bottom:#000 solid 1px; color:#CCC;}
+.top_button{width:90px; height:20px; background-color:#999; text-align:center; padding-top:5px; border:#000 solid 1px;}
+.info_file{border-top:#338 solid 1px; border-left:#338 solid 1px; vertical-align:middle; width:100%;}
+.td_info_file{border-right:#338 solid 1px; border-bottom:#338 solid 1px; padding-right:5px; padding-left:5px; vertical-align:middle;}
+
+#outer{width:100%; background-color:#CCC}
+#inner{width:800px; background-color:#FFF; border:#000 solid 1px; border-top:none; overflow:hidden;}
+#out_main{border-top:#000 solid 1px;}
+#top{height:10px; background-color:#CCC;}
+#header{height:138px; border-bottom:#000 solid 1px; background-image:url('images/header.jpg')}
+#container{background-color:#FFF; float:none; overflow:hidden;}
+#left{width:100px; background-color:#FFF; border-right:#000 solid 1px; padding:5px;}
+#main{background-color:#FFF; padding:5px; width:700px; padding-bottom:15px; overflow:hidden;}
+#footer{background-color:#15a5d6; border-top:#000 solid 1px; height:10px; padding:25px;}
+
+.shpora_themes{border:none; padding-left:3px; width:100%}
+.shp_tr{border-bottom:#b1bdd6 solid 1px;}
+.shp_them_out{border:#b1bdd6 solid 1px; border-bottom:none;}
