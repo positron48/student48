@@ -9,3 +9,6 @@ blockquote{
   padding-left: 20px;
   line-height: 15px;
 }
+.container{
+  min-width: 970px;
+}

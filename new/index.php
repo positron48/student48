@@ -1,63 +1,13 @@
-<!DOCTYPE html>
-<!-- saved from url=(0027)http://localhost/student48/ -->
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<? require($_SERVER['DOCUMENT_ROOT']."/new/include/head_before.php"); ?>
 		<title>ЛГТУ | Главная страница</title>
-		<link rel="SHORTCUT ICON" href="http://student48.ru/images/favicon.ico" type="image/x-icon">
-		<link rel="stylesheet" href="css/bootstrap.css">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+<? require($_SERVER['DOCUMENT_ROOT']."/new/include/head_after.php"); ?>
+<? require($_SERVER['DOCUMENT_ROOT']."/new/include/header.php"); ?>
 
-  <body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="<?='http://'.$_SERVER['SERVER_NAME']?>">Student48.ru</a>
-				</div>
-				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Главная <span class="sr-only">(current)</span></a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/news/">Новости</a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/materials/">Материалы</a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/questbook/">Гостевая</a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/files/">Обменник</a></li>
-
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Еще <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/upload/">Добавить</a></li>
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/shpora/">Шпоры</a></li>
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/rating/">Рейтинг</a></li>
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/contacts/">Контакты</a></li>
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/map/">Карта</a></li>
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/links/">Ссылки</a></li>
-								<li><a href="http://vk.com/student48ru">ВКонтакте</a></li>
-							</ul>
-						</li>
-					</ul>
-					
-					<ul class="nav navbar-nav navbar-right">
-						<form class="navbar-form navbar-left" role="search">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Поиск материалов">
-							</div>
-							<button type="submit" class="btn btn-default">
-								<center><span class="glyphicon glyphicon-search"></span></center>
-							</button>
-						</form>
-					</ul>
-				</div>
-			</div>
-		</nav>
-		
-    <div class="container">
 			<blockquote>
 					<p> Хорошее воспитание - это умение скрыть, что вы очень высокого мнения о себе и очень невысокого о своем собеседнике. </p> <small> Марк Твен </small>    	
 			</blockquote>
       <div class="row">                           
-				<div class="col-sm-4">
+				<div class="col-xs-4">
 					<h2>С новым учебным годом!</h2>
 					<h5>Добавлено:2012-09-02 23:27:24  Просмотров:1369</h5>
 					<br>
@@ -67,7 +17,7 @@
 				  <p><a class="btn btn-info" href="http://localhost/student48/news.php?id=31">Подробнее »</a></p>
         </div>
     								
-				<div class="col-sm-4">
+				<div class="col-xs-4">
 					<h2>Пасхалка</h2>
 					<h5>Добавлено:2012-08-29 04:00:10  Просмотров:1615</h5>
 					<br>
@@ -76,7 +26,7 @@
 				  <p><a class="btn btn-info" href="http://localhost/student48/news.php?id=30">Подробнее »</a></p>
         </div>
     								
-				<div class="col-sm-4">
+				<div class="col-xs-4">
 					<h2>Идея</h2>
           <h5>Добавлено:2012-05-11 22:28:56  Просмотров:1416</h5>
           <br>
@@ -204,20 +154,4 @@
 			</tbody>
 		</table>                
 
-		<div id="footer">
-			<hr>
-	
-					<center>
-							<footer>
-									<p>© Lipetsk 2010 - 2015</p>
-							</footer>
-					</center>
-
-
-				<script src="js/jquery.js"></script>
-				<script src="js/bootstrap.js"></script>
-
-			</div>    
-		</div>
-	</body>
-</html>
+<? require($_SERVER['DOCUMENT_ROOT']."/new/include/footer.php"); ?>
