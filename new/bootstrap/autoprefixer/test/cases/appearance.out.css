@@ -1,9 +1,0 @@
-a {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-}
-
-b {
-    appearance: auto;
-}

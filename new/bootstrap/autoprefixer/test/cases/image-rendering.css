@@ -1,7 +1,0 @@
-img {
-    image-rendering: crisp-edges;
-}
-
-img.other {
-    image-rendering: pixelated;
-}

@@ -1,6 +1,0 @@
-#запрет листинга каталогов
-Options -Indexes
-
-# Выставить кодировку по умолчанию стандартными средствами apache
-AddDefaultCharset utf8
-php_value default_charset utf8
