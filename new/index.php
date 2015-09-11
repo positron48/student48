@@ -4,43 +4,34 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/new/include/header.php"); ?>
 
 			<blockquote>
-					<p> Хорошее воспитание - это умение скрыть, что вы очень высокого мнения о себе и очень невысокого о своем собеседнике. </p> <small> Марк Твен </small>    	
+			<?
+				$rowCount = $dbWorker->query('SELECT COUNT(*) FROM quote;')->fetch();
+        $dbQuote = $dbWorker->query('SELECT * FROM quote LIMIT '.rand(0, $rowCount[0]).', 1');
+        $quoteData = $dbQuote->fetch();
+        printf('<p> %s </p> <small> %s </small>',
+          $quoteData['text'],$quoteData['author']);
+			?>
 			</blockquote>
-      <div class="row">                           
+      <div class="row">
+			<?
+			foreach($dbWorker->query("SELECT * FROM news ORDER BY id DESC LIMIT 3") as $news){
+			?>
 				<div class="col-xs-4">
-					<h2>С новым учебным годом!</h2>
-					<h5>Добавлено:2012-09-02 23:27:24  Просмотров:1369</h5>
+					<h2><?=$news['title_news']?></h2>
+					<h5>Добавлено:<?=$news['datecreate']?>  Просмотров:<?=$news['views']?></h5>
 					<br>
-					<p>Поздравляю всех с новым учебным годом! Пусть он будет халявным!</p>
-					<p>На сайте новое оформление, все страницы были переделаны.</p>
-					<p>Список изменений:</p>
-				  <p><a class="btn btn-info" href="http://localhost/student48/news.php?id=31">Подробнее »</a></p>
+					<?=$news['introtext']?>
+				  <p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее »</a></p>
         </div>
-    								
-				<div class="col-xs-4">
-					<h2>Пасхалка</h2>
-					<h5>Добавлено:2012-08-29 04:00:10  Просмотров:1615</h5>
-					<br>
-					<p>Грядет обновление.. В первый день учебного года (как известно, 3 сентября) все сами увидите.</p>
-					<p>А пока можете посмотреть на <a href="http://ru.wikipedia.org/wiki/%D0%9F%D0%B0%D1%81%D1%85%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5_%D1%8F%D0%B9%D1%86%D0%BE_(%D0%B2%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5)">пасхалку</a>, которая пришла на сайт вместе с этим дизайном около года назад...</p>
-				  <p><a class="btn btn-info" href="http://localhost/student48/news.php?id=30">Подробнее »</a></p>
-        </div>
-    								
-				<div class="col-xs-4">
-					<h2>Идея</h2>
-          <h5>Добавлено:2012-05-11 22:28:56  Просмотров:1416</h5>
-          <br>
-					<p>Пришла тут в голову одна мысль, чтобы пополнять сайт материалами более лучше с помощью самих пользователей, а не только меня.</p>
-          <p>Так что готовьтесь, ребятки) Сама по себе идея очень простая, но весьма действенная.</p>
-          <p>Как будет немного времени обязательно сделаю тестовый запуск и посмотрю на результаты. Если все получится, нововведение останется)</p>
-				  <p><a class="btn btn-info" href="http://localhost/student48/news.php?id=29">Подробнее »</a></p>
-        </div>
-	    </div>
-      <br><h2>Последние добавления:</h2>
+    	<?
+			}
+			?>
+			
+			<br><h2>Последние добавления:</h2>
 			<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-					<th><i class="icon-time"></i></th>
+					<th><span class="glyphicon glyphicon-time"></span></th>
 					<th class="td_material_predmet">Предмет</th>
 					<th>Описание</th>
 					<th>Размер</th>
@@ -49,108 +40,18 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=6&predmet=none">6</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=tpr" "="">Теория принятия решений</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=697" "="">Программа расчета симплекс таблиц (двойственный и обычный)</a></td>
-					<td class="td_material_filesize">7 Кб</td>
-					<td class="td_material_filesize">99</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=697"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=8&predmet=none">8</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=toau" "="">ТОАУ</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=696" "="">Лабораторная работа №1</a></td>
-					<td class="td_material_filesize">843 Кб</td>
-					<td class="td_material_filesize">258</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=696"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=8&predmet=none">8</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=networks" "="">Сетевые технологии</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=695" "="">Лабораторная работа №1 (2)</a></td>
-					<td class="td_material_filesize">1658 Кб</td>
-					<td class="td_material_filesize">307</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=695"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=8&predmet=none">8</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=networks" "="">Сетевые технологии</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=694" "="">Лабораторная работа №0 (1)</a></td>
-					<td class="td_material_filesize">116 Кб</td>
-					<td class="td_material_filesize">269</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=694"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=7&predmet=none">7</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=bd" "="">Базы данных</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=692" "="">Курсовая Oracle</a></td>
-					<td class="td_material_filesize">2267 Кб</td>
-					<td class="td_material_filesize">407</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=692"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=8&predmet=none">8</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=bzhd" "="">БЖД</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=691" "="">Лабораторные работы</a></td>
-					<td class="td_material_filesize">9175 Кб</td>
-					<td class="td_material_filesize">842</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=691"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=arch_system" "="">Архитектура вычислительных систем</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=690" "="">Лаборатораная работа №2 8 вариант</a></td>
-					<td class="td_material_filesize">53 Кб</td>
-					<td class="td_material_filesize">441</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=690"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=arch_system" "="">Архитектура вычислительных систем</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=689" "="">Лаборатораная работа №1 8 вариант</a></td>
-					<td class="td_material_filesize">10 Кб</td>
-					<td class="td_material_filesize">466</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=689"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=4&predmet=none">4</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=theory_probability" "="">Теория вероятности</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=688" "="">Теория и разбор типовых задач</a></td>
-					<td class="td_material_filesize">1701 Кб</td>
-					<td class="td_material_filesize">273</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=688"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=tsp" "="">Теория случайных процессов</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=687" "="">Лаборатораная работа №3 8 вариант</a></td>
-					<td class="td_material_filesize">39 Кб</td>
-					<td class="td_material_filesize">370</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=687"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=tsp" "="">Теория случайных процессов</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=685" "="">Лаборатораная работа №5 8 вариант</a></td>
-					<td class="td_material_filesize">97 Кб</td>
-					<td class="td_material_filesize">338</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=685"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=tsp" "="">Теория случайных процессов</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=686" "="">Лаборатораная работа №4 8 вариант</a></td>
-					<td class="td_material_filesize">189 Кб</td>
-					<td class="td_material_filesize">173</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=686"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=4&predmet=none">4</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=theory_probability" "="">Теория вероятности</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=684" "="">Лекции по теории вероятности и математической статистике Часть 1</a></td>
-					<td class="td_material_filesize">7508 Кб</td>
-					<td class="td_material_filesize">432</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=684"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=4&predmet=none">4</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=theory_probability" "="">Теория вероятности</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=683" "="">Лекции по теории вероятности и математической статистике Часть 2</a></td>
-					<td class="td_material_filesize">5097 Кб</td>
-					<td class="td_material_filesize">402</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=683"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=os" "="">Операционные системы</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=682" "="">Лаборатораная работа №1 8 вариант</a></td>
-					<td class="td_material_filesize">10 Кб</td>
-					<td class="td_material_filesize">367</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=682"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=os" "="">Операционные системы</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=681" "="">Лаборатораная №2</a></td>
-					<td class="td_material_filesize">30 Кб</td>
-					<td class="td_material_filesize">349</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=681"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=os" "="">Операционные системы</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=680" "="">Лабораторная №3 8 вариант</a></td>
-					<td class="td_material_filesize">18 Кб</td>
-					<td class="td_material_filesize">171</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=680"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=electrotechnik" "="">Электротехника</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=679" "="">Лабораторная работа №3</a></td>
-					<td class="td_material_filesize">168 Кб</td>
-					<td class="td_material_filesize">557</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=679"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=electrotechnik" "="">Электротехника</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=678" "="">Лабораторная работа №2</a></td>
-					<td class="td_material_filesize">949 Кб</td>
-					<td class="td_material_filesize">555</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=678"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td></tr><tr><td class="td_material"><a href="http://student48.ru/materials.php?semestr=5&predmet=none">5</a></td>
-					<td class="td_material_predmet"><a href="http://student48.ru/materials.php?semestr=none&predmet=tsp" "="">Теория случайных процессов</a></td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=677" "="">Задачки для зачета</a></td>
-					<td class="td_material_filesize">2144 Кб</td>
-					<td class="td_material_filesize">508</td>
-					<td class="td_material"><a href="http://localhost/student48/downloads.php?id=677"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td>
+			<? foreach($dbWorker->query("
+					SELECT M.id, M.title_material, M.filesize, M.downloads, P.title_predmet_english, P.title_predmet, P.semestr
+					FROM materials M INNER JOIN predmets P ON M.predmetid=P.id
+					ORDER BY M.dateadd DESC LIMIT 20") as $material){ ?>				
+				<tr><td class="td_material"><a href="http://student48.ru/materials/<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
+					<td class="td_material_predmet"><a href="http://student48.ru/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></td>
+					<td class="td_material"><a href="http://localhost/student48/downloads/<?=$material['id']?>/"><?=$material['title_material']?></a></td>
+					<td class="td_material_filesize"><?=$material['filesize']?> Кб</td>
+					<td class="td_material_filesize"><?=$material['downloads']?></td>
+					<td class="td_material"><a href="http://localhost/student48/downloads/<?=$material['id']?>/"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td>
 				</tr>
+			<?}?>
 			</tbody>
 		</table>                
 

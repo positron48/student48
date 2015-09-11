@@ -1,16 +1,26 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="<?='http://'.$_SERVER['SERVER_NAME']?>">Student48.ru</a>
+					<a class="navbar-brand" href="<?='http://'.$_SERVER['SERVER_NAME']?>"><b>student48.ru</b></a>
 				</div>
 				
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Главная <span class="sr-only">(current)</span></a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/news/">Новости</a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/materials/">Материалы</a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/questbook/">Гостевая</a></li>
-						<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/files/">Обменник</a></li>
+						<li <?=($_SERVER['SCRIPT_NAME']==='/index.php' || $_SERVER['SCRIPT_NAME']==='/new/index.php'?'class="active"':'')?>>
+							<a href="<?='http://'.$_SERVER['SERVER_NAME']?>/">Главная <span class="sr-only">(current)</span></a>
+						</li>
+						<li <?=($_SERVER['REQUEST_URI']==='/news/'?'class="active"':'')?>>
+							<a href="<?='http://'.$_SERVER['SERVER_NAME']?>/news/">Новости</a>
+						</li>
+						<li <?=($_SERVER['REQUEST_URI']==='/materials/'?'class="active"':'')?>>
+							<a href="<?='http://'.$_SERVER['SERVER_NAME']?>/materials/">Материалы</a>
+						</li>
+						<li <?=($_SERVER['REQUEST_URI']==='/questbook/'?'class="active"':'')?>>
+							<a href="<?='http://'.$_SERVER['SERVER_NAME']?>/questbook/">Гостевая</a>
+						</li>
+						<li <?=($_SERVER['REQUEST_URI']==='/files/'?'class="active"':'')?>>
+							<a href="<?='http://'.$_SERVER['SERVER_NAME']?>/files/">Обменник</a>
+						</li>
 
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Еще <span class="caret"></span></a>

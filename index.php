@@ -75,7 +75,15 @@
 											<td class="td_material_filesize">%s Кб</td>
 											<td class="td_material_filesize">%s</td>
 											<td class="td_material"><a href="downloads.php?id=%s"><i class="icon-download-alt"></i></a></td>',
-											$pagedata1['semestr'],$pagedata1['semestr'],$pagedata1['title_predmet_english'],$pagedata1['title_predmet'],$pagedata2['id'],$pagedata1['title_material'],$pagedata1['filesize'],$pagedata1['downloads'],$pagedata2['id']);
+											$pagedata1['semestr'],
+                      $pagedata1['semestr'],
+                      $pagedata1['title_predmet_english'],
+                      $pagedata1['title_predmet'],
+                      $pagedata2['id'],
+                      $pagedata1['title_material'],
+                      $pagedata1['filesize'],
+                      $pagedata1['downloads'],
+                      $pagedata2['id']);
 							}
 							echo('</table>');
 						}
