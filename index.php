@@ -45,7 +45,7 @@
 						P.title_predmet_english, P.title_predmet, P.semestr
 					FROM materials M INNER JOIN predmets P ON M.predmetid=P.id
 					ORDER BY M.dateadd DESC LIMIT {$countMaterialsOnStartPage}") as $material){ ?>				
-				<tr><td class="td_material"><a href="http://student48.ru/materials/<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
+				<tr><td class="td_material"><a href="http://student48.ru/materials/semestr<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
 					<td class="td_material_predmet"><a href="http://student48.ru/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></td>
 					<td class="td_material"><a href="http://localhost/student48/downloads/<?=$material['id']?>/"><?=$material['title_material']?></a></td>
 					<td class="td_material_filesize"><?=$material['filesize']?> Кб</td>
