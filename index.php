@@ -3,31 +3,31 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
 
-			<blockquote>
-			<?
-				$rowCount = $dbWorker->query('SELECT COUNT(*) FROM quote;')->fetch()[0];
-        $dbQuote = $dbWorker->query('SELECT * FROM quote LIMIT '.rand(0, $rowCount).', 1');
-        $quoteData = $dbQuote->fetch();
-        echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
-			?>
-			</blockquote>
-      <div class="row">
-			<?
-			foreach($dbWorker->query("SELECT * FROM news ORDER BY id DESC LIMIT 3") as $news){
-			?>
-				<div class="col-xs-4">
-					<h2><?=$news['title_news']?></h2>
-					<h5>Добавлено:<?=$news['datecreate']?>  Просмотров:<?=$news['views']?></h5>
-					<br>
-					<?=$news['introtext']?>
-				  <p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее »</a></p>
-        </div>
+	<blockquote>
+	<?
+		$rowCount = $dbWorker->query('SELECT COUNT(*) FROM quote;')->fetch()[0];
+		$dbQuote = $dbWorker->query('SELECT * FROM quote LIMIT '.rand(0, $rowCount).', 1');
+		$quoteData = $dbQuote->fetch();
+		echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
+	?>
+	</blockquote>
+    <div class="row">
+		<?
+		foreach($dbWorker->query("SELECT * FROM news ORDER BY id DESC LIMIT 3") as $news){
+		?>
+		<div class="col-xs-4">
+			<h2><?=$news['title_news']?></h2>
+			<h5>Добавлено:<?=$news['datecreate']?>  Просмотров:<?=$news['views']?></h5>
+			<br>
+			<?=$news['introtext']?>
+			<p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее »</a></p>
+		</div>
     	<?
-			}
-			?>
-			
-			<br><h2>Последние добавления:</h2>
-			<table class="table table-striped table-bordered table-hover">
+		}
+		?>
+		
+		<br><h2>Последние добавления:</h2>
+		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
 					<th><span class="glyphicon glyphicon-time"></span></th>
