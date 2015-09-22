@@ -12,3 +12,7 @@ blockquote{
 .container{
   min-width: 970px;
 }
+
+#selectPredmet{
+    width: 450px;
+}

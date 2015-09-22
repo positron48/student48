@@ -7,6 +7,9 @@
 				</center>
 				<script src="http://<?=$_SERVER['SERVER_NAME']?>/js/jquery.js"></script>
 				<script src="http://<?=$_SERVER['SERVER_NAME']?>/js/bootstrap.js"></script>
+				<?if($_SERVER['SCRIPT_NAME'] == '/materials/index.php') {?>
+					<script src="http://<?=$_SERVER['SERVER_NAME']?>/js/materials.js"></script>
+				<?}?>
 			</div>    
 		</div>
 	</body>

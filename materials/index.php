@@ -19,8 +19,9 @@
 	$dbPredmets=$dbWorker->query("SELECT * FROM predmets ORDER BY title_predmet ASC");
 
 	while($predmetRes = $dbPredmets->fetch()){
-		$arSemestrPredmets[]=$predmetRes;
+		$arSemestrPredmets[(int)$predmetRes['semestr']][]= array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
 		$arEnglishToRussianPredmet[$predmetRes['title_predmet_english']]=$predmetRes['title_predmet'];
+		$arPredmets[$predmetRes['title_predmet_english']] = array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
 	}
 
 	//собираем текст запроса для выбранных данных
@@ -49,15 +50,6 @@
 	while($material = $dbMaterials->fetch()){
 		$arMaterials[$material['id']]=$material;
 	}
-	
-	
-	/*$dbdata=mysql_query($query,$dbconnect);
-	$dbdata1=mysql_query($query1,$dbconnect);
-	$dbdata2=mysql_query("SELECT DISTINCT title_predmet_english, title_predmet FROM predmets ORDER BY title_predmet ASC");
-	$dbdata3=mysql_query("SELECT title_predmet FROM predmets WHERE title_predmet_english='$predmet'");
-	$dbdata4=mysql_query("SELECT * FROM predmets ORDER BY semestr, title_predmet");
-	$dbdata5=mysql_query("SELECT DISTINCT title_predmet_english, title_predmet FROM predmets ORDER BY title_predmet");
-	$pagedata3=mysql_fetch_array($dbdata3);*/
 ?>
 	<title>
 		ЛГТУ|Материалы
@@ -67,6 +59,10 @@
 
 	<meta name="description" content="Здесь вы можете скачать лабораторные, методички, графические работы, пособия, курсовые, рефераты по большому количеству дисциплин: дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия и другие">
 	<meta name="Keywords" content="скачать материалы, лабораторные, методички, графические работы, пособия, курсовые, рефераты, дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия">
+	<script>
+		predmetSemestr = <? echo json_encode($arSemestrPredmets);?>;
+		predmets = <? echo json_encode(array_values($arPredmets));?>;
+	</script>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
 	<div class="alert alert-info">
@@ -76,23 +72,24 @@
 		</center>
 	</div>
    	<h1>Материалы:</h1>
-	<form action="materials.php" method="get" id="material" class="form-inline">
-		<select name="semestr" id="semestr" onChange="changeSem(this.form)" class="form-control">');
+	<form id="material" class="form-inline">
+		<select name="semestr" id="semestr" class="form-control">');
 			<option value="none" selected>Все семестры</option>
-			<?for($i=0;$i<10;$i++){?>
+			<?for($i=1;$i<=10;$i++){?>
 				<option value="<?=$i?>" <?=$semestr==$i?'selected':''?>><?=$i?></option>
 			<?}?>
 		</select>    
-		<select name="predmet" onChange="submit();" class="form-control">');
+		<select id="selectPredmet" name="predmet" class="form-control" predmet="<?=$predmet?>">
 			<option value="none" selected>Все предметы</option>
 		</select>
-        <input type="submit" class="btn btn-primary" value="Выбрать">
+        <a id="selectButton" class="btn btn-primary">Выбрать</a>
     </form>
 	<?if($countMaterials>0){?>
 		<nav>
 			<center>
 				<ul class='pagination'>
-				<?for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){?>
+				<?if($countMaterials >= $countMaterialsOnPage)
+					for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){?>
 					<li <?=$page==$i?"class='active'":''?>>
 					<a href='http://<?=$_SERVER['SERVER_NAME']?>/materials/<?=$predmet!=null?$predmet.'/':''?>
 						<?=$semestr!=0?'semestr'.$semestr.'/':''?>
@@ -128,7 +125,8 @@
 		<nav>
 		<center>
 			<ul class='pagination'>
-			<?for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){?>
+			<?if($countMaterials >= $countMaterialsOnPage)
+				for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){?>
 				<li <?=$page==$i?"class='active'":''?>>
 				<a href='http://<?=$_SERVER['SERVER_NAME']?>/materials/<?=$predmet!=null?$predmet.'/':''?>
 					<?=$semestr!=0?'semestr'.$semestr.'/':''?>
@@ -140,6 +138,4 @@
 	<?}else{?>
  		<p><h4>В данном разделе материалов не обнаружено</h4>
 	<?}?>
-
-    
 <? require($_SERVER['DOCUMENT_ROOT']."/include/footer.php"); ?>
