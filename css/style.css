@@ -16,3 +16,7 @@ blockquote{
 #selectPredmet{
     width: 450px;
 }
+
+form table input{
+    margin-top:20px;
+}
