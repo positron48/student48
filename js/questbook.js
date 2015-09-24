@@ -4,8 +4,7 @@ $(document).ready(function(){
         success:       showResponse,  
         url:           '/ajax/questbook.php',
         type:          'POST',
-        dataType:      'json',
-        clearForm:     true 
+        dataType:      'json'
     }; 
     $('#addMessageForm').ajaxForm(options);
     
@@ -25,8 +24,11 @@ $(document).ready(function(){
         return true;
     }
  
-    function showResponse(responseText, statusText, xhr, $form)  { 
-        alert('status: ' + statusText + '\n\nresponseText: \n' + responseText + 
-            '\n\nThe output div should have already been updated with the responseText.'); 
+    function showResponse(responseText, statusText, xhr, $form)  {
+        if (responseText==true) {
+            location.reload();
+        }else{
+            alert('При добавлении записи произошла ошибка, попробуйте отправить сообщение еще раз.');
+        }
     } 
 });
