@@ -20,3 +20,8 @@ blockquote{
 form table input{
     margin-top:20px;
 }
+
+#map_canvas {
+    height: 80%;
+    width: 100%;
+}
