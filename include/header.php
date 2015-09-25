@@ -28,7 +28,6 @@
 								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/upload/">Добавить</a></li>
 								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/shpora/">Шпоры</a></li>
 								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/rating/">Рейтинг</a></li>
-								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/contacts/">Контакты</a></li>
 								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/map/">Карта</a></li>
 								<li><a href="<?='http://'.$_SERVER['SERVER_NAME']?>/links/">Ссылки</a></li>
 								<li><a href="http://vk.com/student48ru">ВКонтакте</a></li>
@@ -42,7 +41,7 @@
 								<input type="text" class="form-control" placeholder="Поиск материалов">
 							</div>
 							<button type="submit" class="btn btn-default">
-								<center><span class="glyphicon glyphicon-search"></span></center>
+								<center><span class="glyphicon glyphicon-search" style="height: 20px;"></span></center>
 							</button>
 						</form>
 					</ul>
