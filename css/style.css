@@ -17,10 +17,6 @@ blockquote{
     width: 450px;
 }
 
-form table input{
-    margin-left:10px;
-}
-
 #map_canvas {
     height: 80%;
     width: 100%;
