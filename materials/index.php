@@ -68,7 +68,7 @@
 	<div class="alert alert-info">
 		<center>
 			<b>Внимание!</b> Если вы хотите помочь развитию сайта, можете загрузить свои материалы, нажав на кнопку: 
-			<a href = "upload.php" class="btn btn-info">Добавить</a>
+			<a href = "/upload/" class="btn btn-info">Добавить</a>
 		</center>
 	</div>
    	<h1>Материалы:</h1>

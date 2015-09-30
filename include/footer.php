@@ -7,14 +7,14 @@
 				</center>
 
 				<?if($_SERVER['SCRIPT_NAME'] == '/materials/index.php') {?>
-					<script src="http://<?=$_SERVER['SERVER_NAME']?>/js/materials.js"></script>
+					<script src="/js/materials.js"></script>
 				<?}?>
 				<?if($_SERVER['SCRIPT_NAME'] == '/questbook/index.php') {?>
-					<script src="http://<?=$_SERVER['SERVER_NAME']?>/js/questbook.js"></script>
+					<script src="/js/questbook.js"></script>
 				<?}?>
 				<?if($_SERVER['SCRIPT_NAME'] == '/map.php') {?>
 					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-					<script src="http://<?=$_SERVER['SERVER_NAME']?>/js/map.js"></script>
+					<script src="/js/map.js"></script>
 				<?}?>
 			</div>    
 		</div>
