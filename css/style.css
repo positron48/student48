@@ -1,0 +1,32 @@
+body{
+  margin-top: 60px;
+}
+
+blockquote{
+  margin: 0px;
+  margin-top: 10px;
+  padding: 0px;
+  padding-left: 20px;
+  line-height: 15px;
+}
+.container{
+  min-width: 970px;
+}
+
+#selectPredmet{
+    width: 450px;
+}
+
+#map_canvas {
+    height: 80%;
+    width: 100%;
+}
+#progress{
+    min-width: 100px;
+    height: 18px;
+    background-color: #a94442;
+}
+.bar {
+    height: 18px;
+    background: green;
+}

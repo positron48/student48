@@ -1,0 +1,6 @@
+RewriteEngine on
+      RewriteRule ^downloads/(\d+)/$ downloads.php?id=$1 [L]
+      RewriteRule ^links/$ links.php [L]
+      RewriteRule ^map/$ map.php [L]
+      RewriteRule ^rating/$ rating.php [L]
+      RewriteRule (.*) $1

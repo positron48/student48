@@ -1,0 +1,4 @@
+RewriteEngine on
+      RewriteRule ^theme-(\d+)/(\d+)/$ msg.php?theme_id=$1&id=$2 [L]
+      RewriteRule ^theme-(\d+)/$ themes.php?id=$1 [L]
+      RewriteRule (.*) $1
