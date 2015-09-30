@@ -21,3 +21,12 @@ blockquote{
     height: 80%;
     width: 100%;
 }
+#progress{
+    min-width: 100px;
+    height: 18px;
+    background-color: #a94442;
+}
+.bar {
+    height: 18px;
+    background: green;
+}
