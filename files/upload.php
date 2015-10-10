@@ -7,16 +7,16 @@ $error = '';
 $max_file_size = 268435456;//256 Mb
 $max_files_count = 8;
 $count_files = 1;
-$upload_dir = dirname(@$_SERVER['SCRIPT_FILENAME']).'/files/';
+$upload_dir = dirname(@$_SERVER['SCRIPT_FILENAME']).'/storage/';
 
 
 post();
 
+//–æ–±—Ä–∞–±–æ —Ç–∫–∞ –∑–∞–≥—Ä—É–∑–∫–∏ —Ñ–∞–ª–∞/—Ñ–∞–ª–æ–≤
 function post($print_response = true) {
     global $count_files;
 
     $upload = @$_FILES['files'];
-    // Parse the Content-Disposition header, if available:
     $content_disposition_header = @$_SERVER['HTTP_CONTENT_DISPOSITION'];
     $file_name = $content_disposition_header ?
         rawurldecode(preg_replace(
@@ -24,49 +24,34 @@ function post($print_response = true) {
             '',
             $content_disposition_header
         )) : null;
-    // Parse the Content-Range header, which has the following form:
-    // Content-Range: bytes 0-524287/2000000
     $content_range_header = @$_SERVER['HTTP_CONTENT_RANGE'];
     $content_range = $content_range_header ?
         preg_split('/[^0-9]+/', $content_range_header) : null;
     $size =  $content_range ? $content_range[3] : null;
     $files = array();
     if ($upload) {
-        if (is_array($upload['tmp_name'])) {
-            $count_files = count($upload['tmp_name']);
-            // param_name is an array identifier like "files[]",
-            // $upload is a multi-dimensional array:
-            foreach ($upload['tmp_name'] as $index => $value) {
-                $files[] = handle_file_upload(
-                    $upload['tmp_name'][$index],
-                    $file_name ? $file_name : $upload['name'][$index],
-                    $size ? $size : $upload['size'][$index],
-                    $upload['type'][$index],
-                    $upload['error'][$index],
-                    $content_range
-                );
-            }
-        } else {
-            // param_name is a single object identifier like "file",
-            // $upload is a one-dimensional array:
+        $count_files = count($upload['tmp_name']);
+        foreach ($upload['tmp_name'] as $index => $value) {
             $files[] = handle_file_upload(
-                isset($upload['tmp_name']) ? $upload['tmp_name'] : null,
-                $file_name ? $file_name : (isset($upload['name']) ?$upload['name'] : null),
-                $size ? $size : (isset($upload['size']) ? $upload['size'] : @$_SERVER['CONTENT_LENGTH']),
-                isset($upload['type']) ? $upload['type'] : @$_SERVER['CONTENT_TYPE'],
-                isset($upload['error']) ? $upload['error'] : null,
+                $upload['tmp_name'][$index],
+                $file_name ? $file_name : $upload['name'][$index],
+                $size ? $size : $upload['size'][$index],
+                $upload['type'][$index],
+                $upload['error'][$index],
                 $content_range
             );
         }
     }
     generate_response(array('files' => $files), $print_response);
 }
+//–æ–±—Ä–∞–±–æ—Ç–∫–∞ –∫–∞–∂–¥–æ–≥–æ —Ñ–∞–π–ª–∞
 function handle_file_upload($uploaded_file, $name, $size, $type, $local_error, $content_range = null) {
     global $error;
+    global $count_files;
     $error.=$local_error;
 
     $file = new \stdClass();
-    $file->name = get_file_name($name);
+    $file->name = get_file_name($name).'count_'.$count_files;
     $file->size = (int)$size;
     $file->type = $type;
     if (validate($uploaded_file, $file)) {
@@ -78,7 +63,6 @@ function handle_file_upload($uploaded_file, $name, $size, $type, $local_error, $
         $append_file = $content_range && is_file($file_path) &&
             $file->size > filesize($file_path);
         if ($uploaded_file && is_uploaded_file($uploaded_file)) {
-            // multipart/formdata uploads (POST method uploads)
             if ($append_file) {
                 file_put_contents(
                     $file_path,
@@ -89,7 +73,6 @@ function handle_file_upload($uploaded_file, $name, $size, $type, $local_error, $
                 move_uploaded_file($uploaded_file, $file_path);
             }
         } else {
-            // Non-multipart uploads (PUT method support)
             file_put_contents(
                 $file_path,
                 fopen('php://input', 'r'),
@@ -110,16 +93,17 @@ function handle_file_upload($uploaded_file, $name, $size, $type, $local_error, $
     }
     return $file;
 }
-//„ÂÌÂ‡ˆËˇ ÛÌËÍ‡Î¸ÌÓ„Ó md5 ı˝¯‡ Ù‡ÈÎ‡
+//–≥–µ–Ω–µ—Ä–∞—Ü–∏—è —É–Ω–∏–∫–∞–ª—å–Ω–æ–≥–æ md5 —Ö—ç—à–∞ —Ñ–∞–π–ª–∞
 function get_file_name($_name) {
-    $name = autoencode($_name);
-    $name = latinstring($name);
+    //todo: –ø—Ä–æ–≤–µ—Ä–∫–∞ –Ω–∞ —É–Ω–∏–∫–∞–ª—å–Ω–æ—Å—Ç—å –∏–º–µ–Ω–∏ —Ñ–∞–π–ª–∞
+    $name = $_name;
+    $name = translit($name);
     $name = preg_replace("/[^a-zA-Z0-9\-_\.]/","",$name);
     if($name == '')
         $name = md5($_name);
     return $name;
 }
-//ÔÓ‚ÂÍ‡ Ù‡ÈÎ‡ Ì‡ ÒÓÓÚ‚ÂÚÒÚ‚ËÂ ÚÂ·Ó‚‡ÌËˇÏ
+//–ø—Ä–æ–≤–µ—Ä–∫–∞ —Ñ–∞–π–ª–∞ –Ω–∞ —Å–æ–æ—Ç–≤–µ—Ç—Å—Ç–≤–∏–µ —Ç—Ä–µ–±–æ–≤–∞–Ω–∏—è–º
 function validate($uploaded_file, $file) {
     global $error;
     global $max_file_size;
@@ -145,16 +129,13 @@ function validate($uploaded_file, $file) {
         return false;
     }
 
-    if (is_int($max_files_count) &&
-        ($count_files >= $max_files_count) &&
-        // Ignore additional chunks of existing files:
-        !is_file(get_upload_path($file->name))) {
+    if (($count_files >= $max_files_count)) {
         $error = 'max_number_of_files';
         return false;
     }
     return true;
 }
-//ÔÓÎÛ˜‡ÂÚ ËÁ ÍÓÌÙË„‡ ÔıÔ Ï‡ÍÒËÏ‡Î¸Ì˚È ‡ÁÏÂ Ù‡ÈÎ‡ ‰Îˇ Á‡„ÛÁÍË
+//–ø–æ–ª—É—á–∞–µ—Ç –∏–∑ –∫–æ–Ω—Ñ–∏–≥–∞ –ø—Ö–ø –º–∞–∫—Å–∏–º–∞–ª—å–Ω—ã–π —Ä–∞–∑–º–µ—Ä —Ñ–∞–π–ª–∞ –¥–ª—è –∑–∞–≥—Ä—É–∑–∫–∏
 function get_config_bytes($val) {
     $val = trim($val);
     $last = strtolower($val[strlen($val)-1]);
@@ -170,21 +151,21 @@ function get_config_bytes($val) {
     }
     return $val;
 }
-//ÔÓÎÛ˜‡ÂÚ ËÏˇ Ô‡ÔÍË
+//–ø–æ–ª—É—á–∞–µ—Ç –∏–º—è –ø–∞–ø–∫–∏
 function get_upload_path($file_name = null) {
     global $upload_dir;
     $file_name = $file_name ? $file_name : '';
     return $upload_dir.$file_name;
 }
-//„ÂÌÂ‡ˆËˇ ÓÚ‚ÂÚ‡
+//–≥–µ–Ω–µ—Ä–∞—Ü–∏—è –æ—Ç–≤–µ—Ç–∞
 function generate_response($content, $print_response = true) {
     $redirect_allow_target = '/^'.preg_quote(
-        parse_url(@$_SERVER['HTTP_REFERER'], PHP_URL_SCHEME)
-        .'://'
-        .parse_url(@$_SERVER['HTTP_REFERER'], PHP_URL_HOST)
-        .'/', // Trailing slash to not match subdomains by mistake
-        '/' // preg_quote delimiter param
-    ).'/';
+            parse_url(@$_SERVER['HTTP_REFERER'], PHP_URL_SCHEME)
+            .'://'
+            .parse_url(@$_SERVER['HTTP_REFERER'], PHP_URL_HOST)
+            .'/', // Trailing slash to not match subdomains by mistake
+            '/' // preg_quote delimiter param
+        ).'/';
 
     if ($print_response) {
         $json = json_encode($content);
@@ -217,61 +198,14 @@ function generate_response($content, $print_response = true) {
     }
     return $content;
 }
-// ÙÛÌÍˆËˇ ÔÂ‚Ó‰‡ ÚÂÍÒÚ‡ Ò ÍËËÎÎËˆ˚ ‚ Ú‡ÒÍËÔÚ
-function latinstring($st)
+// —Ñ—É–Ω–∫—Ü–∏—è –ø—Ä–µ–≤–æ–¥–∞ —Ç–µ–∫—Å—Ç–∞ —Å –∫–∏—Ä–∏–ª–ª–∏—Ü—ã –≤ —Ç—Ä–∞—Å–∫—Ä–∏–ø—Ç
+function translit($st)
 {
-    // —Ì‡˜‡Î‡ Á‡ÏÂÌˇÂÏ "Ó‰ÌÓÒËÏ‚ÓÎ¸Ì˚Â" ÙÓÌÂÏ˚.
-    $st=strtr($st,"‡·‚„‰Â∏ÁËÈÍÎÏÌÓÔÒÚÛÙı˙˚˝",
-        "abvgdeeziyklmnoprstufh'ie");
-    $st=strtr($st,"¿¡¬√ƒ≈®«»… ÀÃÕŒœ–—“”‘’⁄€›",
-        "ABVGDEEZIYKLMNOPRSTUFH'IE");
-    // «‡ÚÂÏ - "ÏÌÓ„ÓÒËÏ‚ÓÎ¸Ì˚Â".
-    $st=strtr($st,
-        array(
-            "Ê"=>"zh", "ˆ"=>"ts", "˜"=>"ch", "¯"=>"sh",
-            "˘"=>"shch","¸"=>"", "˛"=>"yu", "ˇ"=>"ya",
-            "∆"=>"ZH", "÷"=>"TS", "◊"=>"CH", "ÿ"=>"SH",
-            "Ÿ"=>"SHCH","‹"=>"", "ﬁ"=>"YU", "ﬂ"=>"YA",
-            "ø"=>"i", "Ø"=>"Yi", "∫"=>"ie", "™"=>"Ye"
-        )
-    );
-    // ¬ÓÁ‚‡˘‡ÂÏ ÂÁÛÎ¸Ú‡Ú.
+    $st = mb_strtolower($st);
+    $st = strtr($st,array('–∞'=>'a', '–±'=>'b', '–≤'=>'v', '–≥'=>'g', '–¥'=>'d', '–µ'=>'e', '—ë'=>'e', '–∂'=>'zh',
+        '–∑'=>'z', '–∏'=>'i', '–∫'=>'k', '–ª'=>'l', '–º'=>'m', '–Ω'=>'n', '–æ'=>'o', '–ø'=>'p', '—Ä'=>'r', '—Å'=>'s',
+        '—Ç'=>'t', '—É'=>'u', '—Ñ'=>'f', '—Ö'=>'h', '—Ü'=>'c', '—á'=>'ch', '—à'=>'sh', '—â'=>'sh', '—å'=>'', '—ã'=>'y',
+        '—ä'=>'', '—ç'=>'e', '—é'=>'yu', '—è'=>'ya', ' ' => '_'));
+    // –í–æ–∑–≤—Ä–∞—â–∞–µ–º —Ä–µ–∑—É–ª—å—Ç–∞—Ç.
     return $st;
-}
-
-function is_utf8($string) {
-    for ($i=0; $i<strlen($string); $i++) {
-        if (ord($string[$i]) < 0x80) continue;
-        elseif ((ord($string[$i]) & 0xE0) == 0xC0) $n=1;
-        elseif ((ord($string[$i]) & 0xF0) == 0xE0) $n=2;
-        elseif ((ord($string[$i]) & 0xF8) == 0xF0) $n=3;
-        elseif ((ord($string[$i]) & 0xFC) == 0xF8) $n=4;
-        elseif ((ord($string[$i]) & 0xFE) == 0xFC) $n=5;
-        else return false;
-        for ($j=0; $j<$n; $j++) {
-            if ((++$i == strlen($string)) || ((ord($string[$i]) & 0xC0) != 0x80))
-                return false;
-        }
-    }
-    return true;
-}
-function autoencode($string, $encoding='utf-8')
-{
-    if (is_utf8($string)) $detect='utf-8';
-    else
-    {
-        $cp1251=0;
-        $koi8u=0;
-        $strlen=strlen($string);
-        for($i=0;$i<$strlen;$i++)
-        {
-            $code=ord($string[$i]);
-            if (($code>223 and $code<256) or ($code==179) or ($code==180) or ($code==186) or ($code==191)) $cp1251++; // ?-?, ?, ?, ?, ?
-            if (($code>191 and $code<224) or ($code==164) or ($code==166) or ($code==167) or ($code==173)) $koi8u++; // ?-?, ?, ?, ?, ?
-        }
-        if ($cp1251>$koi8u) $detect='windows-1251';
-        else $detect='koi8-u';
-    }
-    if ($encoding==$detect) return $string;
-    else return iconv($detect, $encoding, $string);
 }
