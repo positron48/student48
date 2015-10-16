@@ -1,8 +1,9 @@
 <?php
 
-error_reporting(E_ALL | E_STRICT);
-//require('UploadHandler.php');
-//$upload_handler = new UploadHandler();
+//error_reporting(E_ALL | E_STRICT);
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
+
 $error = '';
 $max_file_size = 268435456;//256 Mb
 $max_files_count = 8;
@@ -15,7 +16,7 @@ post();
 //обрабо тка загрузки фала/фалов
 function post($print_response = true) {
     global $count_files;
-
+    global $dbWorker;
     $upload = @$_FILES['files'];
     $content_disposition_header = @$_SERVER['HTTP_CONTENT_DISPOSITION'];
     $file_name = $content_disposition_header ?
@@ -30,9 +31,13 @@ function post($print_response = true) {
     $size =  $content_range ? $content_range[3] : null;
     $files = array();
     if ($upload) {
-        $count_files = count($upload['tmp_name']);
+        $arr_count=0;
+        foreach($upload['tmp_name'] as $key=>$value){
+            $arr_count++;
+        }
+        $count_files = $arr_count;
         foreach ($upload['tmp_name'] as $index => $value) {
-            $files[] = handle_file_upload(
+            $file = handle_file_upload(
                 $upload['tmp_name'][$index],
                 $file_name ? $file_name : $upload['name'][$index],
                 $size ? $size : $upload['size'][$index],
@@ -40,6 +45,23 @@ function post($print_response = true) {
                 $upload['error'][$index],
                 $content_range
             );
+            if(is_file($_SERVER['DOCUMENT_ROOT'].'/files/storage/'.$file->name)) {
+                //файл записался, все ок
+                $files[] = $file;
+                $dateAdd = date("Y-m-d H:i:s ");
+                $dbWorker->query("INSERT INTO uploads VALUES(
+                    NULL,
+                    '{$file->name_eng}',
+                    '{$file->name_orig}',
+                    '{$file->name}',
+                    0,
+                    0,
+                    0,
+                    '{$file->size}',
+                    '{$dateAdd}',
+                    ''
+                )");
+            }
         }
     }
     generate_response(array('files' => $files), $print_response);
@@ -47,11 +69,12 @@ function post($print_response = true) {
 //обработка каждого файла
 function handle_file_upload($uploaded_file, $name, $size, $type, $local_error, $content_range = null) {
     global $error;
-    global $count_files;
     $error.=$local_error;
 
     $file = new \stdClass();
-    $file->name = get_file_name($name).'count_'.$count_files;
+    $file->name_orig = $name;
+    $file->name_eng = get_file_name($name);
+    $file->name = get_file_link($name);
     $file->size = (int)$size;
     $file->type = $type;
     if (validate($uploaded_file, $file)) {
@@ -95,13 +118,22 @@ function handle_file_upload($uploaded_file, $name, $size, $type, $local_error, $
 }
 //генерация уникального md5 хэша файла
 function get_file_name($_name) {
-    //todo: проверка на уникальность имени файла
     $name = $_name;
     $name = translit($name);
     $name = preg_replace("/[^a-zA-Z0-9\-_\.]/","",$name);
     if($name == '')
         $name = md5($_name);
     return $name;
+}
+//генерация уникального md5 хэша файла
+function get_file_link($file) {
+    global $dbWorker;
+    $link = (string)substr(md5($file.'student'),0,5);
+    //проверка на уникальность в базе
+    while($dbWorker->query("SELECT COUNT(*) FROM uploads WHERE link='".$link."'")->fetch()[0] > 0){
+        $link = (string)substr(md5(rand().'student'),0,5);
+    }
+    return $link;
 }
 //проверка файла на соответствие требованиям
 function validate($uploaded_file, $file) {

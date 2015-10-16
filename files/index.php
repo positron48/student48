@@ -21,7 +21,7 @@
             dataType: 'json',
             done: function (e, data) {
                 $.each(data.result.files, function (index, file) {
-                    $('#uploaded_files').append('<p><a href="storage/'+file.name+'" target="_blank">'+file.name+'</a></p>');
+                    $('#uploaded_files').append('<p><a href="'+file.name+'" target="_blank">'+file.name_orig+'</a></p>');
                 });
             },
             progressall: function (e, data) {
