@@ -2,3 +2,4 @@ materials/*
 !materials/index.php
 !materials/.htaccess
 .idea/*
+files/storage/*
