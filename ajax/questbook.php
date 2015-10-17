@@ -1,5 +1,5 @@
 <?
-    include('../include/database.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
     
     
     $userName = isset($_REQUEST['user'])?htmlspecialchars($_REQUEST['user']):'';
