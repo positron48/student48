@@ -30,3 +30,23 @@ blockquote{
     height: 18px;
     background: green;
 }
+
+#uploaded_files td{
+    width: 33.3%;
+}
+
+label.uploadbutton {
+    cursor: pointer;
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+label.uploadbutton input {
+    opacity: 0;
+    display: none;
+}
+
+label.uploadbutton .form-control {
+    margin-left: 15px;
+}

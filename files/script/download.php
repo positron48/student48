@@ -6,7 +6,7 @@ if(isset($_GET['id']))
 
 $file = $dbWorker->query("SELECT * FROM uploads WHERE link='$id'")->fetch();
 if(isset($file['link']) && $file['link']!=''){
-    echo "<meta http-equiv='Refresh' content='10; url=script/downloadnow.php?id=$id'>";
+    echo "<meta http-equiv='Refresh' content='5; url=script/downloadnow.php?id=$id'>";
 }
 $file_path = '../storage/'.$file['link'];
 ?>
@@ -29,7 +29,7 @@ $file_path = '../storage/'.$file['link'];
 
     <center>
         </br>
-        <h4>Если скачивание не началось автоматически, перейдите по ссылке:</h4>
+        <h4>Загрузка начнется через 5 секунд. Если скачивание не началось автоматически, перейдите по ссылке:</h4>
         <a href="script/downloadnow.php?id=<?=$file['link']?>" class="btn btn-success btn-lg">Скачать</a>
     </center>
 <?}else{?>

@@ -16,6 +16,9 @@
 					<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 					<script src="/js/map.js"></script>
 				<?}?>
+				<?if($_SERVER['SCRIPT_NAME'] == '/files/index.php') {?>
+					<script src="/js/files.js"></script>
+				<?}?>
 			</div>    
 		</div>
 	</body>
