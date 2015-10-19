@@ -3,4 +3,5 @@ RewriteEngine on
       RewriteRule ^links/$ links.php [L]
       RewriteRule ^map/$ map.php [L]
       RewriteRule ^rating/$ rating.php [L]
+      RewriteRule ^upload/$ upload.php [L]
       RewriteRule (.*) $1

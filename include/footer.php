@@ -19,6 +19,10 @@
 				<?if($_SERVER['SCRIPT_NAME'] == '/files/index.php') {?>
 					<script src="/js/files.js"></script>
 				<?}?>
+				<?if($_SERVER['SCRIPT_NAME'] == '/upload.php') {?>
+					<script src="/js/upload.js"></script>
+				<?}?>
+
 			</div>    
 		</div>
 	</body>
