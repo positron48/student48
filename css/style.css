@@ -50,3 +50,24 @@ label.uploadbutton input {
 label.uploadbutton .form-control {
     margin-left: 15px;
 }
+label.addbutton {
+    cursor: pointer;
+    display: flex;
+}
+
+label.addbutton input {
+    opacity: 0;
+    display: none;
+}
+
+label.addbutton .form-control {
+    margin-left: 15px;
+}
+
+#another_predmet{
+    display: none;
+}
+
+.alert{
+    text-align: center;
+}

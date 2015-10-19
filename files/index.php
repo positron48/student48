@@ -17,14 +17,14 @@
     <li>администрация сайта оставляет за собой право на удаление загруженных файлов и изменение условий использования файлообменника</li>
 </ul>
 <label class="uploadbutton">
-    <div class="btn btn-success" >Выбрать</div>
+    <div class="btn btn-info" >Выбрать</div>
     <div class='form-control'>Выберите файл</div>
     <input id="fileupload" type="file" name="files[]" data-url="upload.php" multiple
            onchange="this.previousSibling.previousSibling.innerHTML = this.value"/>
 </label>
 
 <div class="progress">
-    <div class="progress-bar progress-bar-success progress-bar-striped"
+    <div class="progress-bar progress-bar-info progress-bar-striped"
          role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0">
         <span class="sr-only">40% Complete (success)</span>
     </div>
