@@ -8,7 +8,8 @@
     
     if($imNotRobot == 'Y' && $userName!='' && $msg!=''){
         $dateadd=date("Y-m-d H:i:s ");
-        if($dbWorker->query("INSERT INTO questbook VALUES(NULL,'$userName','','$msg','$dateadd',0)"))
+        $insertMessage = $dbWorker->prepare("INSERT INTO questbook VALUES(NULL,:userName,'',:msg,:dateadd,0)");
+        if($insertMessage->execute(array(':userName'=>$userName,':msg'=>$msg,':dateadd'=>$dateadd)))
             echo 'true';
         else
             echo 'false';
