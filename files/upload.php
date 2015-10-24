@@ -46,18 +46,8 @@ function post($print_response = true) {
                 //файл записался, все ок
                 $files[] = $file;
                 $dateAdd = date("Y-m-d H:i:s ");
-                $dbWorker->query("INSERT INTO uploads VALUES(
-                    NULL,
-                    '{$file->name_eng}',
-                    '{$file->name_orig}',
-                    '{$file->name}',
-                    0,
-                    0,
-                    0,
-                    '{$file->size}',
-                    '{$dateAdd}',
-                    ''
-                )");
+                $insertUpload = $dbWorker->prepare("INSERT INTO uploads VALUES(NULL,?,?,?,0,0,0,?,?,'')");
+                $insertUpload->execute(array($file->name_eng,$file->name_orig,$file->name,$file->size,$dateAdd));
             }
         }
     }
@@ -127,8 +117,12 @@ function get_file_link($file) {
     global $dbWorker;
     $link = (string)substr(md5($file.'student'),0,5);
     //проверка на уникальность в базе
-    while($dbWorker->query("SELECT COUNT(*) FROM uploads WHERE link='".$link."'")->fetch()[0] > 0){
+    $selectLink = $dbWorker->prepare("SELECT COUNT(*) FROM uploads WHERE link = :link");
+    $selectLink->bindParam(':link',$link);
+    $selectLink->execute();
+    while($selectLink->fetch()[0] > 0){
         $link = (string)substr(md5(rand().'student'),0,5);
+        $selectLink->execute();
     }
     return $link;
 }

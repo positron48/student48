@@ -4,7 +4,12 @@ $id=0;
 if(isset($_GET['id']))
     $id=$_GET['id'];
 
-$file = $dbWorker->query("SELECT * FROM uploads WHERE link='$id'")->fetch();
+$file = $dbWorker->prepare("SELECT * FROM uploads WHERE link=?");
+if($file->execute(array($id))){
+    $file=$file->fetch();
+}else{
+    $file = array();
+}
 if(isset($file['link']) && $file['link']!=''){
     echo "<meta http-equiv='Refresh' content='5; url=script/downloadnow.php?id=$id'>";
 }

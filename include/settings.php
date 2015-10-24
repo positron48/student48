@@ -1,6 +1,7 @@
 <?
-  $countNewsOnPage = 10;
-  $countMaterialsOnStartPage = 20;
-  $countMaterialsOnPage = 30;
-  $countMessagesOnPage = 20;
+$countNewsOnPage = 10;
+$countMaterialsOnStartPage = 20;
+$countMaterialsOnPage = 30;
+$countMessagesOnPage = 20;
+
 ?>

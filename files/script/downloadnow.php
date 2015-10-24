@@ -5,7 +5,12 @@ $id=0;
 if(isset($_GET['id']))
     $id=$_GET['id'];
 
-$file = $dbWorker->query("SELECT * FROM uploads WHERE link='$id'")->fetch();
+$file = $dbWorker->prepare("SELECT * FROM uploads WHERE link=?");
+if($file->execute(array($id))){
+    $file=$file->fetch();
+}else{
+    $file = array();
+}
 
 $file_path = '../storage/'.$file['link'];
 if (!is_file($file_path)) {
@@ -13,7 +18,8 @@ if (!is_file($file_path)) {
 }else {
     $downloads = $file['downloads']+1;
     $dateUpdate = date("Y-m-d H:i:s ");
-    $dbWorker->query("UPDATE uploads SET downloads='$downloads', date_last_update='$dateUpdate' WHERE link='$id'");
+    $updateDownloads = $dbWorker->prepare("UPDATE uploads SET downloads = ?, date_last_update = ? WHERE link = ?");
+    $updateDownloads->execute(array($downloads,$dateUpdate,$id));
 
     header("X-Sendfile: $file_path");
     header("Content-Type: application/octet-stream");
