@@ -1,68 +1,81 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_before.php"); ?>
 <?
-	$page = 1;
-	if(isset($_GET['page'])){
-		$page = (int)htmlspecialchars($_GET['page']);
-	}
-	
-	$predmet = null;
-	if(isset($_GET['predmet'])){
-		$predmet = htmlspecialchars($_GET['predmet']);
-	}
-	
-	$semestr = 0;
-	if(isset($_GET['semestr'])){
-		$semestr=(int)htmlspecialchars($_GET['semestr']);
-	}
+$page = 1;
+if(isset($_GET['page'])){
+	$page = (int)htmlspecialchars($_GET['page']);
+}
 
-	//все предметы по семестрам
-	$dbPredmets=$dbWorker->query("SELECT * FROM predmets ORDER BY title_predmet ASC");
+$predmet = null;
+if(isset($_GET['predmet'])){
+	$predmet = htmlspecialchars($_GET['predmet']);
+}
 
-	while($predmetRes = $dbPredmets->fetch()){
-		$arSemestrPredmets[(int)$predmetRes['semestr']][]= array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
-		$arEnglishToRussianPredmet[$predmetRes['title_predmet_english']]=$predmetRes['title_predmet'];
-		$arPredmets[$predmetRes['title_predmet_english']] = array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
-	}
+$semestr = 0;
+if(isset($_GET['semestr'])){
+	$semestr=(int)htmlspecialchars($_GET['semestr']);
+}
 
-	//собираем текст запроса для выбранных данных
-	$query=" FROM materials M INNER JOIN predmets P ON M.predmetid=P.id";
-	if($semestr>0){
-		$query.=" WHERE P.semestr='$semestr'";
-	}
-	if($predmet!=null)
-	{
-		if(!strpos($query,"WHERE")>0)
-			$query.=" WHERE";
-		else
-			$query.=" AND";
-		$query.=" P.title_predmet_english='$predmet'";
-	}
-	$query.=" ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
-	
-	//общее количество материалов для выборки
-	$countMaterials = $dbWorker->query("SELECT COUNT(*) ".$query)->fetch()[0];
+//все предметы по семестрам
+$dbPredmets=$dbWorker->query("SELECT * FROM predmets ORDER BY title_predmet ASC");
 
-	$numberMin=($page-1)*$countMaterialsOnPage;
+while($predmetRes = $dbPredmets->fetch()){
+	$arSemestrPredmets[(int)$predmetRes['semestr']][]= array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
+	$arEnglishToRussianPredmet[$predmetRes['title_predmet_english']]=$predmetRes['title_predmet'];
+	$arPredmets[$predmetRes['title_predmet_english']] = array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
+}
 
-	$queryMaterials="SELECT M.id, M.title_material, M.metakey, M.predmetid, M.link, M.filesize, M.downloads, M.dateadd,
-		P.title_predmet, P.title_predmet_english, P.semestr ".$query." LIMIT $numberMin, $countMaterialsOnPage";
-	$dbMaterials = $dbWorker->query($queryMaterials);
-	while($material = $dbMaterials->fetch()){
-		$arMaterials[$material['id']]=$material;
-	}
+//собираем текст запроса для выбранных данных
+$query=" FROM materials M INNER JOIN predmets P ON M.predmetid=P.id";
+if($semestr>0){
+	$query.=" WHERE P.semestr = :semestr";
+}
+if($predmet!=null){
+	if(!strpos($query,"WHERE")>0)
+		$query.=" WHERE";
+	else
+		$query.=" AND";
+	$query.=" P.title_predmet_english = :predmet";
+}
+$query.=" ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
+
+//общее количество материалов для выборки
+$countMaterials = $dbWorker->prepare("SELECT COUNT(*) ".$query);
+if($semestr>0)
+	$countMaterials->bindParam(':semestr',$semestr,PDO::PARAM_INT);
+if($predmet!=null)
+	$countMaterials->bindParam(':predmet',$predmet,PDO::PARAM_INT);
+$countMaterials->execute();
+$countMaterials = $countMaterials->fetch()[0];
+
+$numberMin=($page-1)*$countMaterialsOnPage;
+
+$queryMaterials="SELECT M.id, M.title_material, M.metakey, M.predmetid, M.link, M.filesize, M.downloads, M.dateadd,
+	P.title_predmet, P.title_predmet_english, P.semestr ".$query." LIMIT :min, :count";
+$dbMaterials = $dbWorker->prepare($queryMaterials);
+if($semestr>0)
+	$dbMaterials->bindParam(':semestr',$semestr,PDO::PARAM_INT);
+if($predmet!=null)
+	$dbMaterials->bindParam(':predmet',$predmet,PDO::PARAM_INT);
+$dbMaterials->bindParam(':min',$numberMin,PDO::PARAM_INT);
+$dbMaterials->bindParam(':count',$countMaterialsOnPage,PDO::PARAM_INT);
+$dbMaterials->execute();
+
+while($material = $dbMaterials->fetch()){
+	$arMaterials[$material['id']]=$material;
+}
 ?>
-	<title>
-		ЛГТУ|Материалы
-		<?=($predmet!=null?$arEnglishToRussianPredmet[$predmet]:'')?>
-		<?=($semestr!=0?$semestr.' семестр':'')?>
-	</title>
+<title>
+	ЛГТУ|Материалы
+	<?=($predmet!=null?$arEnglishToRussianPredmet[$predmet]:'')?>
+	<?=($semestr!=0?$semestr.' семестр':'')?>
+</title>
 
-	<meta name="description" content="Здесь вы можете скачать лабораторные, методички, графические работы, пособия, курсовые, рефераты по большому количеству дисциплин: дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия и другие">
-	<meta name="Keywords" content="скачать материалы, лабораторные, методички, графические работы, пособия, курсовые, рефераты, дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия">
-	<script>
-		predmetSemestr = <? echo json_encode($arSemestrPredmets);?>;
-		predmets = <? echo json_encode(array_values($arPredmets));?>;
-	</script>
+<meta name="description" content="Здесь вы можете скачать лабораторные, методички, графические работы, пособия, курсовые, рефераты по большому количеству дисциплин: дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия и другие">
+<meta name="Keywords" content="скачать материалы, лабораторные, методички, графические работы, пособия, курсовые, рефераты, дискретная математика, информатика, математический анализ, информационные технологии, история, компьютерная графика, логическое программирование, математическая логика и теория алгоритмов, начертательная геометрия, программирование на ЯВУ, психология, социология, структуры и алгоритмы, технология программирования, физика, философия">
+<script>
+	predmetSemestr = <? echo json_encode($arSemestrPredmets);?>;
+	predmets = <? echo json_encode(array_values($arPredmets));?>;
+</script>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
 	<div class="alert alert-info">
