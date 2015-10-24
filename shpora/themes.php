@@ -4,16 +4,24 @@ $id=0;
 if(isset($_GET['id'])){
 	$id = intval($_GET['id']);
 
-	$themdata = $dbWorker->query("SELECT * FROM shpora_themes WHERE shp_them_id='$id'")->fetch();
+	$themdata = $dbWorker->prepare("SELECT * FROM shpora_themes WHERE shp_them_id = ?");
+	$themdata->execute(array($id));
+	$themdata=$themdata->fetch();
 
 	$views=$themdata['shp_them_views']+1;
-	$dbWorker->query("UPDATE shpora_themes SET shp_them_views='$views' WHERE shp_them_id='$id'");
+	$updateViews = $dbWorker->prepare("UPDATE shpora_themes SET shp_them_views = ? WHERE shp_them_id = ?");
+	$updateViews->execute(array($views,$id));
 }
 
-$dbData = $dbWorker->query("SELECT * FROM shpora_messages WHERE shp_msg_them_id='$id' ORDER BY shpora_messages.shp_msg_title+0 ASC ");
-while($data = $dbData->fetch()){
-	$messages[] = $data;
+$dbData = $dbWorker->prepare("SELECT * FROM shpora_messages WHERE shp_msg_them_id = ? ORDER BY shpora_messages.shp_msg_title+0 ASC ");
+if($dbData->execute(array($id))) {
+	while ($data = $dbData->fetch()) {
+		$messages[] = $data;
+	}
+}else {
+	$messages = array();
 }
+
 ?>
 		<title>ЛГТУ | Шпора <?=isset($themdata)?': '.$themdata['shp_them_title']:'';?></title>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>

@@ -14,7 +14,9 @@
 <?
 	$title="ЛГТУ|Новости";
 	if($id>0){
-		$dbNews = $dbWorker->query('SELECT * FROM news WHERE id = '.$id);
+		$dbNews = $dbWorker->prepare('SELECT * FROM news WHERE id = ?');
+		$dbNews->execute(array($id));
+
 		if($currentNews = $dbNews->fetch())
 			$title.=": ".$currentNews['title_news'];
 	}
@@ -33,8 +35,11 @@
 		</div>
 <?
 		$views=$currentNews['views']+1;	
-		$dbWorker->query("UPDATE news SET views='$views' WHERE id='$id'");
-		$dbWorker->query("UPDATE news SET dateview='".date("Y-m-d H:i:s ")."' WHERE id='$id'");
+		$updateNews = $dbWorker->prepare("UPDATE news SET views = ? WHERE id = ?");
+		$updateNews->execute(array($views,$id));
+		$updateNews = $dbWorker->prepare("UPDATE news SET dateview = ? WHERE id = ?");
+		$date = date("Y-m-d H:i:s ");
+		$updateNews->execute(array($date,$id));
 	} else {
 ?>
 		<p><h2><center>Новость не существует</h2></center>
@@ -43,8 +48,10 @@
 	<?
 
 		$number_min=($page-1)*$countNewsOnPage;
-		$dbNews=$dbWorker->query("SELECT * FROM news ORDER BY id DESC LIMIT $number_min, $countNewsOnPage");
-		
+		$dbNews=$dbWorker->prepare("SELECT * FROM news ORDER BY id DESC LIMIT :min, :count");
+		$dbNews->bindParam(':min',$number_min,PDO::PARAM_INT);
+		$dbNews->bindParam(':count',$countNewsOnPage,PDO::PARAM_INT);
+		$dbNews->execute();
 		$countNews = $dbWorker->query("SELECT COUNT(*) FROM news")->fetch()[0];
 	?>
 	<p><h1>Новости:</h1>

@@ -1,16 +1,19 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_before.php"); ?>
 <?
-	$page = 1;
-	if(isset($_GET['page']))
-		$page = (int)htmlspecialchars($_GET['page']);
-	$minNumber=($page-1)*$countMessagesOnPage;
-	$questbookDb = $dbWorker->query("SELECT * FROM questbook ORDER BY id DESC LIMIT $minNumber, $countMessagesOnPage");
-	
-	$countMessages = $dbWorker->query("SELECT COUNT(*) FROM questbook")->fetch()[0];
-	
-	while($message=$questbookDb->fetch()){
-		$messages[]=$message;
-	}
+$page = 1;
+if(isset($_GET['page']))
+	$page = (int)htmlspecialchars($_GET['page']);
+$minNumber=($page-1)*$countMessagesOnPage;
+$questbookDb = $dbWorker->prepare("SELECT * FROM questbook ORDER BY id DESC LIMIT :min, :max");
+$questbookDb->bindParam(':min',$minNumber,PDO::PARAM_INT);
+$questbookDb->bindParam(':max',$countMessagesOnPage,PDO::PARAM_INT);
+$questbookDb->execute();
+
+$countMessages = $dbWorker->query("SELECT COUNT(*) FROM questbook")->fetch()[0];
+
+while($message=$questbookDb->fetch()){
+	$messages[]=$message;
+}
 ?>
 	<title>ЛГТУ | Гостевая</title>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
