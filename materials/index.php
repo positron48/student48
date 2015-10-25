@@ -124,13 +124,14 @@ while($material = $dbMaterials->fetch()){
 				</tr>
 			</thead>
 			<tbody>
-			<? foreach($arMaterials as $material){ ?>				
-				<tr><td class="td_material"><a href="http://<?=$_SERVER['SERVER_NAME']?>/materials/semestr<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
-					<td class="td_material_predmet"><a href="http://<?=$_SERVER['SERVER_NAME']?>/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></td>
-					<td class="td_material"><a href="http://<?=$_SERVER['SERVER_NAME']?>/downloads/<?=$material['id']?>/"><?=$material['title_material']?></a></td>
+			<? foreach($arMaterials as $material){ ?>
+				<tr>
+					<td class="td_material"><a href="/materials/semestr<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
+					<td class="td_material_predmet"><a href="/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></td>
+					<td class="td_material"><a href="/downloads/<?=$material['id']?>/"><?=$material['title_material']?></a></td>
 					<td class="td_material_filesize"><?=$material['filesize']?> Кб</td>
 					<td class="td_material_filesize"><center><?=$material['downloads']?></center></td>
-					<td class="td_material"><a href="http://<?=$_SERVER['SERVER_NAME']?>/downloads/<?=$material['id']?>/"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td>
+					<td class="td_material"><a href="/downloads/<?=$material['id']?>/"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td>
 				</tr>
 			<?}?>
 			</tbody>
