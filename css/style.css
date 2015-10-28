@@ -62,6 +62,7 @@ label.addbutton input {
 
 label.addbutton .form-control {
     margin-left: 15px;
+    width: 36%;
 }
 
 #another_predmet{
