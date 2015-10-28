@@ -1,14 +1,19 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_before.php"); ?>
+
 <?
 if(!$isAdmin){
-    header('Location: /');
+    header('Location: /admin/');
 }
 $pmFiles = $dbWorker->query("SELECT P.*, U.file_name_orig, Pr.title_predmet FROM pm_files P
   INNER JOIN uploads U ON P.pmfilename = U.link
   LEFT JOIN predmets Pr ON Pr.id = P.pmfilepredmetid
   ORDER BY pmfiledateadd ASC");
 ?>
+
 <title>ЛГТУ | Модерация</title>
+<link rel="stylesheet" href="/css/moderation.css">
+<script src="/js/moderation.js"></script>
+
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
 
@@ -24,12 +29,15 @@ $pmFiles = $dbWorker->query("SELECT P.*, U.file_name_orig, Pr.title_predmet FROM
             <th>Ключевые слова</th>
             <th>Имя файла</th>
             <th>Дата добавления</th>
+            <th><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
+            <th><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></th>
+            <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
         </tr>
         </thead>
         <tbody>
             <?
-            do{//print_r($file);?>
-                <tr>
+            do{;?>
+                <tr id="pmf_<?=$file['pmfileid']?>">
                     <td><?=$file['pmfiletitle']?></td>
                     <td><?=$file['pmfilepredmetsemestr']?></td>
                     <td><?=$file['pmfilepredmetname']?
@@ -42,7 +50,16 @@ $pmFiles = $dbWorker->query("SELECT P.*, U.file_name_orig, Pr.title_predmet FROM
                             <?=$file['file_name_orig']?>
                         </a>
                     </td>
-                    <td><?=$file['pmfiledateadd']?></td>
+                    <td><?=date('d.m.Y', strtotime($file['pmfiledateadd']));?> г.</td>
+                    <td>
+                        <span pmf_id="<?=$file['pmfileid']?>" class="pmf-ok glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </td>
+                    <td>
+                        <span pmf_id="<?=$file['pmfileid']?>" class="pmf-edit glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    </td>
+                    <td>
+                        <span pmf_id="<?=$file['pmfileid']?>" class="pmf-remove glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </td>
                 </tr>
             <?}while($file = $pmFiles->fetch());?>
         </tbody>
