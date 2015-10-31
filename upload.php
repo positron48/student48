@@ -1,7 +1,5 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_before.php"); ?>
 <?
-
-
 //все предметы по семестрам
 $dbPredmets=$dbWorker->query("SELECT semestr, title_predmet_english, title_predmet FROM predmets ORDER BY title_predmet ASC");
 $arSemestrPredmets=array();
@@ -36,7 +34,7 @@ while($predmetRes = $dbPredmets->fetch()){
 			успешно добавлен и находится на модерации, спасибо за Ваш вклад в развитие сайта!</strong></div>
 <?}?>
 <h1>Добавление материала:</h1>
-<form id="addMaterial" class="form-inline" method="post" action="/ajax/addfile.php">
+<form id="addMaterial" class="form-inline" action="#">
 	<table class="table table-striped table-bordered table-condensed">
 		<tr><td><b>Семестр: </b></td><td>
 			<select name="semestr" id="semestr" class="form-control">');

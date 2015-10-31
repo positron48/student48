@@ -22,6 +22,9 @@
 				<?if($_SERVER['SCRIPT_NAME'] == '/upload.php') {?>
 					<script src="/js/upload.js"></script>
 				<?}?>
+				<?if($_SERVER['SCRIPT_NAME'] == '/admin/moderation.php') {?>
+					<script src="/js/moderation.js"></script>
+				<?}?>
 
 			</div>    
 		</div>
