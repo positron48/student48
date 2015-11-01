@@ -1,5 +1,4 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_before.php"); ?>
-
 <?
 if(!$isAdmin){
     header('Location: /admin/');
@@ -7,14 +6,16 @@ if(!$isAdmin){
 $predmets = $dbWorker->query("SELECT P.* FROM predmets P ORDER BY semestr ASC, title_predmet ASC");
 ?>
     <title>ЛГТУ | Предметы</title>
+
+    <link rel="stylesheet" href="/css/moderation.css">
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
-    <h1>Предметы</h1>
+    <h1>Предметы <span class="predmet-add glyphicon glyphicon-plus" aria-hidden="true"></span></h1>
     <br/>
     <div id="predmet">
-        <form id="predmetForm" class="form-inline" method="post" action="/ajax/editpredmet.php">
+        <form id="predmetForm" class="form-inline" action="/ajax/editpredmet.php">
             <table class="table table-striped table-bordered table-condensed">
-                <tr><td><b>ID предмета: </b></td><td><input style="width:100%;" class="form-control" type="text" name="predmet_id"></td></tr>
+                <tr><td><b>ID предмета: </b></td><td><input style="width:100%;" class="form-control" type="text" name="predmet_id" readonly></td></tr>
                 <tr><td><b>Семестр: </b></td><td><input style="width:100%;" class="form-control" type="text" name="semestr"></td></tr>
                 <tr><td><b>Название предмета: </b></td><td><input style="width:100%;" class="form-control" type="text" name="title"></td></tr>
                 <tr><td><b>Название на латинице: </b></td><td><input style="width:100%;" class="form-control" type="text" name="english_title"></td></tr>
@@ -48,12 +49,12 @@ $predmets = $dbWorker->query("SELECT P.* FROM predmets P ORDER BY semestr ASC, t
                             semestr="<?=$predmet['semestr']?>"
                             predmet_title="<?=$predmet['title_predmet']?>"
                             english_title="<?=$predmet['title_predmet_english']?>"
-                            class="pmf-edit glyphicon glyphicon-pencil"
+                            class="predmet-edit glyphicon glyphicon-pencil"
                             aria-hidden="true">
                         </span>
                 </td>
                 <td>
-                    <span predmet_id="<?=$predmet['id']?>" class="pmf-remove glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span predmet_id="<?=$predmet['id']?>" class="predmet-remove glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </td>
             </tr>
         <?}while($predmet = $predmets->fetch());?>

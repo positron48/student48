@@ -25,7 +25,9 @@
 				<?if($_SERVER['SCRIPT_NAME'] == '/admin/moderation.php') {?>
 					<script src="/js/moderation.js"></script>
 				<?}?>
-
+				<?if($_SERVER['SCRIPT_NAME'] == '/admin/predmets.php') {?>
+					<script src="/js/predmets.js"></script>
+				<?}?>
 			</div>    
 		</div>
 	</body>
