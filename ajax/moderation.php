@@ -1,6 +1,12 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/settings.php');
+
+if(!$isAdmin){
+    echo 'false';
+    die();
+}
+
 $status = 'false';
 if($isAdmin){
     switch($_REQUEST['action']) {
