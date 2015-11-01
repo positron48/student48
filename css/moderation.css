@@ -1,0 +1,36 @@
+.pmf-ok{
+    cursor: pointer;
+    color: #337ab7;
+}
+
+.pmf-edit{
+    cursor: pointer;
+    color: #337ab7;
+}
+
+.pmf-remove{
+    cursor: pointer;
+    color: #337ab7;
+}
+.predmet-edit{
+    cursor: pointer;
+    color: #337ab7;
+}
+
+.predmet-remove{
+    cursor: pointer;
+    color: #337ab7;
+}
+#editMaterial{
+    display: none;
+}
+#predmet{
+    display: none;
+}
+h1 .glyphicon{
+    font-size: 16px;
+    top: -3px;
+    position: relative;
+    cursor: pointer;
+    color: #337ab7;
+}

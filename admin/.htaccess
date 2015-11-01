@@ -1,0 +1,5 @@
+RewriteEngine on
+      RewriteRule ^moderation/$ moderation.php [L,QSA]
+      RewriteRule ^predmets/$ predmets.php [L,QSA]
+      RewriteRule ^news/$ news.php [L,QSA]
+      RewriteRule (.*) $1
