@@ -28,7 +28,7 @@ echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
 	<?
 	}
 	?>
-
+</div>
 	<br><h2>Последние добавления:</h2>
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
