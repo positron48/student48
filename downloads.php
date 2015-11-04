@@ -39,7 +39,7 @@ else
 <center>
 </br>
 <h4>Если скачивание не началось автоматически, перейдите по ссылке:</h4>
-<a href="<?=$material['link']?>" class="btn btn-success btn-lg">Скачать</a>
+<a href="/<?=$material['link']?>" class="btn btn-success btn-lg">Скачать</a>
 <?
 $downloads=$material['downloads']+1;
 $updateDownloads = $dbWorker->prepare("UPDATE materials SET downloads= ? WHERE id = ?");
