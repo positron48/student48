@@ -29,7 +29,8 @@ echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
 	}
 	?>
 </div>
-	<br><h2>Последние добавления:</h2>
+<div class="row">
+	<h2>Последние добавления материалов:</h2>
 	<table class="table table-striped table-bordered table-hover">
 		<thead>
 			<tr>
@@ -71,5 +72,22 @@ echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
 		}?>
 		</tbody>
 	</table>
-
+</div>
+<div class="row">
+	<h2>Последние сообщения в <a href="/questbook/">гостевой</a>:</h2>
+	<?
+	$questbookDb = $dbWorker->prepare("SELECT * FROM questbook ORDER BY id DESC LIMIT 3");
+	$questbookDb->execute();
+	while($pagedata=$questbookDb->fetch()){?>
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<td><?=$pagedata['user']?>: <?=$pagedata['title_message']?>
+					<div class="pull-right">Добавлено: <?=date('d.m.Y г. h:i',strtotime($pagedata['dateadd']));?>
+					</div>
+				</td>
+			</tr>
+			<tr><td><?=$pagedata['message']?></td></tr>
+		</table>
+	<?	}?>
+</div>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/footer.php"); ?>
