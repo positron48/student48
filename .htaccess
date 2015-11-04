@@ -1,6 +1,12 @@
 RewriteEngine on
+      RewriteRule ^materials.php /materials/ [L,R=301]
+      RewriteRule ^rating.php /rating/ [L,R=301]
+      RewriteRule ^news.php /news/ [L,R=301]
+      RewriteRule ^questbook.php /questbook/ [L,R=301]
+
       RewriteRule ^downloads/(\d+)/$ downloads.php?id=$1 [L]
       RewriteRule ^links/$ links.php [L]
       RewriteRule ^map/$ map.php [L]
       RewriteRule ^rating/$ rating.php [L]
       RewriteRule ^upload/$ upload.php [L]
+
