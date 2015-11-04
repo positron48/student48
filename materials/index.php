@@ -101,13 +101,19 @@ while($material = $dbMaterials->fetch()){
 		<nav>
 			<center>
 				<ul class='pagination'>
-				<?if($countMaterials >= $countMaterialsOnPage)
-					for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){?>
-					<li <?=$page==$i?"class='active'":''?>>
-					<a href='http://<?=$_SERVER['SERVER_NAME']?>/materials/<?=$predmet!=null?$predmet.'/':''?>
-						<?=$semestr!=0?'semestr'.$semestr.'/':''?>
-						<?='page'.$i.'/'?>'><?=$i?></a></li>
-				<?}?>
+					<?if($countMaterials >= $countMaterialsOnPage)
+						for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){
+							if(($countMaterials/$countMaterialsOnPage>8)
+								&& (($i>2 && $i<($page-1))
+									|| (($i<($countMaterials/$countMaterialsOnPage)-1) && $i>($page+1)))){
+								if($i==3 || $i==(($page+2))) echo '<li><a>...</a></li>';
+								continue;
+							}?>
+							<li <?=$page==$i?"class='active'":''?>>
+								<a href='/materials/<?=$predmet!=null?$predmet.'/':''?>
+									<?=$semestr!=0?'semestr'.$semestr.'/':''?>
+									<?='page'.$i.'/'?>'><?=$i?></a></li>
+						<?}?>
 				</ul>
 			</center>
 		</nav>
@@ -139,13 +145,19 @@ while($material = $dbMaterials->fetch()){
 		<nav>
 		<center>
 			<ul class='pagination'>
-			<?if($countMaterials >= $countMaterialsOnPage)
-				for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){?>
-				<li <?=$page==$i?"class='active'":''?>>
-				<a href='http://<?=$_SERVER['SERVER_NAME']?>/materials/<?=$predmet!=null?$predmet.'/':''?>
-					<?=$semestr!=0?'semestr'.$semestr.'/':''?>
-					<?='page'.$i.'/'?>'><?=$i?></a></li>
-			<?}?>
+				<?if($countMaterials >= $countMaterialsOnPage)
+					for($i=1;$i<($countMaterials/$countMaterialsOnPage+1);$i++){
+						if(($countMaterials/$countMaterialsOnPage>8)
+							&& (($i>2 && $i<($page-1))
+								|| (($i<($countMaterials/$countMaterialsOnPage)-1) && $i>($page+1)))){
+							if($i==3 || $i==(($page+2))) echo '<li><a>...</a></li>';
+							continue;
+						}?>
+						<li <?=$page==$i?"class='active'":''?>>
+							<a href='/materials/<?=$predmet!=null?$predmet.'/':''?>
+									<?=$semestr!=0?'semestr'.$semestr.'/':''?>
+									<?='page'.$i.'/'?>'><?=$i?></a></li>
+					<?}?>
 			</ul>
 		</center>
 	</nav>
