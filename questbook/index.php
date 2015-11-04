@@ -24,7 +24,7 @@ while($message=$questbookDb->fetch()){
 	<table class="table table-striped table-bordered table-condensed">
 		<tr>
 			<td><?=$pagedata['user']?>: <?=$pagedata['title_message']?>
-				<div class="pull-right">Добавлено: <?=$pagedata['dateadd']?>
+				<div class="pull-right">Добавлено: <?=date('d.m.Y г. h:i',strtotime($pagedata['dateadd']));?>
 				</div>
 			</td>
 		</tr>
