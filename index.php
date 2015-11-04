@@ -20,7 +20,7 @@ echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
 	?>
 	<div class="col-xs-4">
 		<h2><?=$news['title_news']?></h2>
-		<h5>Добавлено:<?=$news['datecreate']?>  Просмотров:<?=$news['views']?></h5>
+		<h5>Добавлено:<?=date('d.m.Y г. h:i ',strtotime($news['datecreate']));?>  Просмотров:<?=$news['views']?></h5>
 		<br>
 		<?=$news['introtext']?>
 		<p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее »</a></p>

@@ -26,8 +26,8 @@ $file_path = '../storage/'.$file['link'];
     <table class="table table-striped table-bordered table-condensed">
         <tr><td><b>Название: </b></td><td> <?=$file['file_name_orig']?></td></tr>
         <tr><td><b>Транслитом: </b></td><td> <?=$file['file_name']?></td></tr>
-        <tr><td><b>Добавлено: </b></td><td> <?=$file['date_add']?></td></tr>
-        <tr><td><b>Последнее скачивание: </b></td><td> <?=$file['date_last_update']?></td></tr>
+        <tr><td><b>Добавлено: </b></td><td> <?=date('d.m.Y г. h:i ',strtotime($file['date_add']));?></td></tr>
+        <tr><td><b>Последнее скачивание: </b></td><td> <?=date('d.m.Y г. h:i ',strtotime($file['date_last_update']));?></td></tr>
         <tr><td><b>Размер: </b></td><td> <?=(int)($file['file_size']/1024)?> Kb</td></tr>
         <tr><td><b>Cкачиваний: </b></td><td> <?=$file['downloads']?></td></tr>
     </table>

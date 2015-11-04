@@ -21,7 +21,7 @@ else
 <table class="table table-striped table-bordered table-condensed">
     <tr><td><b>Название: </b></td><td> <?=$material['title_material']?></td></tr>
     <tr><td><b>Предмет: </b></td><td> <?=$material['title_predmet']?></td></tr>
-    <tr><td><b>Добавлено: </b></td><td> <?=$material['dateadd']?></td></tr>
+    <tr><td><b>Добавлено: </b></td><td> <?=date('d.m.Y г. h:i ',strtotime($material['dateadd']));?></td></tr>
     <tr><td><b>Семестр: </b></td><td> <?=$material['semestr']?></td></tr>
     <tr><td><b>Размер: </b></td><td> <?=$material['filesize']?> Kb</td></tr>
     <tr><td><b>Cкачиваний: </b></td><td> <?=$material['downloads']?></td></tr>
