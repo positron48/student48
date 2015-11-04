@@ -9,7 +9,9 @@ if ($material->execute(array($id)))
     $material=$material->fetch();
 else
     $material=array();
-
+if($id>0){
+    echo "<meta http-equiv='Refresh' content='5; url=/materials/downloadnow.php?id={$_GET["id"]}'>";
+}
 ?>
 <title>
     <?="ЛГТУ|Скачать: ".$material['title_material']." / ".$material['title_predmet']." (".$material['metakey'].")";?>
@@ -39,12 +41,8 @@ else
 <center>
 </br>
 <h4>Если скачивание не началось автоматически, перейдите по ссылке:</h4>
-<a href="/<?=$material['link']?>" class="btn btn-success btn-lg">Скачать</a>
-<?
-$downloads=$material['downloads']+1;
-$updateDownloads = $dbWorker->prepare("UPDATE materials SET downloads= ? WHERE id = ?");
-$updateDownloads->execute(array($downloads,$id));
-?>
+<a href="/materials/downloadnow.php?id=<?=$_GET['id']?>" class="btn btn-success btn-lg">Скачать</a>
+
 </center>
 
 <? require($_SERVER['DOCUMENT_ROOT']."/include/footer.php"); ?>

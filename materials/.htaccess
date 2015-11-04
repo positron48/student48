@@ -1,3 +1,5 @@
+XSendFile on
+
 RewriteEngine on
       RewriteRule ^page([0-9]+)/$ index.php?page=$1 [L]
       RewriteRule ^semestr([0-9]+)/$ index.php?semestr=$1 [L]
