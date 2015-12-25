@@ -43,7 +43,7 @@
                 $.each(data.result.files, function (index, file) {
                     $('#uploaded_files').append('<tr><td><a href="'+file.name+'" target="_blank">'+file.name_orig+'</a></td>'
                         +'<td>'+Math.ceil(file.size/1024)+' Кб</a></td>'
-                        +'<td><input type="text" class="form-control" value="http://student48.local/files/'+file.name+'"></td>'
+                        +'<td><input type="text" class="form-control" value="http://student48.ru/files/'+file.name+'"></td>'
                         +'</tr>');
                 });
             },
