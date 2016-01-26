@@ -7,7 +7,7 @@ $cl->SetServer( "127.0.0.1", 9312 );
 
 // Собственно поиск
 $cl->SetMatchMode( SPH_MATCH_ANY  ); // ищем хотя бы 1 слово из поисковой фразы
-$result = $cl->Query("computer"); // поисковый запрос
+$result = $cl->Query($_REQUEST['q']); // поисковый запрос
 
 // обработка результатов запроса
 if ( $result === false ) {
