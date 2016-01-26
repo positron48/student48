@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/include/sphinxapi.php');
 $sphinx = new SphinxClient();
 
 // Подсоединяемся к Sphinx-серверу
-$sphinx->SetServer('localhost', 3312);
+$sphinx->SetServer('localhost', 3306);
 
 // Совпадение по любому слову
 $sphinx->SetMatchMode(SPH_MATCH_ANY);
