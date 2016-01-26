@@ -5,28 +5,20 @@
 //
 
 //
-// Copyright (c) 2001-2015, Andrew Aksyonoff
-// Copyright (c) 2008-2015, Sphinx Technologies Inc
+// Copyright (c) 2001-2014, Andrew Aksyonoff
+// Copyright (c) 2008-2014, Sphinx Technologies Inc
 // All rights reserved
 //
 // This program is free software; you can redistribute it and/or modify
-// it under the terms of the GNU Library General Public License. You should
-// have received a copy of the LGPL license along with this program; if you
+// it under the terms of the GNU General Public License. You should have
+// received a copy of the GPL license along with this program; if you
 // did not, you can find it at http://www.gnu.org/
 //
-// WARNING!!!
-//
-// As of 2015, we strongly recommend to use either SphinxQL or REST APIs
-// rather than the native SphinxAPI.
-//
-// While both the native SphinxAPI protocol and the existing APIs will
-// continue to exist, and perhaps should not even break (too much), exposing
-// all the new features via multiple different native API implementations
-// is too much of a support complication for us.
-//
-// That said, you're welcome to overtake the maintenance of any given
-// official API, and remove this warning ;)
-//
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//							WARNING
+// We strongly recommend you to use SphinxQL instead of the API
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 /////////////////////////////////////////////////////////////////////////////
 // PHP version of Sphinx searchd client (PHP API)
@@ -141,7 +133,7 @@ define ( "SPH_GROUPBY_ATTRPAIR",	5 );
 function sphPackI64 ( $v )
 {
 	assert ( is_numeric($v) );
-	
+
 	// x64
 	if ( PHP_INT_SIZE>=8 )
 	{
@@ -190,16 +182,16 @@ function sphPackI64 ( $v )
 function sphPackU64 ( $v )
 {
 	assert ( is_numeric($v) );
-	
+
 	// x64
 	if ( PHP_INT_SIZE>=8 )
 	{
 		assert ( $v>=0 );
-		
+
 		// x64, int
 		if ( is_int($v) )
 			return pack ( "NN", $v>>32, $v&0xFFFFFFFF );
-						  
+
 		// x64, bcmath
 		if ( function_exists("bcmul") )
 		{
@@ -207,12 +199,12 @@ function sphPackU64 ( $v )
 			$l = bcmod ( $v, 4294967296 );
 			return pack ( "NN", $h, $l );
 		}
-		
+
 		// x64, no-bcmath
 		$p = max ( 0, strlen($v) - 13 );
 		$lo = (int)substr ( $v, $p );
 		$hi = (int)substr ( $v, 0, $p );
-	
+
 		$m = $lo + $hi*1316134912;
 		$l = $m % 4294967296;
 		$h = $hi*2328 + (int)($m/4294967296);
@@ -223,7 +215,7 @@ function sphPackU64 ( $v )
 	// x32, int
 	if ( is_int($v) )
 		return pack ( "NN", 0, $v );
-	
+
 	// x32, bcmath
 	if ( function_exists("bcmul") )
 	{
@@ -236,7 +228,7 @@ function sphPackU64 ( $v )
 	$p = max(0, strlen($v) - 13);
 	$lo = (float)substr($v, $p);
 	$hi = (float)substr($v, 0, $p);
-	
+
 	$m = $lo + $hi*1316134912.0;
 	$q = floor($m / 4294967296.0);
 	$l = $m - ($q * 4294967296.0);
@@ -292,11 +284,11 @@ function sphUnpackU64 ( $v )
 	// x32, bcmath
 	if ( function_exists("bcmul") )
 		return bcadd ( $lo, bcmul ( $hi, "4294967296" ) );
-	
+
 	// x32, no-bcmath
 	$hi = (float)$hi;
 	$lo = (float)$lo;
-	
+
 	$q = floor($hi/10000000.0);
 	$r = $hi - $q*10000000.0;
 	$m = $lo + $r*4967296.0;
@@ -339,7 +331,7 @@ function sphUnpackI64 ( $v )
 			return $lo;
 		return sprintf ( "%.0f", $lo - 4294967296.0 );
 	}
-	
+
 	$neg = "";
 	$c = 0;
 	if ( $hi<0 )
@@ -348,7 +340,7 @@ function sphUnpackI64 ( $v )
 		$lo = ~$lo;
 		$c = 1;
 		$neg = "-";
-	}	
+	}
 
 	$hi = sprintf ( "%u", $hi );
 	$lo = sprintf ( "%u", $lo );
@@ -360,7 +352,7 @@ function sphUnpackI64 ( $v )
 	// x32, no-bcmath
 	$hi = (float)$hi;
 	$lo = (float)$lo;
-	
+
 	$q = floor($hi/10000000.0);
 	$r = $hi - $q*10000000.0;
 	$m = $lo + $r*4967296.0;
@@ -550,7 +542,7 @@ class SphinxClient
 			$this->_path = $host;
 			return;
 		}
-				
+
 		$this->_host = $host;
 		$port = intval($port);
 		assert ( 0<=$port && $port<65536 );
@@ -588,7 +580,7 @@ class SphinxClient
 			$this->_mbenc = mb_internal_encoding();
 			mb_internal_encoding ( "latin1" );
 		}
-    }
+	}
 
 	/// leave mbstring workaround mode
 	function _MBPop ()
@@ -630,14 +622,14 @@ class SphinxClient
 			$fp = @fsockopen ( $host, $port, $errno, $errstr );
 		else
 			$fp = @fsockopen ( $host, $port, $errno, $errstr, $this->_timeout );
-		
+
 		if ( !$fp )
 		{
 			if ( $this->_path )
 				$location = $this->_path;
 			else
 				$location = "{$this->_host}:{$this->_port}";
-			
+
 			$errstr = trim ( $errstr );
 			$this->_error = "connection to $location failed (errno=$errno, msg=$errstr)";
 			$this->_connerror = true;
@@ -863,7 +855,7 @@ class SphinxClient
 			$this->_filters[] = array ( "type"=>SPH_FILTER_VALUES, "attr"=>$attribute, "exclude"=>$exclude, "values"=>$values );
 		}
 	}
-	
+
 	/// set string filter
 	/// only match records where $attribute value is equal
 	function SetFilterString ( $attribute, $value, $exclude=false )
@@ -871,7 +863,7 @@ class SphinxClient
 		assert ( is_string($attribute) );
 		assert ( is_string($value) );
 		$this->_filters[] = array ( "type"=>SPH_FILTER_STRING, "attr"=>$attribute, "exclude"=>$exclude, "value"=>$value );
-	}	
+	}
 
 	/// set range filter
 	/// only match records if $attribute value is beetwen $min and $max (inclusive)
@@ -970,22 +962,22 @@ class SphinxClient
 		assert ( is_string ( $select ) );
 		$this->_select = $select;
 	}
-	
+
 	function SetQueryFlag ( $flag_name, $flag_value )
 	{
 		$known_names = array ( "reverse_scan", "sort_method", "max_predicted_time", "boolean_simplify", "idf", "global_idf" );
 		$flags = array (
-		"reverse_scan" => array ( 0, 1 ),
-		"sort_method" => array ( "pq", "kbuffer" ),
-		"max_predicted_time" => array ( 0 ),
-		"boolean_simplify" => array ( true, false ),
-		"idf" => array ("normalized", "plain", "tfidf_normalized", "tfidf_unnormalized" ),
-		"global_idf" => array ( true, false ),
+			"reverse_scan" => array ( 0, 1 ),
+			"sort_method" => array ( "pq", "kbuffer" ),
+			"max_predicted_time" => array ( 0 ),
+			"boolean_simplify" => array ( true, false ),
+			"idf" => array ("normalized", "plain", "tfidf_normalized", "tfidf_unnormalized" ),
+			"global_idf" => array ( true, false ),
 		);
-		
+
 		assert ( isset ( $flag_name, $known_names ) );
 		assert ( in_array( $flag_value, $flags[$flag_name], true ) || ( $flag_name=="max_predicted_time" && is_int ( $flag_value ) && $flag_value>=0 ) );
-		
+
 		if ( $flag_name=="reverse_scan" )	$this->_query_flags = sphSetBit ( $this->_query_flags, 0, $flag_value==1 );
 		if ( $flag_name=="sort_method" )	$this->_query_flags = sphSetBit ( $this->_query_flags, 1, $flag_value=="kbuffer" );
 		if ( $flag_name=="max_predicted_time" )
@@ -998,7 +990,7 @@ class SphinxClient
 		if ( $flag_name=="global_idf" )	$this->_query_flags = sphSetBit ( $this->_query_flags, 5, $flag_value );
 		if ( $flag_name=="idf" && ( $flag_value=="tfidf_normalized" || $flag_value=="tfidf_unnormalized" ) )	$this->_query_flags = sphSetBit ( $this->_query_flags, 6, $flag_value=="tfidf_normalized" );
 	}
-	
+
 	/// set outer order by parameters
 	function SetOuterSelect ( $orderby, $offset, $limit )
 	{
@@ -1014,7 +1006,7 @@ class SphinxClient
 		$this->_hasouter = true;
 	}
 
-	
+
 	//////////////////////////////////////////////////////////////////////////////
 
 	/// clear all filters (for multi-queries)
@@ -1035,10 +1027,10 @@ class SphinxClient
 
 	/// clear all attribute value overrides (for multi-queries)
 	function ResetOverrides ()
-    {
-    	$this->_overrides = array ();
-    }
-	
+	{
+		$this->_overrides = array ();
+	}
+
 	function ResetQueryFlag ()
 	{
 		$this->_query_flags = sphSetBit ( 0, 6, true ); // default idf=tfidf_normalized
@@ -1126,7 +1118,7 @@ class SphinxClient
 				case SPH_FILTER_FLOATRANGE:
 					$req .= $this->_PackFloat ( $filter["min"] ) . $this->_PackFloat ( $filter["max"] );
 					break;
-					
+
 				case SPH_FILTER_STRING:
 					$req .= pack ( "N", strlen($filter["value"]) ) . $filter["value"];
 					break;
@@ -1196,11 +1188,11 @@ class SphinxClient
 
 		// select-list
 		$req .= pack ( "N", strlen($this->_select) ) . $this->_select;
-		
+
 		// max_predicted_time
 		if ( $this->_predictedtime>0 )
 			$req .= pack ( "N", (int)$this->_predictedtime );
-			
+
 		$req .= pack ( "N", strlen($this->_outerorderby) ) . $this->_outerorderby;
 		$req .= pack ( "NN", $this->_outeroffset, $this->_outerlimit );
 		if ( $this->_hasouter )
@@ -1241,7 +1233,7 @@ class SphinxClient
 		$req = pack ( "nnNNN", SEARCHD_COMMAND_SEARCH, VER_COMMAND_SEARCH, $len, 0, $nreqs ) . $req; // add header
 
 		if ( !( $this->_Send ( $fp, $req, $len+8 ) ) ||
-			 !( $response = $this->_GetResponse ( $fp, VER_COMMAND_SEARCH ) ) )
+			!( $response = $this->_GetResponse ( $fp, VER_COMMAND_SEARCH ) ) )
 		{
 			$this->_MBPop ();
 			return false;
@@ -1356,7 +1348,7 @@ class SphinxClient
 					if ( $type==SPH_ATTR_FLOAT )
 					{
 						list(,$uval) = unpack ( "N*", substr ( $response, $p, 4 ) ); $p += 4;
-						list(,$fval) = unpack ( "f*", pack ( "L", $uval ) ); 
+						list(,$fval) = unpack ( "f*", pack ( "L", $uval ) );
 						$attrvals[$attr] = $fval;
 						continue;
 					}
@@ -1384,11 +1376,11 @@ class SphinxClient
 					} else if ( $type==SPH_ATTR_STRING )
 					{
 						$attrvals[$attr] = substr ( $response, $p, $val );
-						$p += $val;						
+						$p += $val;
 					} else if ( $type==SPH_ATTR_FACTORS )
 					{
 						$attrvals[$attr] = substr ( $response, $p, $val-4 );
-						$p += $val-4;						
+						$p += $val-4;
 					} else
 					{
 						$attrvals[$attr] = sphFixUint($val);
@@ -1469,7 +1461,7 @@ class SphinxClient
 		if ( !isset($opts["passage_boundary"]) )	$opts["passage_boundary"] = "none";
 		if ( !isset($opts["emit_zones"]) )			$opts["emit_zones"] = false;
 		if ( !isset($opts["load_files_scattered"]) )		$opts["load_files_scattered"] = false;
-		
+
 
 		/////////////////
 		// build request
@@ -1515,7 +1507,7 @@ class SphinxClient
 		$len = strlen($req);
 		$req = pack ( "nnN", SEARCHD_COMMAND_EXCERPT, VER_COMMAND_EXCERPT, $len ) . $req; // add header
 		if ( !( $this->_Send ( $fp, $req, $len+8 ) ) ||
-			 !( $response = $this->_GetResponse ( $fp, VER_COMMAND_EXCERPT ) ) )
+			!( $response = $this->_GetResponse ( $fp, VER_COMMAND_EXCERPT ) ) )
 		{
 			$this->_MBPop ();
 			return false;
@@ -1585,7 +1577,7 @@ class SphinxClient
 		$len = strlen($req);
 		$req = pack ( "nnN", SEARCHD_COMMAND_KEYWORDS, VER_COMMAND_KEYWORDS, $len ) . $req; // add header
 		if ( !( $this->_Send ( $fp, $req, $len+8 ) ) ||
-			 !( $response = $this->_GetResponse ( $fp, VER_COMMAND_KEYWORDS ) ) )
+			!( $response = $this->_GetResponse ( $fp, VER_COMMAND_KEYWORDS ) ) )
 		{
 			$this->_MBPop ();
 			return false;
@@ -1760,7 +1752,7 @@ class SphinxClient
 
 		fclose ( $this->_socket );
 		$this->_socket = false;
-		
+
 		return true;
 	}
 
@@ -1770,7 +1762,7 @@ class SphinxClient
 
 	function Status ($session=false)
 	{
-        assert ( is_bool($session) );
+		assert ( is_bool($session) );
 
 		$this->_MBPush ();
 		if (!( $fp = $this->_Connect() ))
@@ -1781,7 +1773,7 @@ class SphinxClient
 
 		$req = pack ( "nnNN", SEARCHD_COMMAND_STATUS, VER_COMMAND_STATUS, 4, $session?0:1 ); // len=4, body=1
 		if ( !( $this->_Send ( $fp, $req, 12 ) ) ||
-			 !( $response = $this->_GetResponse ( $fp, VER_COMMAND_STATUS ) ) )
+			!( $response = $this->_GetResponse ( $fp, VER_COMMAND_STATUS ) ) )
 		{
 			$this->_MBPop ();
 			return false;
@@ -1794,10 +1786,10 @@ class SphinxClient
 		$res = array();
 		for ( $i=0; $i<$rows; $i++ )
 			for ( $j=0; $j<$cols; $j++ )
-		{
-			list(,$len) = unpack ( "N*", substr ( $response, $p, 4 ) ); $p += 4;
-			$res[$i][] = substr ( $response, $p, $len ); $p += $len;
-		}
+			{
+				list(,$len) = unpack ( "N*", substr ( $response, $p, 4 ) ); $p += 4;
+				$res[$i][] = substr ( $response, $p, $len ); $p += $len;
+			}
 
 		$this->_MBPop ();
 		return $res;
@@ -1818,7 +1810,7 @@ class SphinxClient
 
 		$req = pack ( "nnN", SEARCHD_COMMAND_FLUSHATTRS, VER_COMMAND_FLUSHATTRS, 0 ); // len=0
 		if ( !( $this->_Send ( $fp, $req, 8 ) ) ||
-			 !( $response = $this->_GetResponse ( $fp, VER_COMMAND_FLUSHATTRS ) ) )
+			!( $response = $this->_GetResponse ( $fp, VER_COMMAND_FLUSHATTRS ) ) )
 		{
 			$this->_MBPop ();
 			return -1;
