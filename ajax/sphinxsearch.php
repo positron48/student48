@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/include/sphinxapi.php');
 
 // Создадим объект - клиент сфинкса и подключимся к нашей службе
 $cl = new SphinxClient();
-$cl->SetServer( "localhost", 9312 );
+$cl->SetServer( "127.0.0.1", 9312 );
 
 // Собственно поиск
 $cl->SetMatchMode( SPH_MATCH_ANY  ); // ищем хотя бы 1 слово из поисковой фразы
