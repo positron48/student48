@@ -17,8 +17,6 @@ $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
 echo $_REQUEST['q'].":<br>\n";
 $result = $sphinx->Query($_REQUEST['q'], 'student48_index_news');
 
-if($result){
-    echo '<pre>';
-    print_r($result);
-    echo '</pre>';
-}
+echo '<pre>';
+print_r($result);
+echo '</pre>';
