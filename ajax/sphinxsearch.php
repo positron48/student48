@@ -14,7 +14,8 @@ $sphinx->SetMatchMode(SPH_MATCH_ANY);
 $sphinx->SetSortMode(SPH_SORT_RELEVANCE);
 
 // Результат по запросу (* - использование всех индексов)
-$result = $sphinx->Query($_REQUEST['q'], '*');
+echo $_REQUEST['q'].":<br>\n";
+$result = $sphinx->Query($_REQUEST['q'], 'student48_index_news');
 
 if($result){
     echo '<pre>';
