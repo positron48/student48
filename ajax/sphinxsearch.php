@@ -1,22 +1,27 @@
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/sphinxapi.php');
 
-// Создаем объект клиента для Sphinx API
-$sphinx = new SphinxClient();
+// Создадим объект - клиент сфинкса и подключимся к нашей службе
+$cl = new SphinxClient();
+$cl->SetServer( "localhost", 3306 );
 
-// Подсоединяемся к Sphinx-серверу
-$sphinx->SetServer('localhost', 3306);
+// Собственно поиск
+$cl->SetMatchMode( SPH_MATCH_ANY  ); // ищем хотя бы 1 слово из поисковой фразы
+$result = $cl->Query("computer"); // поисковый запрос
 
-// Совпадение по любому слову
-$sphinx->SetMatchMode(SPH_MATCH_ANY);
+// обработка результатов запроса
+if ( $result === false ) {
+    echo "Query failed: " . $cl->GetLastError() . ".\n"; // выводим ошибку если произошла
+}
+else {
+    if ( $cl->GetLastWarning() ) {
+        echo "WARNING: " . $cl->GetLastWarning() . " // выводим предупреждение если оно было
+    ";
+    }
 
-// Результаты сортировать по релевантности
-$sphinx->SetSortMode(SPH_SORT_RELEVANCE);
-
-// Результат по запросу (* - использование всех индексов)
-echo $_REQUEST['q'].":<br>\n";
-$result = $sphinx->Query($_REQUEST['q'], 'student48_index_news');
-
-echo '<pre>';
-print_r($result);
-echo '</pre>';
+    if ( ! empty($result["matches"]) ) { // если есть результаты поиска - обрабатываем их
+        foreach ( $result["matches"] as $product => $info ) {
+            echo $product . "<br />"; // просто выводим id найденных товаров
+        }
+    }
+}
