@@ -24,7 +24,7 @@ if ( $resultNews !== false ) {
     $newsIds = array_slice($newsIds,0,5);
 }
 echo "<pre>";
-print_r($arMaterials);
+print_r($materialIds);
 echo "</pre>";
 $arMaterials = [];
 if(count($materialIds)>0) {
