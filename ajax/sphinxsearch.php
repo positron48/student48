@@ -35,10 +35,6 @@ if(count($materialIds)>0) {
     while ($material = $dbMaterials->fetch()) {
         $arMaterials[$material['id']] = $material;
     }
-
-    echo "<pre>";
-    print_r($arMaterials);
-    echo "</pre>";
 }
 
 $arNews = [];
@@ -50,8 +46,27 @@ if(count($newsIds)>0) {
     while ($news = $dbNews->fetch()) {
         $arNews[$news['id']] = $news;
     }
-
-    echo "<pre>";
-    print_r($arNews);
-    echo "</pre>";
 }
+
+if(count($arMaterials)>0 || count($arNews)>0){
+    echo "<div id='searchResult'>";
+    if(count($arMaterials)>0 && count($arNews)>0){
+        echo "<div class='searchHead'>Материалы</div>";
+        foreach($arMaterials as $material){
+            echo "<div class='searchItem'>";
+            echo "<a href='/downloads/{$material['id']}/'>{$material['title_material']}</a>";
+            echo " (<a href='/materials/{$material['title_predmet_english']}/semestr{$material['semestr']}/'>{$material['title_predmet']}</a>)";
+            echo "</div>";
+        }
+    }
+    if(count($arMaterials)>0 && count($arNews)>0){
+        echo "<div class='searchHead'>Новости</div>";
+        foreach($arNews as $news){
+            echo "<div class='searchItem'>";
+            $date = date('d.m.Y',strtotime($news['datecreate']));
+            echo "<a href='/news/{$news['id']}/'>{$news['title_news']} ($date)</a>";
+            echo "</div>";
+        }
+    }
+    echo "</div>";
+<?}
