@@ -44,7 +44,7 @@ if(count($materialIds)>0) {
 $arNews = [];
 if(count($newsIds)>0) {
     $qMarks = str_repeat('?,', count($newsIds) - 1) . '?';
-    $dbNews = $dbWorker->prepare('SELECT * FROM news WHERE id IN ($qMarks)');
+    $dbNews = $dbWorker->prepare("SELECT * FROM news WHERE id IN ($qMarks)");
     $dbNews->execute($newsIds);
 
     while ($news = $dbNews->fetch()) {
