@@ -33,6 +33,7 @@
 
 		<script src="/js/jquery.form.js"></script>
 		<script src="/js/bootstrap.js"></script>
+		<script src="/js/search.js"></script>
 		<link rel="stylesheet" href="/css/style.css">
 
 

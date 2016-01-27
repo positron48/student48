@@ -18,6 +18,11 @@ label.addbutton .form-control{margin-left:15px;width:36%;}
     width: 196px;
     border: 1px solid #ccc;
     border-radius: 1px;
+    background-color: white;
+    width: 240px;
+    position: absolute;
+    top: 43px;
+    margin-left: 15px;
 }
 .searchHead{
     font-weight: bold;

@@ -36,9 +36,9 @@
 					</ul>
 					
 					<ul class="nav navbar-nav navbar-right">
-						<form class="navbar-form navbar-left" role="search">
+						<form class="navbar-form navbar-left" role="search" action="/search/" method="get">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Поиск материалов">
+								<input id="searchInput" name="q" type="text" class="form-control" placeholder="Поиск материалов">
 							</div>
 							<button type="submit" class="btn btn-default">
 								<center><span class="glyphicon glyphicon-search" style="height: 20px;"></span></center>
