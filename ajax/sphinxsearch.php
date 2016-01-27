@@ -69,4 +69,4 @@ if(count($arMaterials)>0 || count($arNews)>0){
         }
     }
     echo "</div>";
-<?}
+}
