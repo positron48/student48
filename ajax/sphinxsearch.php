@@ -2,6 +2,8 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/sphinxapi.php');
 
+$query = '*'.str_replace(' ','* *',$_REQUEST['q']).'*';
+
 $cl = new SphinxClient();
 $cl->SetServer( "127.0.0.1", 9312 );
 
@@ -16,7 +18,7 @@ if ( $resultMaterials !== false ) {
 }
 
 $cl->setIndexWeights (["title_news"=>50,"introtext"=>30, "fullcontent"=>10]);
-$resultNews = $cl->Query($_REQUEST['q'],"student48_index_news"); // поисковый запрос
+$resultNews = $cl->Query($query,"student48_index_news"); // поисковый запрос
 $newsIds = [];
 if ( $resultNews !== false ) {
     $newsIds = array_keys($resultNews['matches']);
