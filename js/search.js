@@ -13,11 +13,11 @@ $(document).ready(function(){
         }
     };
 
-    $('#searchInput').focusout(function(){
+    $('#searchInput').parents('ul').focusout(function(){
         $('#searchResult').hide();
     });
 
-    $('#searchInput').focus(function(){
+    $('#searchInput').parents('ul').focus(function(){
         $('#searchResult').show();
     });
 
