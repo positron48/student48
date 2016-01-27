@@ -9,7 +9,7 @@ $cl->SetServer( "127.0.0.1", 9312 );
 
 $cl->SetMatchMode( SPH_MATCH_ANY  );
 $cl->setIndexWeights (["title_material"=>40,"title_predmet"=>10]);
-$resultMaterials = $cl->Query($_REQUEST['q'],"student48_index_materials"); // поисковый запрос
+$resultMaterials = $cl->Query($query,"student48_index_materials"); // поисковый запрос
 $materialIds = [];
 if ( $resultMaterials !== false ) {
     $materialIds = array_keys($resultMaterials['matches']);
