@@ -23,7 +23,9 @@ if ( $resultNews !== false ) {
     //берем только первые 5 элементов
     $newsIds = array_slice($newsIds,0,5);
 }
-
+echo "<pre>";
+print_r($arMaterials);
+echo "</pre>";
 $arMaterials = [];
 if(count($materialIds)>0) {
     $qMarks = str_repeat('?,', count($materialIds) - 1) . '?';
