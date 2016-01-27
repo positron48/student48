@@ -21,10 +21,12 @@ label.addbutton .form-control{margin-left:15px;width:36%;}
 }
 .searchHead{
     font-weight: bold;
+    margin-left: 4px;
 }
 .searchItem{
     background-color: aliceblue;
-    margin: 2px 2px 5px 2px;
+    margin: 0px 0px 3px 4px;
+    border-radius: 1px;
 }
 .searchItem:hover{
     background-color: azure;
