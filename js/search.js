@@ -13,13 +13,21 @@ $(document).ready(function(){
         }
     };
 
+    $('#searchInput').focusout(function(){
+        $('#searchResult').hide();
+    });
+
+    $('#searchInput').focus(function(){
+        $('#searchResult').show();
+    });
+
     function showQuickSearchResults(){
         $.post( "/ajax/sphinxsearch.php", { q: query})
             .done(function( data ) {
                 block = false;
                 if(data!="") {
                     $('#searchResult').remove();
-                    $('#searchInput').parents('form').append(data);
+                    $('#searchInput').parents('form').after(data);
                 }
                 var tmp = $('#search_form input').val();
                 if(tmp.length>1 && tmp!=query && !block){
