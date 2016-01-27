@@ -47,14 +47,13 @@ if(count($newsIds)>0) {
         $arNews[$news['id']] = $news;
     }
 }
-?>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-<?
+
 if(count($arMaterials)>0 || count($arNews)>0){
     echo "<div id='searchResult'>";
-    if(count($arMaterials)>0 && count($arNews)>0){
+    if(count($arMaterials)>0 && count($arNews)>0) {
         echo "<div class='searchHead'>Материалы</div>";
+    }
+    if(count($arMaterials)>0){
         foreach($arMaterials as $material){
             echo "<div class='searchItem'>";
             echo "<a href='/downloads/{$material['id']}/'>{$material['title_material']}</a>";
@@ -62,8 +61,10 @@ if(count($arMaterials)>0 || count($arNews)>0){
             echo "</div>";
         }
     }
-    if(count($arMaterials)>0 && count($arNews)>0){
+    if(count($arMaterials)>0 && count($arNews)>0) {
         echo "<div class='searchHead'>Новости</div>";
+    }
+    if(count($arNews)>0){
         foreach($arNews as $news){
             echo "<div class='searchItem'>";
             $date = date('d.m.Y',strtotime($news['datecreate']));
