@@ -13,14 +13,6 @@ $(document).ready(function(){
         }
     };
 
-    $('#searchInput').parents('ul').focusout(function(){
-        $('#searchResult').hide();
-    });
-
-    $('#searchInput').parents('ul').focus(function(){
-        $('#searchResult').show();
-    });
-
     function showQuickSearchResults(){
         $.post( "/ajax/sphinxsearch.php", { q: query})
             .done(function( data ) {
