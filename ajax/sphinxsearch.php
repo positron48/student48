@@ -23,9 +23,7 @@ if ( $resultNews !== false ) {
     //берем только первые 5 элементов
     $newsIds = array_slice($newsIds,0,5);
 }
-echo "<pre>";
-print_r($materialIds);
-echo "</pre>";
+
 $arMaterials = [];
 if(count($materialIds)>0) {
     $qMarks = str_repeat('?,', count($materialIds) - 1) . '?';
@@ -37,7 +35,23 @@ if(count($materialIds)>0) {
     while ($material = $dbMaterials->fetch()) {
         $arMaterials[$material['id']] = $material;
     }
+
     echo "<pre>";
     print_r($arMaterials);
+    echo "</pre>";
+}
+
+$arNews = [];
+if(count($newsIds)>0) {
+    $qMarks = str_repeat('?,', count($newsIds) - 1) . '?';
+    $dbNews = $dbWorker->prepare('SELECT * FROM news WHERE id IN ($qMarks)');
+    $dbNews->execute($newsIds);
+
+    while ($news = $dbNews->fetch()) {
+        $arNews[$news['id']] = $news;
+    }
+
+    echo "<pre>";
+    print_r($arNews);
     echo "</pre>";
 }
