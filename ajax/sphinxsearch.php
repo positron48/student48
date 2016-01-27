@@ -7,7 +7,7 @@ $query = '*'.str_replace(' ','* *',$_REQUEST['q']).'*';
 $cl = new SphinxClient();
 $cl->SetServer( "127.0.0.1", 9312 );
 
-$cl->SetMatchMode( SPH_MATCH_ANY  );
+$cl->SetMatchMode(SPH_MATCH_ALL);
 $cl->setIndexWeights (["title_material"=>40,"title_predmet"=>10]);
 $resultMaterials = $cl->Query($query,"student48_index_materials"); // поисковый запрос
 $materialIds = [];
