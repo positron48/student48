@@ -7,21 +7,21 @@ $cl->SetServer( "127.0.0.1", 9312 );
 
 // Собственно поиск
 $cl->SetMatchMode( SPH_MATCH_ANY  ); // ищем хотя бы 1 слово из поисковой фразы
-$result = $cl->Query($_REQUEST['q']); // поисковый запрос
 
-// обработка результатов запроса
-if ( $result === false ) {
+$cl->setIndexWeights (["title_material"=>40,"title_predmet"=>10]);
+
+$resultMaterials = $cl->Query($_REQUEST['q'],"student48_index_materials"); // поисковый запрос
+if ( $resultMaterials === false ) {
     echo "Query failed: " . $cl->GetLastError() . ".\n"; // выводим ошибку если произошла
 }
-else {
-    if ( $cl->GetLastWarning() ) {
-        echo "WARNING: " . $cl->GetLastWarning() . " // выводим предупреждение если оно было
-    ";
-    }
-
-    if ( ! empty($result["matches"]) ) { // если есть результаты поиска - обрабатываем их
-        foreach ( $result["matches"] as $product => $info ) {
-            echo $product . "<br />"; // просто выводим id найденных товаров
-        }
-    }
+$cl->setIndexWeights (["title_news"=>50,"introtext"=>30, "fullcontent"=>10]);
+$resultNews = $cl->Query($_REQUEST['q'],"student48_index_news"); // поисковый запрос
+if ( $resultNews === false ) {
+    echo "Query failed: " . $cl->GetLastError() . ".\n"; // выводим ошибку если произошла
 }
+echo "<pre>Materials:\n";
+print_r($resultMaterials);
+echo "</pre>";
+echo "<pre>News:\n";
+print_r($resultNews);
+echo "</pre>";
