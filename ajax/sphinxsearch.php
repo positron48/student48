@@ -30,7 +30,7 @@ $arMaterials = [];
 if(count($materialIds)>0) {
     $qMarks = str_repeat('?,', count($materialIds) - 1) . '?';
     $queryMaterials = "SELECT M.id, M.title_material, M.metakey, M.predmetid, M.link, M.filesize, M.downloads, M.dateadd,
-	P.title_predmet, P.title_predmet_english, P.semestr WHERE M.id IN ($qMarks) LIMIT :min, :count";
+	P.title_predmet, P.title_predmet_english, P.semestr WHERE M.id IN ($qMarks)";
     $dbMaterials = $dbWorker->prepare($queryMaterials);
     $dbMaterials->execute($materialIds);
 
