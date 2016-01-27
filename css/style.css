@@ -14,3 +14,18 @@ label.addbutton input{opacity:0;display:none;}
 label.addbutton .form-control{margin-left:15px;width:36%;}
 #another_predmet{display:none;}
 .alert{text-align:center;}
+#searchResult{
+    width: 196px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+}
+.searchHead{
+    font-weight: bold;
+}
+.searchItem{
+    background-color: aliceblue;
+    margin: 2px 2px 5px 2px;
+}
+.searchItem:hover{
+    background-color: azure;
+}
