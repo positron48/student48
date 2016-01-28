@@ -16,8 +16,6 @@ $resultMaterials = $cl->Query($query,"student48_index_materials"); // поиск
 $materialIds = [];
 if ( $resultMaterials !== false ) {
 	$materialIds = array_keys($resultMaterials['matches']);
-	//берем только первые 5 элементов
-	$materialIds = array_slice($materialIds,0,5);
 }
 
 $cl->setIndexWeights (["title_news"=>50,"introtext"=>30, "fullcontent"=>10]);
@@ -25,8 +23,6 @@ $resultNews = $cl->Query($query,"student48_index_news"); // поисковый �
 $newsIds = [];
 if ( $resultNews !== false ) {
 	$newsIds = array_keys($resultNews['matches']);
-	//берем только первые 5 элементов
-	$newsIds = array_slice($newsIds,0,5);
 }
 
 $arMaterials = [];
