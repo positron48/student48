@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/sphinxapi.php');
 
-$query = '*'.str_replace(' ','* *',$_REQUEST['q']).'*';
+$query = '*'.str_replace(' ','* *',htmlspecialchars($_REQUEST['q'])).'*';
 
 $cl = new SphinxClient();
 $cl->SetServer( "127.0.0.1", 9312 );
