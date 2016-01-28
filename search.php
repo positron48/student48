@@ -45,14 +45,14 @@ if(count($newsIds)>0) {
 	$dbNews->execute($newsIds);
 
 	while ($news = $dbNews->fetch()) {
-		$arNews[$news['id']] = $news;
+		$arNews[] = $news;
 	}
 }
 ?>
 <h1>Поиск по запросу "<?= htmlspecialchars($_REQUEST['q']);?>"</h1>
 <?if(count($arMaterials)==0 && count($arMaterials)==0){?><h2>Результатов не найдено.</h2><?}?>
 <?if(count($arMaterials)>0){?>
-		<h4>Количество материалов: <?=$countMaterials?></h4>
+		<h4>Количество найденных материалов: <?=count($arMaterials)?></h4>
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
@@ -81,7 +81,8 @@ if(count($newsIds)>0) {
 <?if(count($arNews)>0){?>
 	<p><h1>Новости:</h1>
 	<hr>
-	<? foreach($arNews as $news){ //выводим по 2 штуки в строку?>
+	<? for($i=0;$i<count($arNews);$i++){ //выводим по 2 штуки в строку?>
+		<?$news = $arNews[$i];$i++;?>
 		<div class="row">
 			<div class="col-xs-6" align="justify">
 				<h2><?=$news['title_news']?></h2>
@@ -90,7 +91,8 @@ if(count($newsIds)>0) {
 				<p><?=$news['introtext']?></p>
 				<p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее</a></p>
 			</div>
-		<?if($news = next($arNews)){ ?>
+		<?if(isset($arNews[$i])){ ?>
+			<?$news = $arNews[$i];?>
 			<div class="col-xs-6" align="justify">
 				<h2><?=$news['title_news']?></h2>
 				<h5>Добавлено: <?=date('d.m.Y г. h:i ',strtotime($news['datecreate']));?>  Просмотров:<?=$news['views']?></h5>
