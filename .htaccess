@@ -8,5 +8,5 @@ RewriteEngine on
       RewriteRule ^map/$ map.php [L]
       RewriteRule ^rating/$ rating.php [L]
       RewriteRule ^upload/$ upload.php [L]
-      RewriteRule ^search/$ search.php [L, QSA]
+      RewriteRule ^search/$ search.php [L]
 
