@@ -11,7 +11,7 @@ $canSortMaterialsBy = array(
 
 if(isset($_GET['sort']) && isset($canSortMaterialsBy[$_GET['sort']])){
 	$orderBy = ' ORDER BY '.$canSortMaterialsBy[$_GET['sort']].' '.(isset($_GET['order']) && $_GET['order']=='desc'?'DESC':'ASC');
-	$queryString = '?sort='.$canSortMaterialsBy[$_GET['sort']].(isset($_GET['order']) && $_GET['order']=='desc'?'&order=desc':'');
+	$queryString = '?sort='.$_GET['sort'].(isset($_GET['order']) && $_GET['order']=='desc'?'&order=desc':'');
 }else{
 	$orderBy = " ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
 }
