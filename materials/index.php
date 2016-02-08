@@ -143,7 +143,7 @@ while($material = $dbMaterials->fetch()){
 					<th class="td_material_predmet"><a href="/?sort=predmet<?=$order=='DESC'?'':'&order=desc'?>">Предмет</a></th>
 					<th><a href="/?sort=name<?=$order=='DESC'?'':'&order=desc'?>">Описание</a></th>
 					<th><a href="/?sort=size<?=$order=='DESC'?'':'&order=desc'?>">Размер</a></th>
-					<th><a href="/?sort=downloads<?=$order=='DESC'?'':'&order=desc'?>"><center><span class="glyphicon glyphicon-download"></span></center>></a></th
+					<th><a href="/?sort=downloads<?=$order=='DESC'?'':'&order=desc'?>"><center><span class="glyphicon glyphicon-download"></span></center>></a></th>
 					<th><center><span class="glyphicon glyphicon-download-alt"></span></center></th>
 				</tr>
 			</thead>
