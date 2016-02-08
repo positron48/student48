@@ -55,3 +55,12 @@ label.addbutton .form-control{margin-left:15px;width:36%;}
 .materials .glyphicon{
     margin-top:2px;
 }
+.btn-info {
+    height: 34px;
+}
+.progress {
+    width: 50%;
+    margin-left: 15px;
+    height: 34px;
+    margin-bottom: 0;
+}

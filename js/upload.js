@@ -50,26 +50,7 @@ $(document).ready(function(){
         }
     }
 
-    $(function () {
-        $('#fileupload').fileupload({
-            dataType: 'json',
-            done: function (e, data) {
-                $.each(data.result.files, function (index, file) {
-                    $('#file').val(file.name);
-                });
-            },
-            progressall: function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('.progress-bar').css(
-                    'width',
-                    progress + '%'
-                );
-            },
-            error: function(data){
-                alert(data.responseText);
-            }
-        });
-    });
+
 
     $('#selectPredmet').change(function(){
         //alert($('#selectPredmet option:selected').value);

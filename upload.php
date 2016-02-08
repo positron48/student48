@@ -20,13 +20,30 @@ while($predmetRes = $dbPredmets->fetch()){
 <script src="/files/js/jquery.iframe-transport.js"></script>
 <script src="/files/js/jquery.fileupload.js"></script>
 <style>
-	.progress {
-		width: 50%;
-		margin-left: 15px;
-		height: 34px;
-		margin-bottom: 0;
-	}
+
 </style>
+<script>
+	$(function () {
+		$('#fileupload').fileupload({
+			dataType: 'json',
+			done: function (e, data) {
+				$.each(data.result.files, function (index, file) {
+					$('#file').val(file.name);
+				});
+			},
+			progressall: function (e, data) {
+				var progress = parseInt(data.loaded / data.total * 100, 10);
+				$('.progress-bar').css(
+					'width',
+					progress + '%'
+				);
+			},
+			error: function(data){
+				alert(data.responseText);
+			}
+		});
+	});
+</script>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
 <?if(isset($_REQUEST['success'])){?>
