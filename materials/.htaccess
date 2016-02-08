@@ -1,12 +1,12 @@
 XSendFile on
 
 RewriteEngine on
-      RewriteRule ^page([0-9]+)/$ index.php?page=$1 [L]
-      RewriteRule ^semestr([0-9]+)/$ index.php?semestr=$1 [L]
-      RewriteRule ^semestr([0-9]+)/page([0-9]+)/$ index.php?semestr=$1&page=$2 [L]
+      RewriteRule ^page([0-9]+)/$ index.php?page=$1 [L,QSA]
+      RewriteRule ^semestr([0-9]+)/$ index.php?semestr=$1 [L,QSA]
+      RewriteRule ^semestr([0-9]+)/page([0-9]+)/$ index.php?semestr=$1&page=$2 [L,QSA]
       
-      RewriteRule ^(\w+)/$ index.php?predmet=$1 [L]
-      RewriteRule ^(\w+)/semestr([0-9]+)/$ index.php?predmet=$1&semestr=$2 [L]
-      RewriteRule ^(\w+)/page([0-9]+)/$ index.php?predmet=$1&page=$2 [L]
-      RewriteRule ^(\w+)/semestr([0-9]+)/page([0-9]+)/$ index.php?predmet=$1&semestr=$2&page=$3 [L]
+      RewriteRule ^(\w+)/$ index.php?predmet=$1 [L,QSA]
+      RewriteRule ^(\w+)/semestr([0-9]+)/$ index.php?predmet=$1&semestr=$2 [L,QSA]
+      RewriteRule ^(\w+)/page([0-9]+)/$ index.php?predmet=$1&page=$2 [L,QSA]
+      RewriteRule ^(\w+)/semestr([0-9]+)/page([0-9]+)/$ index.php?predmet=$1&semestr=$2&page=$3 [L,QSA]
       RewriteRule (.*) $1
