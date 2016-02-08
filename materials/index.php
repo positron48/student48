@@ -136,14 +136,55 @@ while($material = $dbMaterials->fetch()){
 			</center>
 		</nav>
 		<h4>Количество материалов: <?=$countMaterials?></h4>
-		<table class="table table-striped table-bordered table-hover">
+		<table class="table table-striped table-bordered table-hover materials">
 			<thead>
 				<tr>
-					<th><a href="/?sort=semestr<?=$order=='DESC'?'':'&order=desc'?>"><span class="glyphicon glyphicon-time"></span></a></th>
-					<th class="td_material_predmet"><a href="/?sort=predmet<?=$order=='DESC'?'':'&order=desc'?>">Предмет</a></th>
-					<th><a href="/?sort=name<?=$order=='DESC'?'':'&order=desc'?>">Описание</a></th>
-					<th><a href="/?sort=size<?=$order=='DESC'?'':'&order=desc'?>">Размер</a></th>
-					<th><a href="/?sort=downloads<?=$order=='DESC'?'':'&order=desc'?>"><center><span class="glyphicon glyphicon-download"></span></center></a></th>
+					<th><span class="glyphicon glyphicon-time"></span>
+						<a class="sortLink<?=
+						isset($_GET['sort']) && $_GET['sort']=='semestr'?
+							' active':''?>" href="?sort=semestr<?=
+							isset($_GET['sort']) && $_GET['sort']=='semestr' && $order=='ASC'?
+							'&order=desc':''?>">
+							<span class="glyphicon glyphicon-sort-by-attributes<?=
+								isset($_GET['sort']) && $_GET['sort']=='semestr' ? $order=='ASC'?'':'-alt' :''?>"></span>
+						</a>
+					</th>
+					<th class="td_material_predmet">Предмет
+						<a class="sortLink<?=
+						isset($_GET['sort']) && $_GET['sort']=='predmet'?
+							' active':''?>" href="?sort=predmet<?=
+							isset($_GET['sort']) && $_GET['sort']=='predmet' && $order=='ASC'?
+							'&order=desc':''?>">
+							<span class="glyphicon glyphicon-sort-by-attributes<?=
+								isset($_GET['sort']) && $_GET['sort']=='predmet' ? $order=='ASC'?'':'-alt' :''?>"></span>
+						</a></th>
+					<th>Описание
+						<a class="sortLink<?=
+						isset($_GET['sort']) && $_GET['sort']=='name'?
+							' active':''?>" href="?sort=name<?=
+							isset($_GET['sort']) && $_GET['sort']=='name' && $order=='ASC'?
+							'&order=desc':''?>">
+							<span class="glyphicon glyphicon-sort-by-attributes<?=
+								isset($_GET['sort']) && $_GET['sort']=='name' ? $order=='ASC'?'':'-alt' :''?>"></span>
+						</a></th>
+					<th class="size">Размер
+						<a class="sortLink<?=
+						isset($_GET['sort']) && $_GET['sort']=='size'?
+							' active':''?>" href="?sort=size<?=
+							isset($_GET['sort']) && $_GET['sort']=='size' && $order=='ASC'?
+							'&order=desc':''?>">
+							<span class="glyphicon glyphicon-sort-by-attributes<?=
+								isset($_GET['sort']) && $_GET['sort']=='size'? $order=='ASC'?'':'-alt' :''?>"></span>
+						</a></th>
+					<th><span class="glyphicon glyphicon-download"></span>
+						<a class="sortLink<?=
+						isset($_GET['sort']) && $_GET['sort']=='downloads'?
+							' active':''?>" href="?sort=downloads<?=
+							isset($_GET['sort']) && $_GET['sort']=='downloads' && $order=='ASC'?
+							'&order=desc':''?>">
+							<span class="glyphicon glyphicon-sort-by-attributes<?=
+								isset($_GET['sort']) && $_GET['sort']=='downloads' ? $order=='ASC'?'':'-alt' :''?>"></span>
+						</a></th>
 					<th><center><span class="glyphicon glyphicon-download-alt"></span></center></th>
 				</tr>
 			</thead>

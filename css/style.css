@@ -36,3 +36,22 @@ label.addbutton .form-control{margin-left:15px;width:36%;}
 .searchItem:hover{
     background-color: azure;
 }
+
+.sortLink{
+    float: right;
+}
+.sortLink.active{
+    color: lawngreen;
+}
+.materials th{
+    vertical-align: middle !important;
+}
+.materials th.size{
+    min-width: 95px;
+}
+.materials th:first-child{
+    width: 55px;
+}
+.materials .glyphicon{
+    margin-top:2px;
+}
