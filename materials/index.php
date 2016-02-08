@@ -1,5 +1,20 @@
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_before.php"); ?>
 <?
+
+$canSortMaterialsBy = array(
+	'semestr' => 'P.semestr',
+	'predmet' => 'P.title_predmet',
+	'name' => 'M.title_material',
+	'size' => 'M.filesize',
+	'downloads' => 'M.downloads'
+);
+
+if(isset($_GET['sort']) && isset($canSortMaterialsBy[$_GET['sort']])){
+	$orderBy = ' ORDER BY '.$canSortMaterialsBy[$_GET['sort']].' '.(isset($_GET['order']) && $_GET['order']=='desc'?'DESC':'ASC');
+}else{
+	$orderBy = " ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
+}
+
 $page = 1;
 if(isset($_GET['page'])){
 	$page = (int)htmlspecialchars($_GET['page']);
@@ -36,7 +51,8 @@ if($predmet!=null){
 		$query.=" AND";
 	$query.=" P.title_predmet_english = :predmet";
 }
-$query.=" ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
+
+$query.=$orderBy;
 
 //общее количество материалов для выборки
 $countMaterials = $dbWorker->prepare("SELECT COUNT(*) ".$query);
