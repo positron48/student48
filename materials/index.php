@@ -11,6 +11,7 @@ $canSortMaterialsBy = array(
 
 if(isset($_GET['sort']) && isset($canSortMaterialsBy[$_GET['sort']])){
 	$orderBy = ' ORDER BY '.$canSortMaterialsBy[$_GET['sort']].' '.(isset($_GET['order']) && $_GET['order']=='desc'?'DESC':'ASC');
+	$queryString = '?sort='.$canSortMaterialsBy[$_GET['sort']].(isset($_GET['order']) && $_GET['order']=='desc'?'&order=desc':'');
 }else{
 	$orderBy = " ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
 }
@@ -128,7 +129,7 @@ while($material = $dbMaterials->fetch()){
 							<li <?=$page==$i?"class='active'":''?>>
 								<a href='/materials/<?=$predmet!=null?$predmet.'/':''?>
 									<?=$semestr!=0?'semestr'.$semestr.'/':''?>
-									<?='page'.$i.'/'?>'><?=$i?></a></li>
+									<?='page'.$i.'/'.$queryString?>'><?=$i?></a></li>
 						<?}?>
 				</ul>
 			</center>
@@ -172,7 +173,7 @@ while($material = $dbMaterials->fetch()){
 						<li <?=$page==$i?"class='active'":''?>>
 							<a href='/materials/<?=$predmet!=null?$predmet.'/':''?>
 									<?=$semestr!=0?'semestr'.$semestr.'/':''?>
-									<?='page'.$i.'/'?>'><?=$i?></a></li>
+									<?='page'.$i.'/'.$queryString?>'><?=$i?></a></li>
 					<?}?>
 			</ul>
 		</center>

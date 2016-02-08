@@ -52,31 +52,32 @@ if(count($newsIds)>0) {
 <h1>Поиск по запросу "<?= htmlspecialchars($_REQUEST['q']);?>"</h1>
 <?if(count($arMaterials)==0 && count($arMaterials)==0){?><h2>Результатов не найдено.</h2><?}?>
 <?if(count($arMaterials)>0){?>
-		<h4>Количество найденных материалов: <?=count($arMaterials)?></h4>
-		<table class="table table-striped table-bordered table-hover">
-			<thead>
-				<tr>
-					<th><span class="glyphicon glyphicon-time"></span></th>
-					<th class="td_material_predmet">Предмет</th>
-					<th>Описание</th>
-					<th>Размер</th>
-					<th><center><span class="glyphicon glyphicon-download"></span></center></th>
-					<th><center><span class="glyphicon glyphicon-download-alt"></span></center></th>
-				</tr>
-			</thead>
-			<tbody>
-			<? foreach($arMaterials as $material){ ?>
-				<tr>
-					<td class="td_material"><a href="/materials/semestr<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
-					<td class="td_material_predmet"><a href="/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></td>
-					<td class="td_material"><a href="/downloads/<?=$material['id']?>/"><?=$material['title_material']?></a></td>
-					<td class="td_material_filesize"><?=$material['filesize']?> Кб</td>
-					<td class="td_material_filesize"><center><?=$material['downloads']?></center></td>
-					<td class="td_material"><a href="/downloads/<?=$material['id']?>/"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td>
-				</tr>
-			<?}?>
-			</tbody>
-		</table>
+	<p><h1>Материалы:</h1>
+	<h4>Количество найденных материалов: <?=count($arMaterials)?></h4>
+	<table class="table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th><span class="glyphicon glyphicon-time"></span></th>
+				<th class="td_material_predmet">Предмет</th>
+				<th>Описание</th>
+				<th>Размер</th>
+				<th><center><span class="glyphicon glyphicon-download"></span></center></th>
+				<th><center><span class="glyphicon glyphicon-download-alt"></span></center></th>
+			</tr>
+		</thead>
+		<tbody>
+		<? foreach($arMaterials as $material){ ?>
+			<tr>
+				<td class="td_material"><a href="/materials/semestr<?=$material['semestr']?>/"><?=$material['semestr']?></a></td>
+				<td class="td_material_predmet"><a href="/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></td>
+				<td class="td_material"><a href="/downloads/<?=$material['id']?>/"><?=$material['title_material']?></a></td>
+				<td class="td_material_filesize"><?=$material['filesize']?> Кб</td>
+				<td class="td_material_filesize"><center><?=$material['downloads']?></center></td>
+				<td class="td_material"><a href="/downloads/<?=$material['id']?>/"><center><span class="glyphicon glyphicon-download-alt"></span></center></a></td>
+			</tr>
+		<?}?>
+		</tbody>
+	</table>
 <?}?>
 <?if(count($arNews)>0){?>
 	<p><h1>Новости:</h1>
