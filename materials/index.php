@@ -139,11 +139,11 @@ while($material = $dbMaterials->fetch()){
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-					<a href="/?sort=semestr<?=$order=='DESC'?'&order=desc':''?>"><th><span class="glyphicon glyphicon-time"></span></th></a>
-					<a href="/?sort=predmet<?=$order=='DESC'?'&order=desc':''?>"><th class="td_material_predmet">Предмет</th></a>
-					<a href="/?sort=name<?=$order=='DESC'?'&order=desc':''?>"><th>Описание</th></a>
-					<a href="/?sort=size<?=$order=='DESC'?'&order=desc':''?>"><th>Размер</th></a>
-					<a href="/?sort=downloads<?=$order=='DESC'?'&order=desc':''?>"><th><center><span class="glyphicon glyphicon-download"></span></center></th></a>
+					<th><a href="/?sort=semestr<?=$order=='DESC'?'':'&order=desc'?>"><span class="glyphicon glyphicon-time"></span></a></th>
+					<th class="td_material_predmet"><a href="/?sort=predmet<?=$order=='DESC'?'':'&order=desc'?>">Предмет</a></th>
+					<th><a href="/?sort=name<?=$order=='DESC'?'':'&order=desc'?>">Описание</a></th>
+					<th><a href="/?sort=size<?=$order=='DESC'?'':'&order=desc'?>">Размер</a></th>
+					<th><a href="/?sort=downloads<?=$order=='DESC'?'':'&order=desc'?>"><center><span class="glyphicon glyphicon-download"></span></center>></a></th
 					<th><center><span class="glyphicon glyphicon-download-alt"></span></center></th>
 				</tr>
 			</thead>
