@@ -9,9 +9,10 @@ $canSortMaterialsBy = array(
 	'downloads' => 'M.downloads'
 );
 
+$order = isset($_GET['order']) && $_GET['order']=='desc'?'DESC':'ASC';
 if(isset($_GET['sort']) && isset($canSortMaterialsBy[$_GET['sort']])){
-	$orderBy = ' ORDER BY '.$canSortMaterialsBy[$_GET['sort']].' '.(isset($_GET['order']) && $_GET['order']=='desc'?'DESC':'ASC');
-	$queryString = '?sort='.$_GET['sort'].(isset($_GET['order']) && $_GET['order']=='desc'?'&order=desc':'');
+	$orderBy = ' ORDER BY '.$canSortMaterialsBy[$_GET['sort']].' '.$order;
+	$queryString = '?sort='.$_GET['sort'].(isset($_GET['order']) && $order=='DESC'?'&order=desc':'');
 }else{
 	$orderBy = " ORDER BY P.semestr ASC, P.title_predmet ASC, M.title_material ASC";
 }
@@ -138,11 +139,11 @@ while($material = $dbMaterials->fetch()){
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-					<th><span class="glyphicon glyphicon-time"></span></th>
-					<th class="td_material_predmet">Предмет</th>
-					<th>Описание</th>
-					<th>Размер</th>
-					<th><center><span class="glyphicon glyphicon-download"></span></center></th>
+					<a href="/?sort=semestr<?=$order=='DESC'?'&order=desc':''?>"><th><span class="glyphicon glyphicon-time"></span></th></a>
+					<a href="/?sort=predmet<?=$order=='DESC'?'&order=desc':''?>"><th class="td_material_predmet">Предмет</th></a>
+					<a href="/?sort=name<?=$order=='DESC'?'&order=desc':''?>"><th>Описание</th></a>
+					<a href="/?sort=size<?=$order=='DESC'?'&order=desc':''?>"><th>Размер</th></a>
+					<a href="/?sort=downloads<?=$order=='DESC'?'&order=desc':''?>"><th><center><span class="glyphicon glyphicon-download"></span></center></th></a>
 					<th><center><span class="glyphicon glyphicon-download-alt"></span></center></th>
 				</tr>
 			</thead>
