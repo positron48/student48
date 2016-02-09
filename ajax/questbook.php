@@ -3,7 +3,7 @@
     
     
     $userName = isset($_REQUEST['user'])?htmlspecialchars($_REQUEST['user']):'';
-    $msg = isset($_REQUEST['msg'])?htmlspecialchars($_REQUEST['msg']):'';
+    $msg = isset($_REQUEST['msg'])?htmlspecialchars(trim($_REQUEST['msg'])):'';
     $imNotRobot = isset($_REQUEST['imNotRobot'])?htmlspecialchars($_REQUEST['imNotRobot']):'';
     
     if($imNotRobot == 'Y' && $userName!='' && $msg!=''){

@@ -86,7 +86,7 @@ echo "<p>".$quoteData['text']."</p><small>".$quoteData['author']."</small>";
 					</div>
 				</td>
 			</tr>
-			<tr><td><?=$pagedata['message']?></td></tr>
+			<tr><td><?=trim($pagedata['message'])?></td></tr>
 		</table>
 	<?	}?>
 </div>

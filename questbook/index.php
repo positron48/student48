@@ -28,7 +28,7 @@ while($message=$questbookDb->fetch()){
 				</div>
 			</td>
 		</tr>
-		<tr><td><?=$pagedata['message']?></td></tr>
+		<tr><td><?=trim($pagedata['message'])?></td></tr>
 	</table>
 <?	}?>
 <center>
