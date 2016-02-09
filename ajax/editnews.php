@@ -12,9 +12,9 @@ $title_news = isset($_REQUEST['title_news'])?trim(htmlspecialchars($_REQUEST['ti
 $introtext = isset($_REQUEST['introtext'])?trim(htmlspecialchars_decode($_REQUEST['introtext'])):'';
 $fullcontent = isset($_REQUEST['fullcontent'])?trim(htmlspecialchars_decode($_REQUEST['fullcontent'])):'';
 $metakey = isset($_REQUEST['metakey'])?trim(htmlspecialchars($_REQUEST['metakey'])):'';
-$datecreate = isset($_REQUEST['datecreate'])?trim(htmlspecialchars($_REQUEST['datecreate'])):date('Y-m-d H:i:s');
+$datecreate = isset($_REQUEST['datecreate']) && $_REQUEST['datecreate']!=''?trim(htmlspecialchars($_REQUEST['datecreate'])):date('Y-m-d H:i:s');
 $dateupdate = date('Y-m-d H:i:s');
-$dateview = isset($_REQUEST['dateview'])?trim(htmlspecialchars($_REQUEST['dateview'])):date('Y-m-d H:i:s');
+$dateview = isset($_REQUEST['dateview']) && $_REQUEST['dateview']!=''?trim(htmlspecialchars($_REQUEST['dateview'])):date('Y-m-d H:i:s');
 $views = isset($_REQUEST['views'])?trim(htmlspecialchars($_REQUEST['views'])):0;
 
 
@@ -47,7 +47,7 @@ if($title_news!='' && $introtext!='' && $fullcontent!='') {
     if ($predmet->execute())
         echo 'true';
     else
-        echo print_r($predmet->errorInfo(),true).'false';
+        echo 'false';
 }elseif($id>0){
     $predmet = $dbWorker->prepare("DELETE FROM news WHERE id = :id");
     $predmet->bindParam(':id', $id, PDO::PARAM_INT);
