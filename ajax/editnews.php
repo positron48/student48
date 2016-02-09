@@ -1,5 +1,11 @@
 <?
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/settings.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
+
+if(!$isAdmin){
+    echo 'false';
+    die();
+}
 
 $id = isset($_REQUEST['news_id'])?intval($_REQUEST['news_id']):0;
 $title_news = isset($_REQUEST['title_news'])?trim(htmlspecialchars($_REQUEST['title_news'])):'';

@@ -1,5 +1,11 @@
 <?
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/settings.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
+
+if(!$isAdmin){
+    echo 'false';
+    die();
+}
 
 $id = isset($_REQUEST['predmet_id'])?intval($_REQUEST['predmet_id']):0;
 $semestr = isset($_REQUEST['semestr'])?intval($_REQUEST['semestr']):'';
