@@ -30,7 +30,7 @@
 ?>
 		<div>
 			<h2><?=$currentNews['title_news']?></h2>
-			<h5>Добавлено: <?=date('d.m.Y г. h:i ',strtotime($currentNews['datecreate']));?>  Просмотров:<?=$currentNews['views']?></h5>
+			<h5>Добавлено: <?=date('d.m.Y г. ',strtotime($currentNews['datecreate']));?>  Просмотров:<?=$currentNews['views']?></h5>
 			<br><?=$currentNews['fullcontent']?>
 		</div>
 <?
