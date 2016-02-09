@@ -35,6 +35,7 @@ if(isset($_GET['semestr'])){
 //все предметы по семестрам
 $dbPredmets=$dbWorker->query("SELECT * FROM predmets ORDER BY title_predmet ASC");
 
+$arEnglishToRussianPredmet = array();
 while($predmetRes = $dbPredmets->fetch()){
 	$arSemestrPredmets[(int)$predmetRes['semestr']][]= array($predmetRes['title_predmet_english'],$predmetRes['title_predmet']);
 	$arEnglishToRussianPredmet[$predmetRes['title_predmet_english']]=$predmetRes['title_predmet'];
@@ -102,6 +103,22 @@ while($material = $dbMaterials->fetch()){
 			<a href = "/upload/" class="btn btn-info">Добавить</a>
 		</center>
 	</div>
+
+	<?if($_SERVER['REQUEST_URI']!='/materials/'){?>
+		<ol class="breadcrumb">
+			<li><a href="/materials/">Материалы</a></li>
+			<? if($predmet!=null){?>
+				<?if($semestr>0){?>
+					<li><a href="/materials/<?=$predmet?>/"><?=$arEnglishToRussianPredmet[$predmet]?></a></li>
+				<?}else{?>
+					<li class="active"><?=$arEnglishToRussianPredmet[$predmet]?></li>
+				<?}?>
+			<?}?>
+			<? if($semestr>0){?>
+				<li class="active">Семестр <?=$semestr?></li>
+			<?}?>
+		</ol>
+	<?}?>
    	<h1>Материалы:</h1>
 	<form id="material" class="form-inline">
 		<select name="semestr" id="semestr" class="form-control">');

@@ -4,7 +4,7 @@ $id=0;
 if(isset($_GET['id']))
     $id=(int)htmlspecialchars($_GET['id']);
 
-$material = $dbWorker->prepare("SELECT title_material, metakey, link, filesize, downloads, dateadd, title_predmet, semestr FROM materials M INNER JOIN predmets P ON M.predmetid=P.id WHERE M.id = ?");
+$material = $dbWorker->prepare("SELECT title_material, metakey, link, filesize, downloads, dateadd, title_predmet, title_predmet_english, semestr FROM materials M INNER JOIN predmets P ON M.predmetid=P.id WHERE M.id = ?");
 if ($material->execute(array($id)))
     $material=$material->fetch();
 else
@@ -18,7 +18,12 @@ if($id>0){
 </title>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/head_after.php"); ?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/header.php"); ?>
-
+    <ol class="breadcrumb">
+        <li><a href="/materials/">Материалы</a></li>
+        <li><a href="/materials/<?=$material['title_predmet_english']?>/"><?=$material['title_predmet']?></a></li>
+        <li><a href="/materials/<?=$material['title_predmet_english']?>/semestr<?=$material['semestr']?>/">Семестр <?=$material['semestr']?></a></li>
+        <li class="active"><?=$material['title_material']?></li>
+    </ol>
 <h2>Информация о файле:</h2>
 <table class="table table-striped table-bordered table-condensed">
     <tr><td><b>Название: </b></td><td> <?=$material['title_material']?></td></tr>
