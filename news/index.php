@@ -60,7 +60,7 @@
 		<div class="row">
 			<div class="col-xs-6" align="justify">
 				<h2><?=$news['title_news']?></h2>
-				<h5>Добавлено: <?=date('d.m.Y г. h:i ',strtotime($news['datecreate']));?>  Просмотров:<?=$news['views']?></h5>
+				<h5>Добавлено: <?=date('d.m.Y г. ',strtotime($news['datecreate']));?>  Просмотров:<?=$news['views']?></h5>
 				<br>
 				<p><?=$news['introtext']?></p>
 				<p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее</a></p>
@@ -68,7 +68,7 @@
 		<?if($news = $dbNews->fetch()){ ?>
 			<div class="col-xs-6" align="justify">
 				<h2><?=$news['title_news']?></h2>
-				<h5>Добавлено: <?=date('d.m.Y г. h:i ',strtotime($news['datecreate']));?>  Просмотров:<?=$news['views']?></h5>
+				<h5>Добавлено: <?=date('d.m.Y г. ',strtotime($news['datecreate']));?>  Просмотров:<?=$news['views']?></h5>
 				<br>
 				<p><?=$news['introtext']?></p>
 				<p><a class="btn btn-info" href="http://<?=$_SERVER['SERVER_NAME']?>/news/<?=$news['id']?>/">Подробнее</a></p>
