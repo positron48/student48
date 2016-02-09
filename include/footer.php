@@ -28,6 +28,9 @@
 				<?if($_SERVER['SCRIPT_NAME'] == '/admin/predmets.php') {?>
 					<script src="/js/predmets.js"></script>
 				<?}?>
+				<?if($_SERVER['SCRIPT_NAME'] == '/admin/news.php') {?>
+					<script src="/js/news.js"></script>
+				<?}?>
 			</div>    
 		</div>
 
