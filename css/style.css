@@ -58,7 +58,7 @@ label.addbutton .form-control{margin-left:15px;width:36%;}
 .btn-info {
     height: 34px;
 }
-.progress {
+.upload-progress {
     width: 50%;
     margin-left: 15px;
     height: 34px;
@@ -67,4 +67,8 @@ label.addbutton .form-control{margin-left:15px;width:36%;}
 .alert.alert-info{
     padding-bottom: 5px !important;
     padding-top: 5px !important;
+}
+.message-remove, .news-remove, .news-edit{
+    cursor: pointer;
+    color: #337ab7;
 }

@@ -24,7 +24,11 @@ while($message=$questbookDb->fetch()){
 	<table class="table table-striped table-bordered table-condensed">
 		<tr>
 			<td><?=$pagedata['user']?>: <?=$pagedata['title_message']?>
-				<div class="pull-right">Добавлено: <?=date('d.m.Y г. h:i',strtotime($pagedata['dateadd']));?>
+				<div class="pull-right">
+					Добавлено: <?=date('d.m.Y г. h:i',strtotime($pagedata['dateadd']));?>
+					<?if($isAdmin){?>
+						<span message_id="<?=$pagedata['id']?>" class="message-remove glyphicon glyphicon-remove" aria-hidden="true"></span>
+					<?}?>
 				</div>
 			</td>
 		</tr>
@@ -58,5 +62,23 @@ while($message=$questbookDb->fetch()){
 	</div>
 	<button type="submit" class="btn btn-default">Отправить</button>
 </form>      
+
+<?if($isAdmin){?>
+	<script>
+		$('.message-remove').click(function(){
+			if(confirm('Вы действительно хотите удалить данное сообщение?')){
+				var id=$(this).attr('message_id');
+				$.post( "/ajax/editmessages.php", {  message_id: id })
+					.done(function(data) {
+						if(data === 'true') {
+							window.location.href = '/questbook/';
+						}else{
+							alert('При удалении файла возникла ошибка' + data);
+						}
+					});
+			}
+		});
+	</script>
+<?}?>
 
 <? require($_SERVER['DOCUMENT_ROOT']."/include/footer.php"); ?>

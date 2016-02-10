@@ -33,8 +33,8 @@
     <h1>Административная панель</h1>
     <br/>
     <p><a href="/admin/moderation/">Модерация файлов</a></p>
-    <p><a href="/admin/news/">Добавить новость</a></p>
-    <p><a href="/admin/predmets/">Изменение списка предметов</a></p>
+    <p><a href="/admin/news/">Новости</a></p>
+    <p><a href="/admin/predmets/">Предметы</a></p>
 
     <form class="form-horizontal" method="post">
         <br>
