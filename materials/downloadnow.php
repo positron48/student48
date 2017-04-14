@@ -24,7 +24,7 @@ if (!is_file($file_path)) {
     header("X-Sendfile: $file_path");
     header("Content-Type: application/octet-stream");
     header("Content-Disposition: attachment;filename={$filename}");
-    exit;
+    die();
 }
 ?>
 <pre>

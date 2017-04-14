@@ -1,4 +1,6 @@
 <?
+define('ADMIN_MAIL', 'positron48@gmail.com');
+
 $countNewsOnPage = 10;
 $countMaterialsOnStartPage = 20;
 $countMaterialsOnPage = 30;
@@ -17,5 +19,3 @@ if(isset($_POST['logout']))
 
 if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']===true)
     $isAdmin = true;
-
-?>

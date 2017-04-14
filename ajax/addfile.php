@@ -1,5 +1,6 @@
 <?
 require_once($_SERVER['DOCUMENT_ROOT'].'/include/database.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/include/settings.php');
 
 $semestr = intval($_REQUEST['semestr']);
 $predmet = (string)htmlspecialchars($_REQUEST['predmet']);
@@ -31,11 +32,15 @@ if($title!='' && $link!='' && ($predmetId!=0 || ($predmet === 'another' && $newP
     $insertMaterial->bindParam(':semestr', $semestr, PDO::PARAM_INT);
     $insertMaterial->bindParam(':newPredmet', $newPredmet);
     $insertMaterial->bindParam(':dateadd', $dateadd);
-//var_dump($dateadd);
-    if ($insertMaterial->execute())
+
+    if ($insertMaterial->execute()) {
         echo 'true';
-    else
+
+        $headers = "MIME-Version: 1.0\nContent-type: text/html;\nFrom: admin@student48.ru\n";
+        mail(ADMIN_MAIL, 'Student48.ru: added material to moderation', 'title: '.$title.PHP_EOL.'link: '.$link,$headers);
+    }else {
         echo 'false';
+    }
 }else{
     echo 'false';
 }

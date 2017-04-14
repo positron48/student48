@@ -60,5 +60,34 @@
         });
     });
 </script>
+<?if($isAdmin){?>
+    <h2>Файлы в обменнике:</h2>
+    <?
+    $file = $dbWorker->prepare("SELECT * FROM uploads");
+    $files = array();
+    if($file->execute()){
+        while($fileItem = $file->fetch()){
+            $files[] = $fileItem;
+        }
+    }?>
+    <table class="table table-striped table-bordered table-condensed">
+        <tr>
+            <td><b>Название </b></td>
+            <td><b>Добавлено </b></td>
+            <td><b>Последнее скачивание: </b></td>
+            <td><b>Размер: </b></td>
+            <td><b>Cкачиваний: </b></td>
+        </tr>
+        <?foreach ($files as $file) {?>
+            <tr>
+                <td style="width: 400px;"><a href="script/downloadnow.php?id=<?=$file['id']?>"><?=$file['file_name_orig']?></a></td>
+                <td> <?=date('d.m.Y г. h:i ',strtotime($file['date_add']));?></td></>
+                <td> <?=date('d.m.Y г. h:i ',strtotime($file['date_last_update']));?></td></>
+                <td> <?=(int)($file['file_size']/1024)?> Kb</td></>
+                <td> <?=$file['downloads']?></td>
+            </tr>
 
+        <?}?>
+    </table>
+<?}?>
 <? require($_SERVER['DOCUMENT_ROOT']."/include/footer.php"); ?>
