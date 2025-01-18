@@ -49,6 +49,40 @@
 			  ga('create', 'UA-23307074-1', 'auto');
 			  ga('send', 'pageview');
 		</script>
+
+<div class="modal fade in" id="jaUstal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block; padding-right: 17px;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img src="https://www.meme-arsenal.com/memes/2299aec4d781d59e8659eb6012f83947.jpg" style="
+    margin: 25px auto;
+    display: block;
+">
+<p>Друзья! Вот и канули в лету 9 лет существования проекта. Надеюсь, все это время сайт был не бесполезен и материалы кому-то пригодились.</p>
+<p>К сожалению, более не располагаю возможностью поддерживать сайт. Знаю, что многие до сих пор сюда заходят - <b>Удачи</b> вам во всех начинаниях.</p>
+<p>1 ноября заканчивается срок действия домена.</p>
+<br>
+<p>P.S. Если вдруг кому-то было бы интересно поддерживать сайт далее - <a href="mailto:positron48@gmail.com">напишите</a> мне.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<script> 
+$(document).ready(function(){ 
+    $('#jaUstal').modal();
+})
+</script>
 	</body>
 </html>
 
